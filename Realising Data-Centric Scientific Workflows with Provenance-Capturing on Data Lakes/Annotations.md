@@ -43,3 +43,45 @@ annotation-target: paper.pdf
 >%%TAGS%%
 >
 ^w119xo8tq7j
+
+
+>%%
+>```annotation-json
+>{"created":"2025-06-18T13:00:20.515Z","updated":"2025-06-18T13:00:20.515Z","document":{"title":"paper.pdf","link":[{"href":"urn:x-pdf:7fd6e4c3a124a9cecb9e1b93650b3f99"},{"href":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf"}],"documentFingerprint":"7fd6e4c3a124a9cecb9e1b93650b3f99"},"uri":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","target":[{"source":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","selector":[{"type":"TextPositionSelector","start":10261,"end":10642},{"type":"TextQuoteSelector","exact":"The core our data lake implementation is the central web application, which i.a. provides the REST-API of the data lake. It also implements the orchestration functions, so that a consistent state of the data lake and the essential minimum of (meta)data quality is being enforced. Here, the actual mapping between the logical and the physical organization of the data lakes happens.","prefix":"akes3.1  Arc  hitecture Overview","suffix":"A schematic view is provided in "}]}]}
+>```
+>%%
+>*%%PREFIX%%akes3.1  Arc  hitecture Overview%%HIGHLIGHT%% ==The core our data lake implementation is the central web application, which i.a. provides the REST-API of the data lake. It also implements the orchestration functions, so that a consistent state of the data lake and the essential minimum of (meta)data quality is being enforced. Here, the actual mapping between the logical and the physical organization of the data lakes happens.== %%POSTFIX%%A schematic view is provided in*
+>%%LINK%%[[#^hfwxiv8c88f|show annotation]]
+>%%COMMENT%%
+>
+>%%TAGS%%
+>
+^hfwxiv8c88f
+
+
+>%%
+>```annotation-json
+>{"created":"2025-06-18T13:01:44.770Z","updated":"2025-06-18T13:01:44.770Z","document":{"title":"paper.pdf","link":[{"href":"urn:x-pdf:7fd6e4c3a124a9cecb9e1b93650b3f99"},{"href":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf"}],"documentFingerprint":"7fd6e4c3a124a9cecb9e1b93650b3f99"},"uri":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","target":[{"source":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","selector":[{"type":"TextPositionSelector","start":11194,"end":11409},{"type":"TextQuoteSelector","exact":"There is, however, one exception: The direct interaction of users with version control tools, like GitLab, is tightly integrated into our concept of a data lake in order to support widely used development workflows.","prefix":"isting workflows and pipelines. ","suffix":"Figure 1.  Schematic view of the"}]}]}
+>```
+>%%
+>*%%PREFIX%%isting workflows and pipelines.%%HIGHLIGHT%% ==There is, however, one exception: The direct interaction of users with version control tools, like GitLab, is tightly integrated into our concept of a data lake in order to support widely used development workflows.== %%POSTFIX%%Figure 1.  Schematic view of the*
+>%%LINK%%[[#^dua3jrfi2qp|show annotation]]
+>%%COMMENT%%
+>
+>%%TAGS%%
+>
+^dua3jrfi2qp
+
+
+>%%
+>```annotation-json
+>{"created":"2025-06-18T13:05:24.002Z","updated":"2025-06-18T13:05:24.002Z","document":{"title":"paper.pdf","link":[{"href":"urn:x-pdf:7fd6e4c3a124a9cecb9e1b93650b3f99"},{"href":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf"}],"documentFingerprint":"7fd6e4c3a124a9cecb9e1b93650b3f99"},"uri":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","target":[{"source":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","selector":[{"type":"TextPositionSelector","start":16674,"end":17251},{"type":"TextQuoteSelector","exact":"In order to achieve a consistent metadata quality despite a constantly evolving metadata schema, a rather simple modeling approach is being taken. First, four top level data types are defined, raw data, processed data, container and manifest, from which other data types can be derived. Users can register derived data types by defining a new schema which consists of the associated attributes and an assigned name for the new  data  type. Through  this,  only  known  data  types  with  known  and  typed  attributes  are  being  indexed  and  ingested  into  the  data  lake.","prefix":"  Cons  tantly Evolving Metadata","suffix":"  Based  on  this  environment  "}]}]}
+>```
+>%%
+>*%%PREFIX%%Cons  tantly Evolving Metadata%%HIGHLIGHT%% ==In order to achieve a consistent metadata quality despite a constantly evolving metadata schema, a rather simple modeling approach is being taken. First, four top level data types are defined, raw data, processed data, container and manifest, from which other data types can be derived. Users can register derived data types by defining a new schema which consists of the associated attributes and an assigned name for the new  data  type. Through  this,  only  known  data  types  with  known  and  typed  attributes  are  being  indexed  and  ingested  into  the  data  lake.== %%POSTFIX%%Based  on  this  environment*
+>%%LINK%%[[#^bv31c7rt4ib|show annotation]]
+>%%COMMENT%%
+>
+>%%TAGS%%
+>
+^bv31c7rt4ib
