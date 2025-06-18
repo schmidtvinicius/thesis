@@ -1,0 +1,173 @@
+{
+  "main": {
+    "id": "ef1a8bd6fac4ad46",
+    "type": "split",
+    "children": [
+      {
+        "id": "acaeac0dfd6cad24",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f5bba9631fb722c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf-annotator",
+              "state": {
+                "file": "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md"
+              },
+              "icon": "lucide-file",
+              "title": "Annotations"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2d39711250a36920",
+    "type": "split",
+    "children": [
+      {
+        "id": "f1b4dfb376395f8d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "682e30bc8f95bd7d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "469fa6b7ed0063dc",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "fa9d9491625bbe50",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b7d5208874ef3319",
+    "type": "split",
+    "children": [
+      {
+        "id": "45d8dafecf48f730",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cfbdc91cde4759f2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Annotations"
+            }
+          },
+          {
+            "id": "3e0609812c36e956",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Annotations"
+            }
+          },
+          {
+            "id": "506fe78ed8bbecac",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f1e8b10661bd2862",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Annotations"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "8f5bba9631fb722c",
+  "lastOpenFiles": [
+    "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md"
+  ]
+}
