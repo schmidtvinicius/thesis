@@ -85,3 +85,31 @@ annotation-target: paper.pdf
 >%%TAGS%%
 >
 ^bv31c7rt4ib
+
+
+>%%
+>```annotation-json
+>{"created":"2025-06-19T09:02:05.623Z","updated":"2025-06-19T09:02:05.623Z","document":{"title":"paper.pdf","link":[{"href":"urn:x-pdf:7fd6e4c3a124a9cecb9e1b93650b3f99"},{"href":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf"}],"documentFingerprint":"7fd6e4c3a124a9cecb9e1b93650b3f99"},"uri":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","target":[{"source":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","selector":[{"type":"TextPositionSelector","start":12306,"end":12460},{"type":"TextQuoteSelector","exact":"Here, it can be even favorable if a data lake is not only a passive data sink, but can actively pull data from other systems in order to stay up-to-date. ","prefix":"se  common protocols like http. ","suffix":"This can also reduce maintenance"}]}]}
+>```
+>%%
+>*%%PREFIX%%se  common protocols like http.%%HIGHLIGHT%% ==Here, it can be even favorable if a data lake is not only a passive data sink, but can actively pull data from other systems in order to stay up-to-date.== %%POSTFIX%%This can also reduce maintenance*
+>%%LINK%%[[#^e5b7pgqw07|show annotation]]
+>%%COMMENT%%
+>
+>%%TAGS%%
+>
+^e5b7pgqw07
+
+
+>%%
+>```annotation-json
+>{"created":"2025-06-19T12:09:03.087Z","updated":"2025-06-19T12:09:03.087Z","document":{"title":"paper.pdf","link":[{"href":"urn:x-pdf:7fd6e4c3a124a9cecb9e1b93650b3f99"},{"href":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf"}],"documentFingerprint":"7fd6e4c3a124a9cecb9e1b93650b3f99"},"uri":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","target":[{"source":"vault:/Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/paper.pdf","selector":[{"type":"TextPositionSelector","start":13706,"end":14062},{"type":"TextQuoteSelector","exact":"After the raw data has been ingested into the data lake, the next step is to transform and analyse these data sets. To achieve this, a job manifest has to be written, which unambiguously describes the job that has to  be  performed.  This  job  manifest  is  then  being  interpreted  by  a  dedicated  adapter  and  the  defined  computation is performed.","prefix":"nformation.3.3  Data   Analytics","suffix":" Currently, two different adapte"}]}]}
+>```
+>%%
+>*%%PREFIX%%nformation.3.3  Data   Analytics%%HIGHLIGHT%% ==After the raw data has been ingested into the data lake, the next step is to transform and analyse these data sets. To achieve this, a job manifest has to be written, which unambiguously describes the job that has to  be  performed.  This  job  manifest  is  then  being  interpreted  by  a  dedicated  adapter  and  the  defined  computation is performed.== %%POSTFIX%%Currently, two different adapte*
+>%%LINK%%[[#^r27jvk0eig9|show annotation]]
+>%%COMMENT%%
+>
+>%%TAGS%%
+>
+^r27jvk0eig9

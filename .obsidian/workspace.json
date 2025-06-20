@@ -13,7 +13,7 @@
             "state": {
               "type": "pdf-annotator",
               "state": {
-                "file": "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md"
+                "file": "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/Annotations.md"
               },
               "icon": "lucide-file",
               "title": "Annotations"
@@ -76,7 +76,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 270.5
   },
   "right": {
     "id": "b7d5208874ef3319",
@@ -168,6 +168,19 @@
   },
   "active": "8f5bba9631fb722c",
   "lastOpenFiles": [
-    "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md"
+    "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
+    "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/Annotations.md",
+    "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
+    "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics",
+    "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/Annotations.md",
+    "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics",
+    "Lakehouse: A New Generation of Open Platforms that Unify\nData Warehousing and Advanced Analytics",
+    "Untitled Folder",
+    "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/paper.pdf",
+    "A Large-Scale Study of ML-Related Python Projects/Annotations.md",
+    "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem",
+    "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
+    "A Large-Scale Study of ML-Related Python Projects/paper.pdf",
+    "A Large-Scale Study of ML-Related Python Projects"
   ]
 }
