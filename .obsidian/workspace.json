@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "acaeac0dfd6cad24",
+        "id": "1df7c9db250a35f3",
         "type": "tabs",
         "children": [
           {
-            "id": "8f5bba9631fb722c",
+            "id": "65890bc92073dc0d",
             "type": "leaf",
             "state": {
-              "type": "pdf-annotator",
-              "state": {
-                "file": "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/Annotations.md"
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Annotations"
+              "title": "New tab"
             }
           }
         ]
@@ -158,6 +156,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -166,10 +165,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8f5bba9631fb722c",
+  "active": "65890bc92073dc0d",
   "lastOpenFiles": [
-    "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
     "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/Annotations.md",
+    "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
     "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
     "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics",
     "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/Annotations.md",
