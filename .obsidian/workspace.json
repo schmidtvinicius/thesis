@@ -4,17 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "1df7c9db250a35f3",
+        "id": "dd8fda674375c4d8",
         "type": "tabs",
         "children": [
           {
-            "id": "65890bc92073dc0d",
+            "id": "be93b3630bdfa35b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "canvas",
+              "state": {
+                "file": "Mind map.canvas",
+                "viewState": {
+                  "x": -435.355493173394,
+                  "y": -609.6734784479738,
+                  "zoom": -1.2000000000000002
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Mind map"
             }
           }
         ]
@@ -37,7 +44,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -165,8 +172,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "65890bc92073dc0d",
+  "active": "be93b3630bdfa35b",
   "lastOpenFiles": [
+    "bla.md",
+    "Mind map.canvas",
+    "asd.md",
+    "armbrustDeltaLakeHighperformance2020.md",
+    "parasjainAnalyzingComparingLakehouse2023.md",
     "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/Annotations.md",
     "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
     "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
