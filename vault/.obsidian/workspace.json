@@ -4,24 +4,45 @@
     "type": "split",
     "children": [
       {
-        "id": "8054646d7515cd2e",
+        "id": "3cb2227ef9d8b910",
         "type": "tabs",
         "children": [
           {
-            "id": "8191a489d52f2231",
+            "id": "0c13e4fdd0854734",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Meeting notes with Pedro (08-09-2025).md",
-                "mode": "source",
-                "source": false
+                "file": "Mind map.canvas",
+                "viewState": {
+                  "x": -150.5,
+                  "y": -213,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "Meeting notes with Pedro (08-09-2025)"
+              "icon": "lucide-layout-dashboard",
+              "title": "Mind map"
+            }
+          },
+          {
+            "id": "fe9a68626f40879d",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Mind map.canvas",
+                "viewState": {
+                  "x": -150.5,
+                  "y": -213,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Mind map"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +74,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "section:(Technologies)",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,14 +190,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8191a489d52f2231",
+  "active": "fe9a68626f40879d",
   "lastOpenFiles": [
+    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
+    "Mind map.canvas",
+    "papers",
+    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
+    "meeting-notes",
+    "Meeting notes with Pedro (08-09-2025)#Technologies to compare.md",
+    "Main technologies to compare.md",
     "vault",
     "Untitled Folder",
     "Test.md",
     "Untitled.base",
-    "Mind map.canvas",
-    "Meeting notes with Pedro (08-09-2025).md",
     "bla.md",
     "asd.md",
     "armbrustDeltaLakeHighperformance2020.md",
@@ -188,10 +214,7 @@
     "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/Annotations.md",
     "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics",
     "Lakehouse: A New Generation of Open Platforms that Unify\nData Warehousing and Advanced Analytics",
-    "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/paper.pdf",
     "A Large-Scale Study of ML-Related Python Projects/Annotations.md",
-    "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem",
-    "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
-    "A Large-Scale Study of ML-Related Python Projects/paper.pdf"
+    "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md"
   ]
 }
