@@ -4,24 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dd8fda674375c4d8",
+        "id": "8054646d7515cd2e",
         "type": "tabs",
         "children": [
           {
-            "id": "be93b3630bdfa35b",
+            "id": "8191a489d52f2231",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Mind map.canvas",
-                "viewState": {
-                  "x": 154.55925094652844,
-                  "y": -285.1087332134913,
-                  "zoom": -0.8000000000000002
-                }
+                "file": "Meeting notes with Pedro (08-09-2025).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Mind map"
+              "icon": "lucide-file",
+              "title": "Meeting notes with Pedro (08-09-2025)"
             }
           }
         ]
@@ -172,10 +169,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "be93b3630bdfa35b",
+  "active": "8191a489d52f2231",
   "lastOpenFiles": [
-    "bla.md",
+    "vault",
+    "Untitled Folder",
+    "Test.md",
+    "Untitled.base",
     "Mind map.canvas",
+    "Meeting notes with Pedro (08-09-2025).md",
+    "bla.md",
     "asd.md",
     "armbrustDeltaLakeHighperformance2020.md",
     "parasjainAnalyzingComparingLakehouse2023.md",
@@ -186,12 +188,10 @@
     "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/Annotations.md",
     "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics",
     "Lakehouse: A New Generation of Open Platforms that Unify\nData Warehousing and Advanced Analytics",
-    "Untitled Folder",
     "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem/paper.pdf",
     "A Large-Scale Study of ML-Related Python Projects/Annotations.md",
     "Building a modern data platform based on the data lakehouse architecture and cloud-native ecosystem",
     "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
-    "A Large-Scale Study of ML-Related Python Projects/paper.pdf",
-    "A Large-Scale Study of ML-Related Python Projects"
+    "A Large-Scale Study of ML-Related Python Projects/paper.pdf"
   ]
 }
