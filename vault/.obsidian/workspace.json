@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3cb2227ef9d8b910",
+        "id": "ba07f1c2eb811c69",
         "type": "tabs",
         "children": [
           {
-            "id": "0c13e4fdd0854734",
+            "id": "dda163794452b3cf",
             "type": "leaf",
             "state": {
               "type": "canvas",
@@ -17,7 +17,7 @@
                 "viewState": {
                   "x": -150.5,
                   "y": -213,
-                  "zoom": 0
+                  "zoom": -0.41582997116962356
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -25,20 +25,17 @@
             }
           },
           {
-            "id": "fe9a68626f40879d",
+            "id": "0c13e4fdd0854734",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Mind map.canvas",
-                "viewState": {
-                  "x": -150.5,
-                  "y": -213,
-                  "zoom": 0
-                }
+                "file": "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "Mind map"
+              "icon": "lucide-file",
+              "title": "Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing"
             }
           }
         ],
@@ -190,10 +187,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fe9a68626f40879d",
+  "active": "0c13e4fdd0854734",
   "lastOpenFiles": [
-    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "Mind map.canvas",
+    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "papers",
     "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
     "meeting-notes",
