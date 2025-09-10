@@ -8,24 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "dda163794452b3cf",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "Mind map.canvas",
-                "viewState": {
-                  "x": -150.5,
-                  "y": -213,
-                  "zoom": -0.41582997116962356
-                }
-              },
-              "icon": "lucide-layout-dashboard",
-              "title": "Mind map"
-            }
-          },
-          {
-            "id": "0c13e4fdd0854734",
+            "id": "5226a27c4c52b590",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -38,8 +21,7 @@
               "title": "Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -71,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "section:(Technologies)",
+                "query": "tag:#benchmarking",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -187,12 +169,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0c13e4fdd0854734",
+  "active": "5226a27c4c52b590",
   "lastOpenFiles": [
-    "Mind map.canvas",
+    "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
+    "Concepts and definitions.md",
     "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
-    "papers",
+    "Mind map.canvas",
+    "().md",
+    "armbrustDeltaLakeHighperformance2020.md",
+    "djfkghdjifg.md",
     "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
+    "papers",
     "meeting-notes",
     "Meeting notes with Pedro (08-09-2025)#Technologies to compare.md",
     "Main technologies to compare.md",
@@ -202,7 +189,6 @@
     "Untitled.base",
     "bla.md",
     "asd.md",
-    "armbrustDeltaLakeHighperformance2020.md",
     "parasjainAnalyzingComparingLakehouse2023.md",
     "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/Annotations.md",
     "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
