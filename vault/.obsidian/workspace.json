@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
+                "file": "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing"
+              "title": "LST-Bench - Benchmarking Log-Structured Tables in the Cloud"
             }
           }
         ]
@@ -171,14 +171,14 @@
   },
   "active": "5226a27c4c52b590",
   "lastOpenFiles": [
+    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
     "Concepts and definitions.md",
-    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
+    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
     "Mind map.canvas",
     "().md",
     "armbrustDeltaLakeHighperformance2020.md",
     "djfkghdjifg.md",
-    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
     "papers",
     "meeting-notes",
     "Meeting notes with Pedro (08-09-2025)#Technologies to compare.md",

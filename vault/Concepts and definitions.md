@@ -5,3 +5,9 @@ Some companies also enforce a "DeWitt Embrace clause", which allows publishing o
 
 ## OLTP
 Stands for On-line Transaction Processing. It consists of rapid processing of large amounts of small data.
+
+## Copy-on-Write (CoW)
+Strategy used by certain LSTs to handle updates of data files. In this case, new copies of the data files reflecting the changes are made as soon as an update comes in. This strategy is mostly recommended when tables have infrequent updates, but are read frequently.
+
+## Merge-on-Read (MoR)
+In contrast to [[#Copy-on-Write (CoW)|CoW]], MoR defers updates to data files for when the data is being read. There are different strategies to implement this, e.g. [Delta's deletion vectors](https://delta.io/blog/2023-07-05-deletion-vectors/). This is strategy is mostly recommended for when updates are very frequent.
