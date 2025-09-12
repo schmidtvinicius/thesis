@@ -12,5 +12,4 @@ Finally, the authors conclude the paper by acknowledging the challenges of DBMS 
 
 ## Remarks
 * [[Concepts and definitions#DeWitt clause|DeWitt clause]] might be a limiting factor for the project, although I don't think it will be a big issue.
-* 
 
