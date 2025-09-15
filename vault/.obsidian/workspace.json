@@ -11,14 +11,17 @@
             "id": "5226a27c4c52b590",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
-                "mode": "source",
-                "source": false
+                "file": "Mind map.canvas",
+                "viewState": {
+                  "x": -222.5,
+                  "y": -35.5,
+                  "zoom": -0.3426818092140378
+                }
               },
-              "icon": "lucide-file",
-              "title": "LST-Bench - Benchmarking Log-Structured Tables in the Cloud"
+              "icon": "lucide-layout-dashboard",
+              "title": "Mind map"
             }
           }
         ]
@@ -173,6 +176,7 @@
   "lastOpenFiles": [
     "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
     "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
+    "papers/A Survey of Stream Processing System  Benchmarks.md",
     "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
     "Concepts and definitions.md",
     "Mind map.canvas",
