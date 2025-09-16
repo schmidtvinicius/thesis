@@ -1,6 +1,7 @@
-#benchmarking 
+#benchmarking #lakehouse
 
 [Link to paper](zotero://select/library/collections/FHD6IXWM/items/7B39LXPC)
+[Source code](https://github.com/microsoft/lst-bench/)
 
 ## Paper summary
 According to the authors of the paper, modern LSTs (Delta Lake, Apache Iceberg, Apache Hudi) have such fundamental differences from traditional storage layer systems, e.g. immutable data files on object stores, that current benchmarks such as TPC-DS, are not sufficient to measure their performance accurately, often leading to incomplete/misleading results of LST performance. The authors argue further that benchmarking LSTs goes beyond those technologies alone, as engines also play a big role in LST performance due to the different configurations and optimization techniques that they offer. In light of these issues, the authors introduce LST-Bench: an open-source benchmarking framework that extends TPC-DS for evaluating log-structured tables (LSTs).
@@ -32,6 +33,7 @@ The main takeaway of this paper is that LSTs are quite different from traditiona
 * [Analyzing and Comparing Lakehouse Storage Systems](zotero://select/library/collections/EEX7TH88/items/2I86NXPD)
 * [DIAMETRICS: benchmarking query engines at scale](zotero://select/library/collections/FHD6IXWM/items/IQ5PCJFK)
 * [PEEL: A Framework for Benchmarking Distributed Systems and Algorithms](zotero://select/library/collections/FHD6IXWM/items/K5TSPTT2)
+	* [[PEEL - A Framework for Benchmarking Distributed Systems and Algorithms#Paper summary|Paper summary]]
 
 ### Blogs
 * https://databeans-blogs.medium.com/delta-vs-iceberg-vs-hudi-reassessing-performance-cb8157005eb0
