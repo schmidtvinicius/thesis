@@ -1,6 +1,6 @@
 #benchmarking #lakehouse
 
-[Link to paper](zotero://select/library/collections/FHD6IXWM/items/7B39LXPC)
+[Link to paper](zotero://select/library/collections/S6HVLU6N/items/7B39LXPC)
 [Source code](https://github.com/microsoft/lst-bench/)
 
 ## Paper summary

@@ -10,7 +10,7 @@
 ## Tips
  * Take a look at how Trino handles frequent updates/streaming (They probably struggle with that)
 * Conferences/sources to look for paper (in order of relevance):
-	* VLDB
+	* [VLDB](https://vldb.org/pvldb/volumes/18)
 	* SIGMOD
 	* CIDR
 	* ICDE
