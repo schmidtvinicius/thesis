@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "papers/Analyzing and Comparing Lakehouse Storage Systems.md",
+                "file": "papers/How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Analyzing and Comparing Lakehouse Storage Systems"
+              "title": "How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#benchmarking",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -171,20 +171,21 @@
   },
   "active": "23f117638737f08b",
   "lastOpenFiles": [
+    "papers/Benchmarking Distributed Stream Data Processing Systems.md",
+    "papers/How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems.md",
+    "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
+    "papers/Analyzing Efficient Stream Processing on Modern Hardware.md",
+    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
+    "papers/Analyzing and Comparing Lakehouse Storage Systems.md",
     "().md",
     "templates/Paper notes.md",
-    "papers/Analyzing and Comparing Lakehouse Storage Systems.md",
-    "papers/Analyzing Efficient Stream Processing on Modern Hardware.md",
     "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
     "papers/A Survey of Stream Processing System  Benchmarks.md",
-    "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
-    "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "papers/ldfgj.md",
     "papers/PEEL - A Framework for Benchmarking Distributed Systems and Algorithms.md",
     "templates",
     "Untitled.md",
     "Untitled.canvas",
-    "papers/Benchmarking Distributed Stream Data Processing Systems.md",
     "Mind map.canvas",
     "Concepts and definitions.md",
     "armbrustDeltaLakeHighperformance2020.md",
