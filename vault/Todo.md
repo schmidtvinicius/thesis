@@ -1,0 +1,7 @@
+- [ ] Experiment with the different lakehouses/streaming to get a feeling of how to work with them
+	- [ ] Delta
+	- [ ] Iceberg
+	- [ ] Ducklake
+	- [ ] Flink
+	- [ ] Storm
+- [ ] Schedule a meeting with Pedro to discuss how to implement the benchmark
