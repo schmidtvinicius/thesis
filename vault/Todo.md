@@ -1,7 +1,13 @@
 - [ ] Experiment with the different lakehouses/streaming to get a feeling of how to work with them
 	- [ ] Delta
 	- [ ] Iceberg
-	- [ ] Ducklake
-	- [ ] Flink
+	- [x] Ducklake
+	- [x] Flink
+		- [ ] https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/try-flink/local_installation/
 	- [ ] Storm
 - [ ] Schedule a meeting with Pedro to discuss how to implement the benchmark
+- [ ] Try to get Flink working with Ducklake using the fraud detection example
+	- [ ] https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/connectors/datastream/jdbc/
+	- [ ] https://duckdb.org/docs/stable/clients/java.html
+	- [ ] https://delta.io/blog/2022-04-27-writing-to-delta-lake-from-apache-flink/
+	- [ ] https://nightlies.apache.org/flink/flink-docs-master/docs/dev/datastream/sinks/
