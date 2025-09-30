@@ -17,6 +17,9 @@
 		- Delta
 		- Ducklake
 ## Experiments
+### Metrics
+- When looking at latency, we could use event-time as the start time and the end time could be the timestamp when files are created on the object store. This time can be accessed via the metadata layer of the lakehouse.
+
 ### Resources
 - [Radboud clusters](https://wiki.icis-intra.cs.ru.nl/Cluster#Access_to_Cluster_Resources)
 

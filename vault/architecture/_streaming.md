@@ -1,0 +1,3 @@
+- Partitioning strategy
+- Degree of parallelism (DoP)
+- Memory size
