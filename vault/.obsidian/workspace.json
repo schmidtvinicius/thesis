@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Todo.md",
+                "file": "streaming-frameworks/Flink.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Todo"
+              "title": "Flink"
             }
           }
         ]
@@ -171,6 +171,10 @@
   },
   "active": "f798577dee205904",
   "lastOpenFiles": [
+    "Untitled.md",
+    "streaming-frameworks/Flink.md",
+    "Todo.md",
+    "streaming-frameworks",
     "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
     "Thesis.md",
     "Mind map.canvas",
@@ -186,7 +190,6 @@
     "architecture/_streaming.md",
     "architecture/_lakehouse.md",
     "architecture",
-    "Todo.md",
     "papers/PDSP-Bench - A Benchmarking System for  Parallel and Distributed Stream Processing.md",
     "templates/Paper notes.md",
     "papers/PEEL - A Framework for Benchmarking Distributed Systems and Algorithms.md",
@@ -204,9 +207,7 @@
     "Untitled Folder",
     "Test.md",
     "Untitled.base",
-    "bla.md",
     "Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
-    "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf",
-    "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics"
+    "Lakehouse - A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics/paper.pdf"
   ]
 }
