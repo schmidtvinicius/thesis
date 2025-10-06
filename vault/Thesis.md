@@ -17,7 +17,7 @@
 		- Delta
 		- Ducklake
 - What are the limitations of lakehouses for streaming?
-- How can we develop a benchmark to evaluate streaming use cases in lakehouse systems?
+- **How can we develop a benchmark to evaluate streaming use cases in lakehouse systems?**
 ## Experiments
 ### Metrics
 - When looking at latency, we could use event-time as the start time and the end time could be the timestamp when files are created on the object store. This time can be accessed via the metadata layer of the lakehouse.
