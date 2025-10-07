@@ -1,0 +1,7 @@
+{
+ "venv": "venv",
+  "venvPath": "./.venv/",
+  "extraPaths": [
+    "./.venv/lib/"
+  ]
+}
