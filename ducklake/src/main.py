@@ -50,7 +50,7 @@ def produce(bootstrap_servers: str, topic: str, duration_seconds: int):
             "timestamp": datetime.isoformat(datetime.now()),
             "user_id": user_id,
             "user_name": user_names[user_id],
-            "event_type": random.choice(['CLICK', 'LOGIN', 'LOGOUT'])
+            "event_type": random.choice(['CLICK', 'SCROLL', 'SWIPE'])
         }
         producer.produce(topic, json.dumps(event))
         producer.flush(10000)
@@ -71,21 +71,30 @@ def consume_and_insert(bootstrap_servers: str, topic: str, con: duckdb.DuckDBPyC
         cursor.execute("USE events_ducklake;")
         try:
             while time.time() - start_time < duration_seconds:
-                msg = consumer.poll(1.0)
-                if msg is None:
-                    print("No new messages found, sleeping for 5 seconds...")
-                    time.sleep(5)
-                    continue
-                if msg.error():
-                    print("Consumer error:", msg.error())
-                    continue
+                msgs = []
+                window_length = random.choice([i for i in range(5,16)])
+                while len(msgs) < window_length:
+                    msg = consumer.poll(1.0)
+                    if msg is None:
+                        print("No new messages found, sleeping for 5 seconds...")
+                        # time.sleep(5)
+                        continue
+                    if msg.error():
+                        print("Consumer error:", msg.error())
+                        continue
+                    msgs.append(msg)
 
                 try:
-                    event = json.loads(msg.value().decode("utf-8"))
-                    ts = datetime.fromisoformat(event["timestamp"])
+                    values = []
+                    for msg in msgs:
+                        event = json.loads(msg.value().decode("utf-8"))
+                        values.append(datetime.fromisoformat(event.pop("timestamp")))
+                        values.append(event['user_id'])
+                        values.append(event['user_name'])
+                        values.append(event['event_type'])
                     cursor.execute(
-                        f"INSERT INTO {RAW_TABLE} VALUES (?, ?, ?, ?)",
-                        [ts, event["user_id"], event["user_name"], event["event_type"]]
+                        f"INSERT INTO {RAW_TABLE} VALUES {'(?, ?, ?, ?),'*((len(values)-4)//4)}(?,?,?,?)",
+                        values
                     )
                 except Exception as e:
                     print("Error inserting:", e)
@@ -135,8 +144,8 @@ def aggregate_loop(con: duckdb.DuckDBPyConnection, duration_seconds: int):
                 time.sleep(5)
 
             except Exception as e:
-                # print("Aggregation error:", e)
-                print('an error occurred')
+                print("Aggregation error:", e)
+                # print('an error occurred')
 
 
 def main():
@@ -149,6 +158,7 @@ def main():
     con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
     con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
     con.execute("ATTACH 'ducklake:catalog/events_ducklake.ducklake' AS events_ducklake (DATA_INLINING_ROW_LIMIT 10, DATA_PATH 'data_files/');")
+    # con.execute("ATTACH 'ducklake:catalog/events_ducklake.ducklake' AS events_ducklake (DATA_PATH 'data_files/');")
     init_db(con)
 
     t1 = threading.Thread(target=consume_and_insert, args=(args.bootstrap_servers, args.topic, con, args.duration_seconds))
