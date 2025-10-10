@@ -32,7 +32,7 @@ def init_db(con: duckdb.DuckDBPyConnection):
             CREATE TABLE IF NOT EXISTS {DEST_TABLE} (
                 user_id VARCHAR,
                 user_name VARCHAR,
-                count_of_clicks BIGINT,
+                count BIGINT,
                 last_snapshot INT,        
             )
         """)
@@ -66,18 +66,21 @@ def consume_and_insert(bootstrap_servers: str, topic: str, con: duckdb.DuckDBPyC
 
     print(f"Consuming from topic {topic}...")
     start_time = time.time()
+    raw_files = 0
 
     with con.cursor() as cursor:
         cursor.execute("USE events_ducklake;")
         try:
             while time.time() - start_time < duration_seconds:
                 msgs = []
-                window_length = random.choice([i for i in range(5,16)])
+                window_length = random.choice([i for i in range(5, 16)])
+                if window_length > 10:
+                    raw_files += 1
                 while len(msgs) < window_length:
                     msg = consumer.poll(1.0)
                     if msg is None:
                         print("No new messages found, sleeping for 5 seconds...")
-                        # time.sleep(5)
+                        time.sleep(5)
                         continue
                     if msg.error():
                         print("Consumer error:", msg.error())
@@ -104,6 +107,7 @@ def consume_and_insert(bootstrap_servers: str, topic: str, con: duckdb.DuckDBPyC
         finally:
             print("Closing consumer...")
             consumer.close()
+    print(f'Produced {raw_files} raw files')
 
 
 def aggregate_loop(con: duckdb.DuckDBPyConnection, duration_seconds: int):    
@@ -123,7 +127,7 @@ def aggregate_loop(con: duckdb.DuckDBPyConnection, duration_seconds: int):
                         SELECT 
                             user_id,
                             user_name,
-                            COUNT(*) AS count_of_clicks,
+                            COUNT(*) AS count,
                             ? AS last_snapshot,
                         FROM events_ducklake.table_changes('{RAW_TABLE}', ?, ?)
                         WHERE event_type = 'CLICK'
@@ -132,16 +136,18 @@ def aggregate_loop(con: duckdb.DuckDBPyConnection, duration_seconds: int):
                     ON dest.user_id = src.user_id
                     WHEN MATCHED THEN 
                         UPDATE SET 
-                            count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
+                            count = dest.count + src.count,
                             last_snapshot = src.last_snapshot
                     WHEN NOT MATCHED THEN
-                        INSERT (user_id, user_name, count_of_clicks, last_snapshot)
-                        VALUES (src.user_id, src.user_name, src.count_of_clicks, src.last_snapshot);
+                        INSERT (user_id, user_name, count, last_snapshot)
+                        VALUES (src.user_id, src.user_name, src.count, src.last_snapshot);
                 """
                 cursor.execute(aggregate_sql, [max_snapshot, last_snapshot_update, max_snapshot])
 
                 print(f"Aggregation executed at {datetime.now()} from {last_snapshot_update} to {max_snapshot}")
-                time.sleep(5)
+                # time.sleep(2)
+                print(f"Current files for {DEST_TABLE}:")
+                print(cursor.execute(f"CALL ducklake_list_files('events_ducklake', '{DEST_TABLE}');").fetchall())
 
             except Exception as e:
                 print("Aggregation error:", e)
@@ -153,12 +159,22 @@ def main():
     parser.add_argument("--bootstrap-servers", type=str, default="localhost:9092", help="Kafka bootstrap servers")
     parser.add_argument("--topic", type=str, default="my-topic", help="Kafka topic to consume from")
     parser.add_argument("--duration-seconds", type=int, default=20, help="Duration to run the pipeline (seconds)")
+    parser.add_argument("--catalog", default='duckdb', choices=["duckdb", "postgres"])
     args = parser.parse_args()
 
     con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
     con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
-    con.execute("ATTACH 'ducklake:catalog/events_ducklake.ducklake' AS events_ducklake (DATA_INLINING_ROW_LIMIT 10, DATA_PATH 'data_files/');")
-    # con.execute("ATTACH 'ducklake:catalog/events_ducklake.ducklake' AS events_ducklake (DATA_PATH 'data_files/');")
+
+    if args.catalog == 'duckdb':
+        con.execute("ATTACH 'ducklake:catalog/events_ducklake.ducklake' AS events_ducklake (DATA_INLINING_ROW_LIMIT 10, DATA_PATH 'data_files/');")
+    else:
+        con.execute(f"""ATTACH 'ducklake:postgres:dbname={os.environ.get('POSTGRES_DB')} 
+                    host=localhost
+                    port=5432
+                    user={os.environ.get('POSTGRES_USER')}
+                    password={os.environ.get('POSTGRES_PASSWORD')}'
+                    AS events_ducklake (DATA_PATH 'data_files/');""")
+
     init_db(con)
 
     t1 = threading.Thread(target=consume_and_insert, args=(args.bootstrap_servers, args.topic, con, args.duration_seconds))
@@ -174,11 +190,17 @@ def main():
     t2.join()
 
     # Final flush to ensure all inlined data is persisted to Parquet files
-    print("Flushing inlined data to Parquet files...")
-    con.execute(f"CALL ducklake_flush_inlined_data('events_ducklake', table_name => '{RAW_TABLE}');")
+    if args.catalog == 'duckdb':
+        print("Flushing inlined data to Parquet files...")
+        con.execute(f"CALL ducklake_flush_inlined_data('events_ducklake', table_name => '{RAW_TABLE}');")
+
+    con.execute(f"CALL ducklake_merge_adjacent_files('events_ducklake', '{RAW_TABLE}');")
+    # con.execute("CALL ducklake_cleanup_old_files('events_ducklake', cleanup_all => true);")
+
     print("Compacting files...")
-    con.execute(f"CALL ducklake_rewrite_data_files('events_ducklake', '{DEST_TABLE}');")
-    con.execute(f"CALL ducklake_merge_adjacent_files('events_ducklake', '{DEST_TABLE}');")
+    # con.execute(f"CALL ducklake_rewrite_data_files('events_ducklake', '{DEST_TABLE}');")
+    # con.execute(f"CALL ducklake_merge_adjacent_files('events_ducklake', '{DEST_TABLE}');")
+    # con.execute("CALL ducklake_cleanup_old_files('events_ducklake', cleanup_all => true);")
     con.close()
 
 
