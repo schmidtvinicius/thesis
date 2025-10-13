@@ -4,7 +4,7 @@ title: "Streaming Patterns with DuckDB"
 author: "Guillermo Sanchez"
 excerpt: "Sth"
 ---
-
+[Link to blogpost](https://duckdb.org/2025/10/13/duckdb-streaming-patterns.html)
 
 
 ## Introduction

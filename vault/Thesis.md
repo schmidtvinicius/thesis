@@ -19,6 +19,8 @@
 - What are the limitations of lakehouses for streaming?
 - **How can we develop a benchmark to evaluate streaming use cases in lakehouse systems?**
 ## Experiments
+### Design
+- When running concurrent operations, each python instance has its own reader but all instances write to the same lakehouse sink
 ### Metrics
 - When looking at latency, we could use event-time as the start time and the end time could be the timestamp when files are created on the object store. This time can be accessed via the metadata layer of the lakehouse.
 
