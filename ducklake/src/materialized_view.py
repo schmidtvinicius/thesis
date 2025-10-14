@@ -10,6 +10,7 @@ import time
 from confluent_kafka import Consumer, Producer
 from datetime import datetime
 from dotenv import load_dotenv
+from kafka_producer import produce
 
 load_dotenv()
 
@@ -36,24 +37,6 @@ def init_db(con: duckdb.DuckDBPyConnection):
                 last_snapshot INT,        
             )
         """)
-
-
-def produce(bootstrap_servers: str, topic: str, duration_seconds: int):
-    producer = Producer({"bootstrap.servers": bootstrap_servers,})
-    user_names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-    
-    print(f"Producing to topic {topic}...")
-    start_time = time.time()
-    while time.time() - start_time < duration_seconds:
-        user_id = np.random.randint(0, 10)
-        event = {
-            "timestamp": datetime.isoformat(datetime.now()),
-            "user_id": user_id,
-            "user_name": user_names[user_id],
-            "event_type": random.choice(['CLICK', 'SCROLL', 'SWIPE'])
-        }
-        producer.produce(topic, json.dumps(event))
-        producer.flush(10000)
 
 
 def consume_and_insert(bootstrap_servers: str, topic: str, con: duckdb.DuckDBPyConnection, duration_seconds: int, group_id: str ="duckdb-consumer"):
