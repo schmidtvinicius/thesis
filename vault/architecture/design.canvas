@@ -1,6 +1,9 @@
 {
 	"nodes":[
 		{"id":"57698caa58b8165e","type":"group","x":-900,"y":-560,"width":300,"height":340,"label":"Config files"},
+		{"id":"42d38b49e9bf6b40","x":-240,"y":-592,"width":220,"height":280,"type":"group","label":"Streaming"},
+		{"id":"721767ccd6aaab87","x":300,"y":-587,"width":160,"height":270,"type":"group","label":"Lakehouse"},
+		{"id":"60404bb0030575c5","x":77,"y":-585,"width":144,"height":265,"type":"group","label":"Engine"},
 		{"id":"8d8febf25a4bd4f9","type":"text","text":"Streaming system:\n* Apache Flink\n* Apache Storm\n* Spark Streaming","x":-260,"y":-220,"width":200,"height":149,"color":"1"},
 		{"id":"b2b2a368acc42856","type":"text","text":"Streaming system:\n* Apache Flink\n* Apache Storm\n* Spark Streaming","x":-260,"y":-40,"width":200,"height":149,"color":"1"},
 		{"id":"0692cdbd9a40ed78","type":"text","text":"Streaming system:\n* Apache Flink\n* Apache Storm\n* Spark Streaming","x":-260,"y":140,"width":200,"height":149,"color":"1"},
@@ -12,7 +15,17 @@
 		{"id":"a61af2eb30b4b762","type":"text","text":"[[_lakehouse|Lakehouse system]]","x":-880,"y":-540,"width":250,"height":60,"color":"5"},
 		{"id":"1bc26fa17147b442","type":"text","text":"Consumer?","x":560,"y":-145,"width":140,"height":60},
 		{"id":"83afb96ef3f13c11","type":"text","text":"Consumer?","x":560,"y":5,"width":140,"height":60},
-		{"id":"1b5c8e4adc7bbec1","type":"text","text":"Consumer?","x":560,"y":155,"width":140,"height":60}
+		{"id":"1b5c8e4adc7bbec1","type":"text","text":"Consumer?","x":560,"y":155,"width":140,"height":60},
+		{"id":"581b03dc8e92857f","x":97,"y":-565,"width":97,"height":50,"type":"text","text":"Spark"},
+		{"id":"cf2ccb74f32ba64b","type":"text","text":"DuckDB","x":97,"y":-485,"width":104,"height":60},
+		{"id":"1789a1863f171d85","type":"text","text":"Trino","x":97,"y":-400,"width":104,"height":60},
+		{"id":"3fc94ba2598aa399","x":320,"y":-567,"width":104,"height":60,"type":"text","text":"Delta"},
+		{"id":"99adbfb28a85d787","type":"text","text":"DuckLake","x":320,"y":-397,"width":120,"height":60},
+		{"id":"962c60073df2aaff","type":"text","text":"Iceberg","x":320,"y":-482,"width":104,"height":60},
+		{"id":"f9b98369d6c79d1a","type":"text","text":"Spark streaming","x":-220,"y":-392,"width":180,"height":60},
+		{"id":"14efb1fe165cc5f5","type":"text","text":"Flink","x":-182,"y":-572,"width":104,"height":60},
+		{"id":"37e3caaf9ceb4002","type":"text","text":"Storm","x":-182,"y":-477,"width":104,"height":60},
+		{"id":"4eb407502bdf8326","type":"text","text":"Kafka","x":-440,"y":-485,"width":104,"height":60}
 	],
 	"edges":[
 		{"id":"8330b65c22764975","fromNode":"20ed57af50143d73","fromSide":"right","toNode":"8d8febf25a4bd4f9","toSide":"left"},
@@ -23,6 +36,9 @@
 		{"id":"1d69de5e76b97154","fromNode":"0692cdbd9a40ed78","fromSide":"right","toNode":"60a65e530fd3f818","toSide":"left"},
 		{"id":"a64671e8f34a61a9","fromNode":"60a65e530fd3f818","fromSide":"right","toNode":"1bc26fa17147b442","toSide":"left"},
 		{"id":"8478ed59f27a7f6e","fromNode":"60a65e530fd3f818","fromSide":"right","toNode":"83afb96ef3f13c11","toSide":"left"},
-		{"id":"2f9a4edb4b10ce2c","fromNode":"60a65e530fd3f818","fromSide":"right","toNode":"1b5c8e4adc7bbec1","toSide":"left"}
+		{"id":"2f9a4edb4b10ce2c","fromNode":"60a65e530fd3f818","fromSide":"right","toNode":"1b5c8e4adc7bbec1","toSide":"left"},
+		{"id":"ea7c2687a5e79203","fromNode":"60404bb0030575c5","fromSide":"right","toNode":"721767ccd6aaab87","toSide":"left"},
+		{"id":"445299366e2ce984","fromNode":"42d38b49e9bf6b40","fromSide":"right","toNode":"60404bb0030575c5","toSide":"left"},
+		{"id":"cdd7c325876bf202","fromNode":"4eb407502bdf8326","fromSide":"right","toNode":"42d38b49e9bf6b40","toSide":"left"}
 	]
 }

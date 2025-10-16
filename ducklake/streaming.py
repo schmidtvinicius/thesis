@@ -1,5 +1,6 @@
 import argparse
 import duckdb
+import functools
 import threading
 
 from config import CONFIG
@@ -13,24 +14,8 @@ PROPERTIES = {
     "driver": "org.duckdb.DuckDBDriver"
 }
 
-def setup_catalog(uri: str, options: dict):
-    con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
-    con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
-    print(",".join(map(lambda i: f"{i[0]} '{i[1]}'", options.items())))
-    con.execute(f"ATTACH '{uri}' AS events ({",".join(map(lambda i: f"{i[0]} '{i[1]}'", options.items()))});")
-    with con.cursor() as cursor:
-        cursor.execute("USE events;")
-        cursor.execute(f"""
-            CREATE TABLE IF NOT EXISTS user_clicks (
-                user_id VARCHAR,
-                user_name VARCHAR,
-                count BIGINT,
-                last_snapshot INT,
-            )
-        """)
-
-
-def spark_process_kafka(jdbc_uri: str, duration_seconds: int = 20, bootstrap_servers: str = "localhost:9092", topic: str = "my-topic"):
+    
+def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_servers: str = "localhost:9092", topic: str = "my-topic"):
     """
     Stream data from Kafka, aggregate CLICK events, and store results in DuckDB using Spark Structured Streaming.
     """
@@ -75,18 +60,10 @@ def spark_process_kafka(jdbc_uri: str, duration_seconds: int = 20, bootstrap_ser
             max_("timestamp").alias("updated_at")
         )
     
-    def overwrite_to_sink(batch_df: DataFrame, batch_id: int):
-        """Simple overwrite of the entire table each micro-batch"""
-        batch_df.write.jdbc(
-            url=jdbc_uri,
-            table="user_clicks",
-            mode="overwrite",
-            properties=PROPERTIES,
-        )
     
     # Start streaming query
     query = agg_df.writeStream \
-        .foreachBatch(overwrite_to_sink) \
+        .foreachBatch(functools.partial(overwrite_to_sink, jdbc_url=jdbc_url)) \
         .outputMode("complete") \
         .start()
 
@@ -96,39 +73,66 @@ def spark_process_kafka(jdbc_uri: str, duration_seconds: int = 20, bootstrap_ser
         query.stop()
 
 
-# def insert_overwrite_duckdb(batch_df: DataFrame, batch_id: int):
-#     """
-#     This method is an example of how you can do funky stuff within the spark streaming runtime.
-#     """
-#     batch_df.write.jdbc(
-#         url=JDBC_URL,
-#         table="user_clicks_unaggregated",
-#         mode="append",  # Use "overwrite" if you want to replace existing data
-#         properties=PROPERTIES
-#     )
-#     create_table = """
-#     CREATE TABLE IF NOT EXISTS user_clicks (
-#         user_id VARCHAR,
-#         user_name VARCHAR,
-#         count_of_clicks BIGINT,
-#         updated_at TIMESTAMP
-#     );
-#     """
-#     agg_sql = """
-#         DELETE FROM user_clicks;
-#         INSERT INTO user_clicks
-#         SELECT user_id, user_name, sum(count_of_clicks), max(updated_at)
-#         FROM user_clicks_unaggregated
-#         GROUP BY user_id, user_name;
-#     """
+def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
+    """Simple overwrite of the entire table each micro-batch"""
+    print(batch_df.show())
+    batch_df.write.jdbc(
+        url=kwargs["jdbc_url"],
+        table="user_clicks",
+        mode="overwrite",
+        properties=PROPERTIES,
+    )
+
     
-#     # Execute the SQL using DuckDB Python API
-#     con = duckdb.connect("events.duckdb")
-#     con.execute(create_table)
-#     con.begin()
-#     con.execute(agg_sql)
-#     con.commit()
-#     con.close()
+def setup_catalog(uri: str, options: dict):
+    con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
+    con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
+    con.execute(f"ATTACH '{uri}' AS events ({",".join(map(lambda i: f"{i[0]} '{i[1]}'", options.items()))});")
+    with con.cursor() as cursor:
+        cursor.execute("USE events;")
+        cursor.execute(f"""
+            CREATE TABLE IF NOT EXISTS user_clicks (
+                user_id VARCHAR,
+                user_name VARCHAR,
+                count BIGINT,
+                last_snapshot INT,
+            )
+        """)
+
+
+def insert_overwrite_duckdb(batch_df: DataFrame, batch_id: int, *args, **kwargs):
+    """
+    This method is an example of how you can do funky stuff within the spark streaming runtime.
+    """
+    batch_df.write.jdbc(
+        url=kwargs["jdbc_url"],
+        table="user_clicks_unaggregated",
+        mode="append",  # Use "overwrite" if you want to replace existing data
+        properties=PROPERTIES
+    )
+    create_table = """
+    CREATE TABLE IF NOT EXISTS user_clicks (
+        user_id VARCHAR,
+        user_name VARCHAR,
+        count_of_clicks BIGINT,
+        updated_at TIMESTAMP
+    );
+    """
+    agg_sql = """
+        DELETE FROM user_clicks;
+        INSERT INTO user_clicks
+        SELECT user_id, user_name, sum(count_of_clicks), max(updated_at)
+        FROM user_clicks_unaggregated
+        GROUP BY user_id, user_name;
+    """
+    
+    # Execute the SQL using DuckDB Python API
+    con = duckdb.connect("events.duckdb")
+    con.execute(create_table)
+    con.begin()
+    con.execute(agg_sql)
+    con.commit()
+    con.close()
 
 
 def main():    
@@ -140,14 +144,14 @@ def main():
     parser.add_argument("--catalog", choices=["duckdb", "postgres"], default="duckdb")
     args = parser.parse_args()
     
-    jdbc_uri = "jdbc:duckdb:./events.duckdb"
+    jdbc_url = "jdbc:duckdb:./events.duckdb"
     if args.sink == "ducklake":
         if args.catalog == "duckdb":
-            setup_catalog(CONFIG["DUCKLAKE"]["DUCKDB_URL"], {"DATA_INLINING_ROW_LIMIT": 10, "DATA_PATH": "../data_files/"})
-            jdbc_uri = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["DUCKDB_URL"]}"
+            setup_catalog(CONFIG["DUCKLAKE"]["DUCKDB_URL"], {"DATA_INLINING_ROW_LIMIT": 10, "DATA_PATH": CONFIG["DUCKLAKE"]["DATA_PATH"]})
+            jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["DUCKDB_URL"]}"
         elif args.catalog == "postgres":
-            setup_catalog(CONFIG["DUCKLAKE"]["POSTGRES_URL"], {"DATA_PATH": "../data_files/"})
-            jdbc_uri = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["POSTGRES_URL"]}"
+            setup_catalog(CONFIG["DUCKLAKE"]["POSTGRES_URL"], {"DATA_PATH": CONFIG["DUCKLAKE"]["DATA_PATH"]})
+            jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["POSTGRES_URL"]}"
         
 
     t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
@@ -155,7 +159,7 @@ def main():
     t1.start()
 
     spark_process_kafka(
-        jdbc_uri=jdbc_uri,
+        jdbc_url=jdbc_url,
         duration_seconds=args.duration_seconds,
         bootstrap_servers=args.bootstrap_servers,
         topic=args.topic

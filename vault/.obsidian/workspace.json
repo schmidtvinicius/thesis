@@ -11,14 +11,17 @@
             "id": "f798577dee205904",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "streaming_blogpost.md",
-                "mode": "source",
-                "source": false
+                "file": "architecture/design.canvas",
+                "viewState": {
+                  "x": 172.1314535718518,
+                  "y": -350.9029821299699,
+                  "zoom": 0.39510701112196767
+                }
               },
-              "icon": "lucide-file",
-              "title": "streaming_blogpost"
+              "icon": "lucide-layout-dashboard",
+              "title": "design"
             }
           }
         ]
@@ -171,28 +174,28 @@
   },
   "active": "f798577dee205904",
   "lastOpenFiles": [
-    "Mind map.canvas",
-    "Concepts and definitions.md",
-    "Thesis.md",
-    "Todo.md",
-    "streaming_blogpost.md",
+    "architecture/_lakehouse.md",
     "streaming-frameworks/Flink.md",
+    "Thesis.md",
+    "streaming_blogpost.md",
+    "Mind map.canvas",
+    "Todo.md",
     "papers/PEEL - A Framework for Benchmarking Distributed Systems and Algorithms.md",
-    "meeting-notes/Meeting notes with Pedro (03-10-2025).md",
-    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
-    "Untitled.md",
-    "streaming-frameworks",
-    "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
     "papers/PDSP-Bench - A Benchmarking System for Parallel and Distributed Stream Processing.md",
+    "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
     "papers/How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems.md",
     "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "papers/Benchmarking Distributed Stream Data Processing Systems.md",
     "papers/Analyzing Efficient Stream Processing on Modern Hardware.md",
     "papers/Analyzing and Comparing Lakehouse Storage Systems.md",
     "papers/A Survey of Stream Processing System  Benchmarks.md",
+    "Concepts and definitions.md",
+    "meeting-notes/Meeting notes with Pedro (03-10-2025).md",
+    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
+    "Untitled.md",
+    "streaming-frameworks",
     "architecture/design.canvas",
     "architecture/_streaming.md",
-    "architecture/_lakehouse.md",
     "architecture",
     "papers/PDSP-Bench - A Benchmarking System for  Parallel and Distributed Stream Processing.md",
     "templates/Paper notes.md",
