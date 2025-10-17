@@ -240,3 +240,7 @@ __marimo__/
 hs_err_pid*
 replay_pid*
 config.ini
+catalog/
+data_files/
+*.duckdb
+*.ducklake
