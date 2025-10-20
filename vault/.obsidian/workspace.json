@@ -171,8 +171,8 @@
   },
   "active": "f798577dee205904",
   "lastOpenFiles": [
-    "architecture/design.canvas",
     "architecture/Ideas.md",
+    "architecture/design.canvas",
     "architecture/_lakehouse.md",
     "streaming-frameworks/Flink.md",
     "Thesis.md",
