@@ -11,7 +11,7 @@ from pyspark.sql.types import StructType, StructField, StringType
 
 
 PROPERTIES = {
-    "driver": "org.duckdb.DuckDBDriver"
+    "driver": "org.duckdb.DuckDBDriver",
 }
 
     
@@ -50,6 +50,7 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
     value_df = kafka_df.selectExpr("CAST(value AS STRING) as json_str")
     parsed_df = value_df.select(from_json(col("json_str"), schema).alias("data")).select("data.*")
 
+
     # Filter CLICK events and aggregate
     clicks_df = parsed_df.filter(col("event_type") == "CLICK") \
         .withColumn("timestamp", to_timestamp("timestamp"))
@@ -75,7 +76,7 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
 
 def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     """Simple overwrite of the entire table each micro-batch"""
-    print(batch_df.show())
+    # print(batch_df.show())
     batch_df.write.jdbc(
         url=kwargs["jdbc_url"],
         table="user_clicks",
@@ -84,20 +85,16 @@ def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     )
 
     
-def setup_catalog(uri: str, options: dict):
+def setup_catalog(url: str, data_path: str, options: dict = {}):
     con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
     con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
-    con.execute(f"ATTACH '{uri}' AS events ({",".join(map(lambda i: f"{i[0]} '{i[1]}'", options.items()))});")
-    with con.cursor() as cursor:
-        cursor.execute("USE events;")
-        cursor.execute(f"""
-            CREATE TABLE IF NOT EXISTS user_clicks (
-                user_id VARCHAR,
-                user_name VARCHAR,
-                count BIGINT,
-                last_snapshot INT,
-            )
-        """)
+    # con.execute(f"ATTACH '{url}' AS events ({",".join(map(lambda i: f"{i[0]} {i[1]}", options.items()))});")
+    con.execute(f"ATTACH '{url}' AS events (DATA_PATH '{data_path}');")
+    if len(options) != 0:
+        with con.cursor() as cursor:
+            cursor.execute("USE events;")
+            for option_name, option_value in options.items():
+                cursor.execute(f"CALL events.set_option('{option_name}', '{option_value}');")
 
 
 def insert_overwrite_duckdb(batch_df: DataFrame, batch_id: int, *args, **kwargs):
@@ -147,10 +144,13 @@ def main():
     jdbc_url = "jdbc:duckdb:./events.duckdb"
     if args.sink == "ducklake":
         if args.catalog == "duckdb":
-            setup_catalog(CONFIG["DUCKLAKE"]["DUCKDB_URL"], {"DATA_INLINING_ROW_LIMIT": 10, "DATA_PATH": CONFIG["DUCKLAKE"]["DATA_PATH"]})
+            setup_catalog(url=CONFIG["DUCKLAKE"]["DUCKDB_URL"],
+                          data_path= CONFIG["DUCKLAKE"]["DATA_PATH"],
+                          options={"data_inlining_row_limit": 100})
             jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["DUCKDB_URL"]}"
         elif args.catalog == "postgres":
-            setup_catalog(CONFIG["DUCKLAKE"]["POSTGRES_URL"], {"DATA_PATH": CONFIG["DUCKLAKE"]["DATA_PATH"]})
+            setup_catalog(url=CONFIG["DUCKLAKE"]["POSTGRES_URL"], 
+                          data_path=CONFIG["DUCKLAKE"]["DATA_PATH"])
             jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["POSTGRES_URL"]}"
         
 
