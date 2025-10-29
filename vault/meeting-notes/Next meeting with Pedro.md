@@ -4,4 +4,4 @@ The benchmark is focused on testing how lakehouses perform when acting as sinks 
 
 ## Infrastructure
 
-Use Kubernetes with Docker containers on the university cluster. Although it limits us in terms of nodes, we could treat each container as a node with a given amount of CPU allocated to it. This way, we can setup thing similar to what [LST-Bench](zotero://select/library/collections/S6HVLU6N/items/7B39LXPC) did.
+Use Kubernetes with Docker containers on the university cluster. Although it limits us in terms of nodes, we could treat each container as a node with a given amount of CPU allocated to it. This way, we can setup thing similar to what [LST-Bench](zotero://select/library/collections/S6HVLU6N/items/7B39LXPC) did. Maybe just use Docker compose?

@@ -30,6 +30,8 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
 
     spark.sparkContext.setLogLevel("INFO")
 
+    print(f'spark context: {spark.sparkContext}')
+
     # Define Kafka source schema
     schema = StructType([
         StructField("timestamp", StringType(), True),
@@ -76,7 +78,6 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
 
 def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     """Simple overwrite of the entire table each micro-batch"""
-    # print(batch_df.show())
     batch_df.write.jdbc(
         url=kwargs["jdbc_url"],
         table="user_clicks",
@@ -155,8 +156,14 @@ def main():
         
 
     t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
+    t2 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
+    t3 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
+    t4 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
 
     t1.start()
+    # t2.start()
+    # t3.start()
+    # t4.start()
 
     spark_process_kafka(
         jdbc_url=jdbc_url,
@@ -166,6 +173,9 @@ def main():
     )
 
     t1.join()
+    # t2.join()
+    # t3.join()
+    # t4.join()
 
 
 if __name__ == "__main__":
