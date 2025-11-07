@@ -244,3 +244,6 @@ catalog/
 data_files/
 *.duckdb
 *.ducklake
+*.parquet
+spark-warehouse/
+unitycatalog-main/
