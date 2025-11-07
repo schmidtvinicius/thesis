@@ -26,6 +26,7 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
         .config("spark.jars.packages",
             "org.apache.spark:spark-sql-kafka-0-10_2.13:3.5.0,"
             "org.duckdb:duckdb_jdbc:1.4.0.0") \
+        .config("spark.driver.memory", "2g") \
         .getOrCreate()
 
     spark.sparkContext.setLogLevel("INFO")
@@ -86,15 +87,15 @@ def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     )
 
     
-def setup_catalog(url: str, data_path: str, options: dict = {}):
+def setup_catalog(url: str, data_path: str, **kwargs):
     con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
     con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
     # con.execute(f"ATTACH '{url}' AS events ({",".join(map(lambda i: f"{i[0]} {i[1]}", options.items()))});")
     con.execute(f"ATTACH '{url}' AS events (DATA_PATH '{data_path}');")
-    if len(options) != 0:
+    if len(kwargs) != 0:
         with con.cursor() as cursor:
             cursor.execute("USE events;")
-            for option_name, option_value in options.items():
+            for option_name, option_value in kwargs.items():
                 cursor.execute(f"CALL events.set_option('{option_name}', '{option_value}');")
 
 
@@ -146,8 +147,8 @@ def main():
     if args.sink == "ducklake":
         if args.catalog == "duckdb":
             setup_catalog(url=CONFIG["DUCKLAKE"]["DUCKDB_URL"],
-                          data_path= CONFIG["DUCKLAKE"]["DATA_PATH"],
-                          options={"data_inlining_row_limit": 100})
+                          data_path=CONFIG["DUCKLAKE"]["DATA_PATH"],
+                          data_inlining_row_limit=100)
             jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["DUCKDB_URL"]}"
         elif args.catalog == "postgres":
             setup_catalog(url=CONFIG["DUCKLAKE"]["POSTGRES_URL"], 
