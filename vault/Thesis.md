@@ -23,6 +23,13 @@
 - When running concurrent operations, each python instance has its own reader but all instances write to the same lakehouse sink
 ### Metrics
 - When looking at latency, we could use event-time as the start time and the end time could be the timestamp when files are created on the object store. This time can be accessed via the metadata layer of the lakehouse.
+### Kafka
+- `docker compose down` fully destroys the container and wipes all existing topics
+- `docker compose restart` keeps the topic intact 
+
+### Spark 
+- When consuming from Kafka, Spark creates its own weird group id for each query, which makes it hard to track down at which offset the consumer stopped when we run the query for a fixed time period
+- When updating a table using `overwrite` in a `foreachBatch`, the table is not fully overwritten, but Spark merges the values in the micro-batch with the existing ones in the table and it inserts new values, similar to a `MERGE INTO` operation. However, this operation doesn't seem to trigger deletion vectors
 
 ### Resources
 - [Radboud clusters](https://wiki.icis-intra.cs.ru.nl/Cluster#Access_to_Cluster_Resources)
