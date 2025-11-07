@@ -247,3 +247,4 @@ data_files/
 *.parquet
 spark-warehouse/
 unitycatalog-main/
+train.csv
