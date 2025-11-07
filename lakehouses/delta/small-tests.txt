@@ -1,0 +1,11 @@
+- processAllAvailable + update mode: 43,25 seconds
+    - count_of_clicks final avg: 1300
+
+- awaitTermination 20 seconds + update mode: 32,35 seconds
+    - count_of_clicks final avg: 35
+
+- processAllAvailable + complete mode: 40,69 seconds
+    - count_of_clicks final avg: 1457
+
+- awaitTermination 20 seconds + complete mode: 32,13 seconds
+    - count_of_clicks final avg: 37

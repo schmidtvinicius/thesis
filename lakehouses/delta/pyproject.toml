@@ -1,0 +1,13 @@
+[project]
+name = "delta"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "confluent-kafka>=2.12.1",
+    "delta-spark>=4.0.0",
+    "deltalake>=1.2.1",
+    "duckdb>=1.4.1",
+    "pandas>=2.3.3",
+]
