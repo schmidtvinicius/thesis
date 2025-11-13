@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "papers/How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems.md",
+                "file": "meeting-notes/Meeting notes with Pedro (12-11-2025).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems"
+              "title": "Meeting notes with Pedro (12-11-2025)"
             }
           }
         ]
@@ -171,6 +171,10 @@
   },
   "active": "f798577dee205904",
   "lastOpenFiles": [
+    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
+    "meeting-notes/Meeting notes with Pedro (03-10-2025).md",
+    "meeting-notes/Meeting notes with Pedro (12-11-2025).md",
+    "papers/How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems.md",
     "papers/Benchmarking Distributed Stream Data Processing Systems.md",
     "papers/Analyzing Efficient Stream Processing on Modern Hardware.md",
     "papers/Analyzing and Comparing Lakehouse Storage Systems.md",
@@ -178,18 +182,14 @@
     "Thesis.md",
     "streaming_blogpost.md",
     "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
-    "meeting-notes/Next meeting with Pedro.md",
     "architecture/Ideas.md",
     "architecture/design.canvas",
-    "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
-    "meeting-notes/Meeting notes with Pedro (03-10-2025).md",
     "architecture/_lakehouse.md",
     "streaming-frameworks/Flink.md",
     "Mind map.canvas",
     "Todo.md",
     "papers/PEEL - A Framework for Benchmarking Distributed Systems and Algorithms.md",
     "papers/PDSP-Bench - A Benchmarking System for Parallel and Distributed Stream Processing.md",
-    "papers/How Reliable are Streams? End-to-End Processing-Guarantee Validation and Performance Benchmarking of Stream Processing Systems.md",
     "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "Concepts and definitions.md",
     "Untitled.md",
