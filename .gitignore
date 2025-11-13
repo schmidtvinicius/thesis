@@ -240,11 +240,18 @@ __marimo__/
 hs_err_pid*
 replay_pid*
 config.ini
+
+# Ducklake stuff
 catalog/
 data_files/
 *.duckdb
 *.ducklake
 *.parquet
+
+# Delta stuff
 spark-warehouse/
 unitycatalog-main/
 train.csv
+
+# Iceberg stuff
+polaris-main/
