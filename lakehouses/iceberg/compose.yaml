@@ -1,0 +1,88 @@
+services:
+  kafka:
+    image: apache/kafka:4.1.0
+    ports:
+      - 9092:9092
+    post_start:
+      - command: /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic my-topic --bootstrap-server localhost:9092
+  
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_INITDB_ARGS: "--encoding UTF8 --data-checksums"
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: "pg_isready -U postgres"
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  polaris-bootstrap:
+    image: apache/polaris-admin-tool:1.2.0-incubating
+    environment:
+      - POLARIS_PERSISTENCE_TYPE=relational-jdbc
+      - QUARKUS_DATASOURCE_JDBC_URL=${QUARKUS_DATASOURCE_JDBC_URL}
+      - QUARKUS_DATASOURCE_USERNAME=${QUARKUS_DATASOURCE_USERNAME}
+      - QUARKUS_DATASOURCE_PASSWORD=${QUARKUS_DATASOURCE_PASSWORD}
+    command:
+      - "bootstrap"
+      - "--realm=POLARIS"
+      - "--credential=POLARIS,root,s3cr3t"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  polaris:
+    image: apache/polaris:1.2.0-incubating
+    ports:
+      - "8181:8181"
+      - "8182:8182"
+    environment:
+      JAVA_DEBUG: true
+      POLARIS_PERSISTENCE_TYPE: relational-jdbc
+      POLARIS_PERSISTENCE_RELATIONAL_JDBC_MAX_RETRIES: 5
+      POLARIS_PERSISTENCE_RELATIONAL_JDBC_INITIAL_DELAY_IN_MS: 100
+      POLARIS_PERSISTENCE_RELATIONAL_JDBC_MAX_DURATION_IN_MS: 5000
+      QUARKUS_DATASOURCE_JDBC_URL: $QUARKUS_DATASOURCE_JDBC_URL
+      QUARKUS_DATASOURCE_USERNAME: $QUARKUS_DATASOURCE_USERNAME
+      QUARKUS_DATASOURCE_PASSWORD: $QUARKUS_DATASOURCE_PASSWORD
+      POLARIS_REALM_CONTEXT_REALMS: POLARIS
+      QUARKUS_OTEL_SDK_DISABLED: true
+      POLARIS_BOOTSTRAP_CREDENTIALS: POLARIS,$CLIENT_ID,$CLIENT_SECRET
+      polaris.features."ALLOW_INSECURE_STORAGE_TYPES": "true"
+      polaris.features."SUPPORTED_CATALOG_STORAGE_TYPES": "[\"FILE\",\"S3\",\"GCS\",\"AZURE\"]"
+      polaris.readiness.ignore-severe-issues: "true"
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:8182/q/health"]
+      interval: 2s
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+    depends_on:
+      polaris-bootstrap:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+
+  polaris-setup:
+    image: alpine/curl
+    environment:
+      # - STORAGE_LOCATION=${STORAGE_LOCATION}
+      # - AWS_ROLE_ARN=${AWS_ROLE_ARN}
+      # - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - CATALOG_NAME=${CATALOG_NAME}
+    volumes:
+      - ${ASSETS_PATH}/polaris/:/polaris
+    entrypoint: '/bin/sh -c "chmod +x /polaris/create-catalog.sh && /polaris/create-catalog.sh"'
+    depends_on:
+      polaris:
+        condition: service_healthy
+
+# volumes:
+#   polaris_catalog:

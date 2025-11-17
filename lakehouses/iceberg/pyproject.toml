@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "confluent-kafka>=2.12.2",
+    "dotenv>=0.9.9",
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "pyspark==3.5.7",
+    "setuptools>=80.9.0",
+]
