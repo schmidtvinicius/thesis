@@ -5,7 +5,7 @@ import functools
 import threading
 
 from config import CONFIG
-from kafka_producer import produce
+from kafka_producer import produce, consume
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, from_json, to_timestamp, count, max as max_
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, TimestampType
@@ -152,7 +152,7 @@ def spark_process_kafka(spark: SparkSession, data_path: str, duration_seconds: i
     # Start streaming query in micro-batch mode
     query = agg_df.writeStream \
         .foreachBatch(functools.partial(overwrite_to_sink, data_path=data_path)) \
-        .outputMode("update") \
+        .outputMode("complete") \
         .start()
     
     # Start streaming query in continuous processing mode (experimental)
@@ -163,12 +163,12 @@ def spark_process_kafka(spark: SparkSession, data_path: str, duration_seconds: i
     
 
     # Stop it manually after the specified duration
-    query.processAllAvailable()
+    # query.processAllAvailable()
     # query.stop()
-    print(query.isActive)
-    # query.awaitTermination(duration_seconds)
-    # if query.isActive:
-    #     query.stop()
+    # print(query.isActive)
+    terminated = query.awaitTermination(duration_seconds)
+    if not terminated:
+        query.stop()
 
 
 def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
@@ -178,25 +178,36 @@ def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     table. Therefore, we need to create a view of the updated micro-batch and use a MERGE INTO to
     update our table.
     """
-    try:
-        batch_df.createOrReplaceTempView("updates")
-        batch_df.sparkSession.sql("""MERGE INTO default.user_clicks dest
-                                    USING updates AS src
-                                    ON dest.user_id = src.user_id
-                                    WHEN MATCHED THEN 
-                                        UPDATE SET 
-                                            count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
-                                            updated_at = src.updated_at
-                                    WHEN NOT MATCHED THEN
-                                        INSERT (user_id, user_name, count_of_clicks, updated_at)
-                                        VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
-                                    """)
-        # batch_df.write.save(path=kwargs["data_path"],
-        #                 format="delta",
-        #                 mode="overwrite",
-        #                 )
-    except Exception as e:
-        print(e)
+    # batch_df.createOrReplaceTempView("updates")
+    # batch_df.sparkSession.sql("""MERGE INTO default.user_clicks dest
+    #                             USING (SELECT user_id, user_name, count(*) AS count_of_clicks, MAX(timestamp) AS updated_at
+    #                                     FROM updates 
+    #                                     WHERE event_type = 'CLICK' 
+    #                                     GROUP BY user_id, user_name) src
+    #                             ON dest.user_id = src.user_id
+    #                             WHEN MATCHED THEN 
+    #                                 UPDATE SET 
+    #                                     count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
+    #                                     updated_at = src.updated_at
+    #                             WHEN NOT MATCHED THEN
+    #                                 INSERT (user_id, user_name, count_of_clicks, updated_at)
+    #                                 VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
+    #                             """)
+    # batch_df.sparkSession.sql("""MERGE INTO default.user_clicks dest
+    #                             USING updates src
+    #                             ON dest.user_id = src.user_id
+    #                             WHEN MATCHED THEN 
+    #                                 UPDATE SET 
+    #                                     count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
+    #                                     updated_at = src.updated_at
+    #                             WHEN NOT MATCHED THEN
+    #                                 INSERT (user_id, user_name, count_of_clicks, updated_at)
+    #                                 VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
+    #                             """)
+    batch_df.write.save(path=kwargs["data_path"],
+                    format="delta",
+                    mode="overwrite",
+                    )
 
 
 def main():    
@@ -209,22 +220,15 @@ def main():
     spark = setup_spark(catalog_uri=CONFIG["UNITY"]["URI"], auto_compaction=False)
         
     t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
-    t2 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
-    t3 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
-    t4 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
 
     t1.start()
-    # t2.start()
-    # t3.start()
-    # t4.start()
 
-    spark_process_kafka(spark=spark, data_path=CONFIG["UNITY"]["USER_CLICKS_PATH"])
+    spark_process_kafka(spark=spark, data_path=CONFIG["UNITY"]["USER_CLICKS_PATH"], duration_seconds=60)
     
     t1.join()
-    # t2.join()
-    # t3.join()
-    # t4.join()
+    spark.sql("SELECT * FROM default.user_clicks ORDER BY user_id;").show()
 
 
 if __name__ == "__main__":
     main()
+    # consume("my-topic")

@@ -1,3 +1,4 @@
+import duckdb
 import json
 import numpy as np
 import random
@@ -12,6 +13,7 @@ def produce(bootstrap_servers: str, topic: str, duration_seconds: int):
     
     print(f"Producing to topic {topic}...")
     start_time = time.time()
+    total = 0
     while time.time() - start_time < duration_seconds:
         user_id = np.random.randint(0,10)
         event = {
@@ -22,6 +24,8 @@ def produce(bootstrap_servers: str, topic: str, duration_seconds: int):
         }
         producer.produce(topic, json.dumps(event))
         producer.flush(10000)
+        total += 1
+    print(f"Finished producing. In total {total} events were produced")
 
 
 def consume(topic: str) -> None:
@@ -33,11 +37,15 @@ def consume(topic: str) -> None:
     consumer.subscribe([topic])
     msg = consumer.poll(15)
     total = 0
-    while msg is not None and not msg.error():
-        total += 1
-        print(json.loads(msg.value().decode("utf-8")))
-        msg = consumer.poll(15)
-    print(f'finished consuming messages, in total {total} messages were consumed')
+    con = duckdb.connect("kafka_events_agg_df_merge.duckdb")
+    con.sql("CREATE TABLE IF NOT EXISTS kafka_events (user_id INTEGER, user_name STRING, timestamp TIMESTAMP, event_type STRING);")
+    with con.cursor() as cursor:
+        while msg is not None and not msg.error():
+            total += 1
+            event = json.loads(msg.value().decode("utf-8"))
+            cursor.sql("INSERT INTO kafka_events (user_id, user_name, timestamp, event_type) VALUES (?, ?, ?, ?)", params=[event['user_id'], event['user_name'], event['timestamp'], event['event_type']])
+            msg = consumer.poll(15)
+        print(f'finished consuming messages, in total {total} messages were consumed')
     # if msg.error():
     #     print(f"Kafka error: {msg.error()}")    
 
