@@ -1,11 +1,12 @@
 import argparse
 import duckdb
 import functools
+import os
 import threading
 
 from config import CONFIG
-from kafka_producer import produce
-from pyspark.sql import SparkSession, DataFrame
+from kafka_producer import produce, consume
+from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.functions import col, from_json, to_timestamp, count, max as max_
 from pyspark.sql.types import StructType, StructField, StringType
 
@@ -30,8 +31,6 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
         .getOrCreate()
 
     spark.sparkContext.setLogLevel("INFO")
-
-    print(f'spark context: {spark.sparkContext}')
 
     # Define Kafka source schema
     schema = StructType([
@@ -64,27 +63,58 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
             max_("timestamp").alias("updated_at")
         )
     
-    
     # Start streaming query
     query = agg_df.writeStream \
         .foreachBatch(functools.partial(overwrite_to_sink, jdbc_url=jdbc_url)) \
-        .outputMode("complete") \
+        .outputMode("update") \
         .start()
 
     # Stop it manually after the specified duration
-    query.awaitTermination(duration_seconds)
-    if query.isActive:
+    terminated = query.awaitTermination(duration_seconds)
+    if not terminated:
         query.stop()
 
 
 def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     """Simple overwrite of the entire table each micro-batch"""
-    batch_df.write.jdbc(
-        url=kwargs["jdbc_url"],
-        table="user_clicks",
-        mode="overwrite",
-        properties=PROPERTIES,
-    )
+    # batch_df.write.jdbc(
+    #     url=kwargs["jdbc_url"],
+    #     table="user_clicks",
+    #     mode="overwrite",
+    #     properties=PROPERTIES,
+    # )
+    # batch_df.createOrReplaceTempView("updates")
+    updates = batch_df.toArrow()
+    con = duckdb.connect(config = {"allow_unsigned_extensions": "true"})
+    con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
+    con.execute("ATTACH 'ducklake:catalog/events.ducklake' AS events;")
+    with con.cursor() as cursor:
+        cursor.execute("""MERGE INTO events.user_clicks dest 
+                    USING updates src
+                    ON dest.user_id = src.user_id
+                    WHEN MATCHED THEN
+                    UPDATE SET
+                        count_of_clicks = src.count_of_clicks,
+                        updated_at = src.updated_at
+                    WHEN NOT MATCHED THEN
+                        INSERT (user_id, user_name, count_of_clicks, updated_at)
+                        VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
+                        """)
+        # cursor.execute("""MERGE INTO events.user_clicks dest 
+        #             USING (SELECT user_id, user_name, MAX(timestamp) AS updated_at, COUNT(*) AS count_of_clicks
+        #                     FROM updates
+        #                     WHERE event_type = 'CLICK'
+        #                     GROUP BY user_id, user_name) src
+        #             ON dest.user_id = src.user_id
+        #             WHEN MATCHED THEN
+        #             UPDATE SET
+        #                 count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
+        #                 updated_at = src.updated_at
+        #             WHEN NOT MATCHED THEN
+        #                 INSERT (user_id, user_name, count_of_clicks, updated_at)
+        #                 VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
+        #                 """)
+    con.close()
 
     
 def setup_catalog(url: str, data_path: str, **kwargs):
@@ -97,6 +127,7 @@ def setup_catalog(url: str, data_path: str, **kwargs):
             cursor.execute("USE events;")
             for option_name, option_value in kwargs.items():
                 cursor.execute(f"CALL events.set_option('{option_name}', '{option_value}');")
+            cursor.execute("CREATE TABLE IF NOT EXISTS user_clicks (user_id INTEGER, user_name STRING, updated_at TIMESTAMP, count_of_clicks INTEGER);")
 
 
 def insert_overwrite_duckdb(batch_df: DataFrame, batch_id: int, *args, **kwargs):
@@ -162,22 +193,17 @@ def main():
     t4 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
 
     t1.start()
-    # t2.start()
-    # t3.start()
-    # t4.start()
 
     spark_process_kafka(
         jdbc_url=jdbc_url,
-        duration_seconds=args.duration_seconds,
+        duration_seconds=60,
         bootstrap_servers=args.bootstrap_servers,
         topic=args.topic
     )
 
     t1.join()
-    # t2.join()
-    # t3.join()
-    # t4.join()
 
 
 if __name__ == "__main__":
     main()
+    # consume('my-topic')
