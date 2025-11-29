@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"0c6d3c86320c0993","type":"group","x":260,"y":-175,"width":290,"height":350,"label":"Sinks"},
+		{"id":"70b0e0400c499b1f","type":"group","x":-441,"y":-170,"width":204,"height":340,"label":"Sources"},
+		{"id":"0b55ce6d49ce5242","type":"text","text":"Stream processing engine (SPE)","x":-120,"y":-30,"width":285,"height":60},
+		{"id":"56cab959549f70ef","type":"text","text":"Mobile device","x":-421,"y":10,"width":164,"height":60},
+		{"id":"44530ddda633632a","type":"text","text":"Web server","x":-412,"y":-70,"width":145,"height":60},
+		{"id":"2aed7483f643f666","type":"text","text":"IoT sensor","x":-400,"y":-150,"width":120,"height":60},
+		{"id":"9de224e37666c969","type":"text","text":"Logs","x":-382,"y":90,"width":85,"height":60},
+		{"id":"486a228e6e2401f3","type":"text","text":"Data warehouse","x":280,"y":5,"width":250,"height":60},
+		{"id":"0afd3d45d0cd085c","type":"text","text":"Data lakehouse","x":320,"y":95,"width":168,"height":60},
+		{"id":"cc2c44f2c64c4af1","type":"text","text":"Dashboard","x":334,"y":-155,"width":140,"height":60},
+		{"id":"496ec533e137d4cc","type":"text","text":"Data lake","x":338,"y":-75,"width":133,"height":60},
+		{"id":"4063d3beb0384ed7","x":-257,"y":360,"width":250,"height":60,"color":"1","type":"text","text":""},
+		{"id":"7dadb94ea58b470c","x":-7,"y":360,"width":250,"height":60,"color":"3","type":"text","text":""}
+	],
+	"edges":[
+		{"id":"4c2ef10411ce3917","fromNode":"70b0e0400c499b1f","fromSide":"right","toNode":"0b55ce6d49ce5242","toSide":"left"},
+		{"id":"faeb408ea0f0c266","fromNode":"0b55ce6d49ce5242","fromSide":"right","toNode":"0c6d3c86320c0993","toSide":"left"}
+	]
+}

@@ -30,26 +30,23 @@ def test_deletion_vectors(spark: SparkSession, data_path: str) -> None:
               TBLPROPERTIES ('delta.enableDeletionVectors' = true);
                 """)
     
-    # df = spark.createDataFrame(pd.read_csv('train.csv', usecols=["id", "vendor_id", "passenger_count", "trip_duration"]), schema=StructType([
-    #     StructField("id", StringType(), True),
-    #     StructField("vendor_id", IntegerType(), True),
-    #     StructField("passenger_count", IntegerType(), True),
-    #     StructField("trip_duration", IntegerType(), True),
-    # ]))
-    
-    df = spark.createDataFrame([
-        {"id": "id2875421", "vendor_id": 2, "passenger_count": 1, "trip_duration": 455},
-        {"id": "id2377394", "vendor_id": 1, "passenger_count": 1, "trip_duration": 663},
-        {"id": "id3858529", "vendor_id": 2, "passenger_count": 1, "trip_duration": 2124},
-        {"id": "id3504673", "vendor_id": 2, "passenger_count": 1, "trip_duration": 429},
-        {"id": "id2181028", "vendor_id": 2, "passenger_count": 1, "trip_duration": 435},
-        {"id": "id0801584", "vendor_id": 2, "passenger_count": 6, "trip_duration": 443},
-    ], schema=StructType([
+    schema = StructType([
         StructField("id", StringType(), True),
         StructField("vendor_id", IntegerType(), True),
         StructField("passenger_count", IntegerType(), True),
         StructField("trip_duration", IntegerType(), True),
-    ]))
+    ])
+    
+    df = spark.createDataFrame(pd.read_csv('train.csv', usecols=["id", "vendor_id", "passenger_count", "trip_duration"]), schema=schema)
+    
+    # df = spark.createDataFrame([
+    #     {"id": "id2875421", "vendor_id": 2, "passenger_count": 1, "trip_duration": 455},
+    #     {"id": "id2377394", "vendor_id": 1, "passenger_count": 1, "trip_duration": 663},
+    #     {"id": "id3858529", "vendor_id": 2, "passenger_count": 1, "trip_duration": 2124},
+    #     {"id": "id3504673", "vendor_id": 2, "passenger_count": 1, "trip_duration": 429},
+    #     {"id": "id2181028", "vendor_id": 2, "passenger_count": 1, "trip_duration": 435},
+    #     {"id": "id0801584", "vendor_id": 2, "passenger_count": 6, "trip_duration": 443},
+    # ], schema=schema)
 
     df.createOrReplaceTempView("updates")
 
@@ -57,31 +54,31 @@ def test_deletion_vectors(spark: SparkSession, data_path: str) -> None:
               FROM updates;
                 """)
     
-    new_df = spark.createDataFrame([
-        {"id": "id2875421", "vendor_id": 2, "passenger_count": 2, "trip_duration": 123},
-        # {"id": "id2377394", "vendor_id": 1, "passenger_count": 2, "trip_duration": 234},
-        # {"id": "id3858529", "vendor_id": 2, "passenger_count": 2, "trip_duration": 345},
-        # {"id": "id3504673", "vendor_id": 2, "passenger_count": 2, "trip_duration": 456},
-        # {"id": "id2181028", "vendor_id": 2, "passenger_count": 2, "trip_duration": 567},
-        # {"id": "id0801584", "vendor_id": 2, "passenger_count": 2, "trip_duration": 678},
-    ], schema=StructType([
-        StructField("id", StringType(), True),
-        StructField("vendor_id", IntegerType(), True),
-        StructField("passenger_count", IntegerType(), True),
-        StructField("trip_duration", IntegerType(), True),
-    ]))
+    # new_df = spark.createDataFrame([
+    #     {"id": "id2875421", "vendor_id": 2, "passenger_count": 2, "trip_duration": 123},
+    #     # {"id": "id2377394", "vendor_id": 1, "passenger_count": 2, "trip_duration": 234},
+    #     # {"id": "id3858529", "vendor_id": 2, "passenger_count": 2, "trip_duration": 345},
+    #     # {"id": "id3504673", "vendor_id": 2, "passenger_count": 2, "trip_duration": 456},
+    #     # {"id": "id2181028", "vendor_id": 2, "passenger_count": 2, "trip_duration": 567},
+    #     # {"id": "id0801584", "vendor_id": 2, "passenger_count": 2, "trip_duration": 678},
+    # ], schema=StructType([
+    #     StructField("id", StringType(), True),
+    #     StructField("vendor_id", IntegerType(), True),
+    #     StructField("passenger_count", IntegerType(), True),
+    #     StructField("trip_duration", IntegerType(), True),
+    # ]))
 
-    new_df.createOrReplaceTempView("updates")
+    # new_df.createOrReplaceTempView("updates")
 
-    spark.sql("""MERGE INTO default.nyc_taxi AS dest 
-              USING updates AS src
-              ON src.id = dest.id
-              WHEN MATCHED THEN UPDATE SET
-                passenger_count = src.passenger_count,
-                trip_duration = dest.trip_duration + src.trip_duration
-              WHEN NOT MATCHED THEN
-                INSERT (id, vendor_id, passenger_count, trip_duration)
-                VALUES (src.id, src.vendor_id, src.passenger_count, src.trip_duration);""")
+    # spark.sql("""MERGE INTO default.nyc_taxi AS dest 
+    #           USING updates AS src
+    #           ON src.id = dest.id
+    #           WHEN MATCHED THEN UPDATE SET
+    #             passenger_count = src.passenger_count,
+    #             trip_duration = dest.trip_duration + src.trip_duration
+    #           WHEN NOT MATCHED THEN
+    #             INSERT (id, vendor_id, passenger_count, trip_duration)
+    #             VALUES (src.id, src.vendor_id, src.passenger_count, src.trip_duration);""")
 
     
 def setup_spark(catalog_uri: str, auto_compaction: bool) -> SparkSession:
@@ -139,20 +136,20 @@ def spark_process_kafka(spark: SparkSession, data_path: str, duration_seconds: i
 
 
     # Filter CLICK events and aggregate
-    clicks_df = parsed_df.filter(col("event_type") == "CLICK") \
-        .withColumn("timestamp", to_timestamp("timestamp"))
+    # clicks_df = parsed_df.filter(col("event_type") == "CLICK") \
+    #     .withColumn("timestamp", to_timestamp("timestamp"))
 
-    agg_df = clicks_df.groupBy("user_id", "user_name") \
-        .agg(
-            count("*").alias("count_of_clicks"),
-            max_("timestamp").alias("updated_at")
-        )
+    # agg_df = clicks_df.groupBy("user_id", "user_name") \
+    #     .agg(
+    #         count("*").alias("count_of_clicks"),
+    #         max_("timestamp").alias("updated_at")
+    #     )
     
     
     # Start streaming query in micro-batch mode
-    query = agg_df.writeStream \
+    query = parsed_df.writeStream \
         .foreachBatch(functools.partial(overwrite_to_sink, data_path=data_path)) \
-        .outputMode("complete") \
+        .outputMode("append") \
         .start()
     
     # Start streaming query in continuous processing mode (experimental)
@@ -178,21 +175,21 @@ def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     table. Therefore, we need to create a view of the updated micro-batch and use a MERGE INTO to
     update our table.
     """
-    # batch_df.createOrReplaceTempView("updates")
-    # batch_df.sparkSession.sql("""MERGE INTO default.user_clicks dest
-    #                             USING (SELECT user_id, user_name, count(*) AS count_of_clicks, MAX(timestamp) AS updated_at
-    #                                     FROM updates 
-    #                                     WHERE event_type = 'CLICK' 
-    #                                     GROUP BY user_id, user_name) src
-    #                             ON dest.user_id = src.user_id
-    #                             WHEN MATCHED THEN 
-    #                                 UPDATE SET 
-    #                                     count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
-    #                                     updated_at = src.updated_at
-    #                             WHEN NOT MATCHED THEN
-    #                                 INSERT (user_id, user_name, count_of_clicks, updated_at)
-    #                                 VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
-    #                             """)
+    batch_df.createOrReplaceTempView("updates")
+    batch_df.sparkSession.sql("""EXPLAIN FORMATTED MERGE INTO default.user_clicks dest
+                                USING (SELECT user_id, user_name, count(*) AS count_of_clicks, MAX(timestamp) AS updated_at
+                                        FROM updates 
+                                        WHERE event_type = 'CLICK' 
+                                        GROUP BY user_id, user_name) src
+                                ON dest.user_id = src.user_id
+                                WHEN MATCHED THEN 
+                                    UPDATE SET 
+                                        count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
+                                        updated_at = src.updated_at
+                                WHEN NOT MATCHED THEN
+                                    INSERT (user_id, user_name, count_of_clicks, updated_at)
+                                    VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
+                                """).show(truncate=False)
     # batch_df.sparkSession.sql("""MERGE INTO default.user_clicks dest
     #                             USING updates src
     #                             ON dest.user_id = src.user_id
@@ -204,10 +201,10 @@ def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     #                                 INSERT (user_id, user_name, count_of_clicks, updated_at)
     #                                 VALUES (src.user_id, src.user_name, src.count_of_clicks, src.updated_at);
     #                             """)
-    batch_df.write.save(path=kwargs["data_path"],
-                    format="delta",
-                    mode="overwrite",
-                    )
+    # batch_df.write.save(path=kwargs["data_path"],
+    #                 format="delta",
+    #                 mode="overwrite",
+    #                 )
 
 
 def main():    
@@ -218,6 +215,12 @@ def main():
     args = parser.parse_args()
 
     spark = setup_spark(catalog_uri=CONFIG["UNITY"]["URI"], auto_compaction=False)
+
+    # test_deletion_vectors(spark=spark, data_path=CONFIG["UNITY"]["NYC_TAXI_PATH"])
+    spark.sql("SELECT * FROM default.nyc_taxi;").show()
+
+    while True:
+        continue
         
     t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
 

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d4fb0f82b64efcb9",
+        "id": "f37db694b1d407a2",
         "type": "tabs",
         "children": [
           {
-            "id": "f798577dee205904",
+            "id": "035c822ef77fca38",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Thesis.md",
+                "file": "meeting-notes/Meeting notes with Guillermo (27-11-2025).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Thesis"
+              "title": "Meeting notes with Guillermo (27-11-2025)"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Realising Data-Centric Scientific Workflows with Provenance-Capturing on Data Lakes/Annotations.md",
+                "file": "meeting-notes/Meeting notes with Pedro (12-11-2025).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Annotations"
+              "title": "Backlinks for Meeting notes with Pedro (12-11-2025)"
             }
           },
           {
@@ -169,10 +169,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f798577dee205904",
+  "active": "035c822ef77fca38",
   "lastOpenFiles": [
-    "streaming_blogpost.md",
+    "architecture/Untitled.canvas",
+    "architecture/Ideas.md",
+    "meeting-notes/Meeting notes with Guillermo (27-11-2025).md",
+    "architecture/_dataset.md",
+    "architecture/_producer.md",
+    "architecture/design.canvas",
+    "architecture/_streaming.md",
+    "architecture/_lakehouse.md",
+    "Thesis.md",
+    "Todo.md",
+    "streaming-frameworks/Flink.md",
     "Concepts and definitions.md",
+    "streaming_blogpost.md",
     "Mind map.canvas",
     "meeting-notes/Meeting notes with Pedro (12-11-2025).md",
     "meeting-notes/Meeting notes with Pedro (08-09-2025).md",
@@ -182,24 +193,14 @@
     "papers/Analyzing Efficient Stream Processing on Modern Hardware.md",
     "papers/Analyzing and Comparing Lakehouse Storage Systems.md",
     "papers/A Survey of Stream Processing System  Benchmarks.md",
-    "Thesis.md",
     "papers/LST-Bench - Benchmarking Log-Structured Tables in the Cloud.md",
-    "architecture/Ideas.md",
-    "architecture/design.canvas",
-    "architecture/_lakehouse.md",
-    "streaming-frameworks/Flink.md",
-    "Todo.md",
     "papers/PEEL - A Framework for Benchmarking Distributed Systems and Algorithms.md",
     "papers/PDSP-Bench - A Benchmarking System for Parallel and Distributed Stream Processing.md",
     "papers/Fair Benchmarking Considered Difficult - Common Pitfalls In Database Performance Testing.md",
     "Untitled.md",
     "streaming-frameworks",
-    "architecture/_streaming.md",
     "architecture",
     "papers/PDSP-Bench - A Benchmarking System for  Parallel and Distributed Stream Processing.md",
-    "templates/Paper notes.md",
-    "().md",
-    "papers/ldfgj.md",
     "templates",
     "papers",
     "meeting-notes",

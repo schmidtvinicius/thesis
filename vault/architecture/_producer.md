@@ -1,0 +1,2 @@
+- Use Kafka server to produce topics to
+- In the same server, have the Kafka producer program running, which we can run on multiple threads, if necessary, to increase number of events per second

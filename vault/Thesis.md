@@ -23,6 +23,8 @@
 - When running concurrent operations, each python instance has its own reader but all instances write to the same lakehouse sink
 ### Metrics
 - When looking at latency, we could use event-time as the start time and the end time could be the timestamp when files are created on the object store. This time can be accessed via the metadata layer of the lakehouse.
+- LST-Bench uses [azure monitor tools](https://learn.microsoft.com/en-us/python/api/overview/azure/monitor?view=azure-python), since they use Azure for their experiments. Amazon has something similar, namely [CloudWatch](https://aws.amazon.com/cloudwatch/pricing/), which can be accessed through the following [python library](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html). 
+- In addition, there's a python library called [psutil](https://psutil.readthedocs.io/en/latest/index.html#) that can access disk I/O locally. We could use this library by creating a separate partition and analyzing the disk usage on that particular partition. I just don't know if this would be feasible on Amazon. 
 ### Kafka
 - `docker compose down` fully destroys the container and wipes all existing topics
 - `docker compose restart` keeps the topic intact 

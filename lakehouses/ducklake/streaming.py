@@ -1,7 +1,7 @@
 import argparse
 import duckdb
 import functools
-import os
+import pyarrow.csv as arrow_csv
 import threading
 
 from config import CONFIG
@@ -15,6 +15,15 @@ PROPERTIES = {
     "driver": "org.duckdb.DuckDBDriver",
 }
 
+def setup_spark():
+    spark = SparkSession.builder \
+        .appName("SparkKafkaToDuckDB") \
+        .config("spark.jars.packages", "org.duckdb:duckdb_jdbc:1.4.2.0") \
+        .config('spark.driver.defaultJavaOptions', '-Djava.security.manager=allow') \
+        .config("spark.driver.memory", "2g") \
+        .getOrCreate()
+    return spark
+
     
 def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_servers: str = "localhost:9092", topic: str = "my-topic"):
     """
@@ -26,7 +35,7 @@ def spark_process_kafka(jdbc_url: str, duration_seconds: int = 20, bootstrap_ser
         .appName("SparkKafkaToDuckDB") \
         .config("spark.jars.packages",
             "org.apache.spark:spark-sql-kafka-0-10_2.13:3.5.0,"
-            "org.duckdb:duckdb_jdbc:1.4.0.0") \
+            "org.duckdb:duckdb_jdbc:1.4.2.0") \
         .config("spark.driver.memory", "2g") \
         .getOrCreate()
 
@@ -122,12 +131,11 @@ def setup_catalog(url: str, data_path: str, **kwargs):
     con.execute("FORCE INSTALL ducklake; LOAD ducklake;")
     # con.execute(f"ATTACH '{url}' AS events ({",".join(map(lambda i: f"{i[0]} {i[1]}", options.items()))});")
     con.execute(f"ATTACH '{url}' AS events (DATA_PATH '{data_path}');")
-    if len(kwargs) != 0:
-        with con.cursor() as cursor:
-            cursor.execute("USE events;")
-            for option_name, option_value in kwargs.items():
-                cursor.execute(f"CALL events.set_option('{option_name}', '{option_value}');")
-            cursor.execute("CREATE TABLE IF NOT EXISTS user_clicks (user_id INTEGER, user_name STRING, updated_at TIMESTAMP, count_of_clicks INTEGER);")
+    with con.cursor() as cursor:
+        cursor.execute("USE events;")
+        for option_name, option_value in kwargs.items():
+            cursor.execute(f"CALL events.set_option('{option_name}', '{option_value}');")
+        # cursor.execute("CREATE TABLE IF NOT EXISTS user_clicks (user_id INTEGER, user_name STRING, updated_at TIMESTAMP, count_of_clicks INTEGER);")
 
 
 def insert_overwrite_duckdb(batch_df: DataFrame, batch_id: int, *args, **kwargs):
@@ -178,15 +186,49 @@ def main():
     if args.sink == "ducklake":
         if args.catalog == "duckdb":
             setup_catalog(url=CONFIG["DUCKLAKE"]["DUCKDB_URL"],
-                          data_path=CONFIG["DUCKLAKE"]["DATA_PATH"],
-                          data_inlining_row_limit=100)
+                          data_path=CONFIG["DUCKLAKE"]["DATA_PATH"])
             jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["DUCKDB_URL"]}"
         elif args.catalog == "postgres":
             setup_catalog(url=CONFIG["DUCKLAKE"]["POSTGRES_URL"], 
                           data_path=CONFIG["DUCKLAKE"]["DATA_PATH"])
             jdbc_url = f"jdbc:duckdb:{CONFIG["DUCKLAKE"]["POSTGRES_URL"]}"
-        
 
+    # with duckdb.connect() as con:
+    #     df = arrow_csv.read_csv('train.csv', convert_options=arrow_csv.ConvertOptions(include_columns=['id', 'vendor_id', 'passenger_count', 'trip_duration']))
+    #     con.execute("ATTACH 'ducklake:catalog/events.ducklake' AS events; USE events;")
+    #     con.execute("CREATE TABLE IF NOT EXISTS nyc_taxi (id STRING, vendor_id INTEGER, passenger_count INTEGER, trip_duration INTEGER);")
+    #     con.execute("INSERT INTO nyc_taxi FROM df;")
+
+    # return
+
+    # spark = setup_spark()
+
+    # spark.sql(f"""
+    #     CREATE OR REPLACE TEMPORARY VIEW ducklake_tables
+    #     USING jdbc
+    #     OPTIONS (
+    #         url "{jdbc_url}",
+    #         driver "org.duckdb.DuckDBDriver",
+    #         dbtable "information_schema.tables"
+    #     )
+    # """)
+
+    # spark.sql(f"""
+    #     CREATE TABLE nyc_taxi
+    #     USING jdbc
+    #     OPTIONS (
+    #         url "{jdbc_url}",
+    #         driver "org.duckdb.DuckDBDriver",
+    #         dbtable "nyc_taxi"
+    #     )
+    # """)
+
+    # spark.sql("SELECT * FROM nyc_taxi;").show(truncate=False)
+
+    # while True:
+    #     continue
+
+    
     t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
     t2 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
     t3 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
