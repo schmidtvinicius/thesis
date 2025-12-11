@@ -88,5 +88,12 @@ curl -s -H "Authorization: Bearer ${TOKEN}" \
    http://polaris:8181/api/management/v1/catalogs \
    -d "$PAYLOAD" -v
 
+echo "Granting CATALOG_MANAGE_CONTENT privilege..."
+curl -X PUT http://polaris:8181/api/management/v1/catalogs/$CATALOG_NAME/catalog-roles/catalog_admin/grants \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Polaris-Realm: $REALM" \
+    -H "Content-Type: application/json" \
+    -d '{"type": "catalog", "privilege": "CATALOG_MANAGE_CONTENT"}'
+
 echo
 echo Done.
