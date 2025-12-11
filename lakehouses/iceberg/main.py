@@ -147,7 +147,9 @@ def main():
 
     # spark.sql("INSERT INTO nyc_taxi SELECT * FROM updates;")
     # return
-    spark.sql("SELECT * FROM events.nyc_taxi;").show()
+    # spark.sql("SELECT * FROM events.nyc_taxi;").show()
+
+    return
 
     while True:
         continue

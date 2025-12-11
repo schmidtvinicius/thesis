@@ -5,6 +5,7 @@ import functools
 import threading
 
 from config import CONFIG
+from delta import configure_spark_with_delta_pip
 from kafka_producer import produce, consume
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql.functions import col, from_json, to_timestamp, count, max as max_
@@ -81,25 +82,32 @@ def test_deletion_vectors(spark: SparkSession, data_path: str) -> None:
     #             VALUES (src.id, src.vendor_id, src.passenger_count, src.trip_duration);""")
 
     
-def setup_spark(catalog_uri: str, auto_compaction: bool) -> SparkSession:
+def setup_spark(catalog_uri: str, auto_compaction: bool, with_catalog=True) -> SparkSession:
     """
     Setup a spark session using the given catalog URI (Unity Catalog) and path to store the data files
     """ 
-    spark = SparkSession.builder \
-        .appName("SparkKafkaToDelta") \
-        .config("spark.jars.packages",
-            "io.delta:delta-spark_2.13:4.0.0," \
-            "io.unitycatalog:unitycatalog-spark_2.13:0.3.0," \
-            "org.apache.spark:spark-sql-kafka-0-10_2.13:3.5.0") \
-        .config("spark.driver.memory", "2g") \
-        .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
-        .config("spark.sql.catalog.spark_catalog", "io.unitycatalog.spark.UCSingleCatalog") \
-        .config("spark.sql.catalog.unity", "io.unitycatalog.spark.UCSingleCatalog") \
-        .config("spark.sql.catalog.unity.token", "") \
-        .config("spark.sql.defaultCatalog", "unity") \
-        .config("spark.sql.catalog.unity.uri", catalog_uri) \
-        .config("spark.databricks.delta.autoCompact.enabled", auto_compaction) \
-        .getOrCreate()
+    if with_catalog:
+        spark = SparkSession.builder \
+            .appName("SparkKafkaToDelta") \
+            .config("spark.jars.packages",
+                "io.delta:delta-spark_2.13:4.0.0," \
+                "io.unitycatalog:unitycatalog-spark_2.13:0.3.0," \
+                "org.apache.spark:spark-sql-kafka-0-10_2.13:3.5.0") \
+            .config("spark.driver.memory", "2g") \
+            .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+            .config("spark.sql.catalog.spark_catalog", "io.unitycatalog.spark.UCSingleCatalog") \
+            .config("spark.sql.catalog.unity", "io.unitycatalog.spark.UCSingleCatalog") \
+            .config("spark.sql.catalog.unity.token", "") \
+            .config("spark.sql.defaultCatalog", "unity") \
+            .config("spark.sql.catalog.unity.uri", catalog_uri) \
+            .config("spark.databricks.delta.autoCompact.enabled", auto_compaction) \
+            .getOrCreate()
+    else:
+        builder = SparkSession.builder.appName("MyApp") \
+            .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
+            .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
+        spark = configure_spark_with_delta_pip(builder).getOrCreate()
+
     
     spark.sparkContext.setLogLevel("INFO")
     
@@ -176,7 +184,7 @@ def overwrite_to_sink(batch_df: DataFrame, batch_id: int, *args, **kwargs):
     update our table.
     """
     batch_df.createOrReplaceTempView("updates")
-    batch_df.sparkSession.sql("""EXPLAIN FORMATTED MERGE INTO default.user_clicks dest
+    batch_df.sparkSession.sql("""MERGE INTO default.user_clicks dest
                                 USING (SELECT user_id, user_name, count(*) AS count_of_clicks, MAX(timestamp) AS updated_at
                                         FROM updates 
                                         WHERE event_type = 'CLICK' 
@@ -214,22 +222,29 @@ def main():
     parser.add_argument("--duration-seconds", type=int, default=20, help="Duration to run the pipeline (seconds)")
     args = parser.parse_args()
 
-    spark = setup_spark(catalog_uri=CONFIG["UNITY"]["URI"], auto_compaction=False)
+    spark = setup_spark(catalog_uri=CONFIG["UNITY"]["URI"], auto_compaction=False, with_catalog=True)
 
     # test_deletion_vectors(spark=spark, data_path=CONFIG["UNITY"]["NYC_TAXI_PATH"])
-    spark.sql("SELECT * FROM default.nyc_taxi;").show()
+    # spark.sql("SELECT * FROM default.nyc_taxi;").show()
+    spark.sql(f"""CREATE TABLE IF NOT EXISTS 
+                default.nyc_taxi (id STRING, vendor_id INT, passenger_count INT, trip_duration INT)
+                USING DELTA
+                TBLPROPERTIES (delta.enableDeletionVectors = true);""")
 
-    while True:
-        continue
+    spark.sql("INSERT INTO default.nyc_taxi (id, vendor_id, passenger_count, trip_duration) VALUES ('id1234567', 2, 4, 345)")
+    return
+
+    # while True:
+    #     continue
         
-    t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
+    # t1 = threading.Thread(target=produce, args=(args.bootstrap_servers, args.topic, args.duration_seconds))
 
-    t1.start()
+    # t1.start()
 
-    spark_process_kafka(spark=spark, data_path=CONFIG["UNITY"]["USER_CLICKS_PATH"], duration_seconds=60)
+    # spark_process_kafka(spark=spark, data_path=CONFIG["UNITY"]["USER_CLICKS_PATH"], duration_seconds=60)
     
-    t1.join()
-    spark.sql("SELECT * FROM default.user_clicks ORDER BY user_id;").show()
+    # t1.join()
+    # spark.sql("SELECT * FROM default.user_clicks ORDER BY user_id;").show()
 
 
 if __name__ == "__main__":
