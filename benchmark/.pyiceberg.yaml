@@ -1,0 +1,11 @@
+catalog:
+  default:
+    type: rest
+    uri: http://localhost:8181/api/catalog
+    warehouse: iceberg_catalog
+    credential: root:s3cr3t
+    header.X-Iceberg-Access-Delegation: vended-credentials
+    header.Polaris-Realm: POLARIS
+    scope: PRINCIPAL_ROLE:ALL
+    token-refresh-enabled: true
+    py-io-impl: pyiceberg.io.pyarrow.PyArrowFileIO
