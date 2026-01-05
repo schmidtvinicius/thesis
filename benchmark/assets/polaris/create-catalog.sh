@@ -79,8 +79,6 @@ PAYLOAD='{
    }
  }'
 
-echo $PAYLOAD
-
 curl -s -H "Authorization: Bearer ${TOKEN}" \
    -H 'Accept: application/json' \
    -H 'Content-Type: application/json' \
@@ -88,6 +86,7 @@ curl -s -H "Authorization: Bearer ${TOKEN}" \
    http://polaris:8181/api/management/v1/catalogs \
    -d "$PAYLOAD" -v
 
+echo
 echo "Granting CATALOG_MANAGE_CONTENT privilege..."
 curl -X PUT http://polaris:8181/api/management/v1/catalogs/$CATALOG_NAME/catalog-roles/catalog_admin/grants \
     -H "Authorization: Bearer $TOKEN" \

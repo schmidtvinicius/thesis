@@ -6,9 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "adbc-driver-manager>=1.9.0",
+    "confluent-kafka>=2.12.2",
     "deltalake",
     "dotenv>=0.9.9",
-    "duckdb>=1.4.2",
+    "duckdb>=1.4.3",
     "pandas>=2.3.3",
     "pyarrow>=22.0.0",
     "pyiceberg[pyarrow,sql-postgres,sql-sqlite]>=0.10.0",
