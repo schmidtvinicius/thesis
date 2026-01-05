@@ -5,4 +5,6 @@
 
 3. In terms of research questions, are my questions relevant and specific enough? 
 	1. What would be an example of a good question? 
-	2. Is it okay to come up with questions after the fact?  
+	2. Is it okay to come up with questions after the fact?
+
+4. Regarding metrics, I was thinking of looking at different batch sizes and intervals at which the optimization operations should be done. Would that be a good idea?
