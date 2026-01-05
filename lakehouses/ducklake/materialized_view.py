@@ -33,7 +33,7 @@ def init_db(con: duckdb.DuckDBPyConnection):
             CREATE TABLE IF NOT EXISTS {DEST_TABLE} (
                 user_id VARCHAR,
                 user_name VARCHAR,
-                count BIGINT,
+                count_of_clicks BIGINT,
                 last_snapshot INT,        
             )
         """)
@@ -55,32 +55,22 @@ def consume_and_insert(bootstrap_servers: str, topic: str, con: duckdb.DuckDBPyC
         cursor.execute("USE events;")
         try:
             while time.time() - start_time < duration_seconds:
-                msgs = []
-                window_length = random.choice([i for i in range(5, 16)])
-                if window_length > 10:
-                    raw_files += 1
-                while len(msgs) < window_length:
-                    msg = consumer.poll(1.0)
-                    if msg is None:
-                        print("No new messages found, sleeping for 5 seconds...")
-                        time.sleep(5)
-                        continue
-                    if msg.error():
-                        print("Consumer error:", msg.error())
-                        continue
-                    msgs.append(msg)
+                msg = consumer.poll(1.0)
+                if msg is None:
+                    print("No new messages found, sleeping for 5 seconds...")
+                    time.sleep(5)
+                    continue
+                if msg.error():
+                    print("Consumer error:", msg.error())
+                    continue
 
                 try:
-                    values = []
-                    for msg in msgs:
-                        event = json.loads(msg.value().decode("utf-8"))
-                        values.append(datetime.fromisoformat(event.pop("timestamp")))
-                        values.append(event['user_id'])
-                        values.append(event['user_name'])
-                        values.append(event['event_type'])
+                    print("Consuming event message...")
+                    event = json.loads(msg.value().decode("utf-8"))
+                    ts = datetime.fromisoformat(event["timestamp"])
                     cursor.execute(
-                        f"INSERT INTO {RAW_TABLE} VALUES {'(?, ?, ?, ?),'*((len(values)-4)//4)}(?,?,?,?)",
-                        values
+                        f"INSERT INTO {RAW_TABLE} VALUES (?, ?, ?, ?)",
+                        [ts, event["user_id"], event["user_name"], event["event_type"]]
                     )
                 except Exception as e:
                     print("Error inserting:", e)
@@ -100,8 +90,8 @@ def aggregate_loop(con: duckdb.DuckDBPyConnection, duration_seconds: int):
         while time.time() - start_time < duration_seconds:
             try:
                 # Determine the latest last_snapshot in the destination table
-                last_snapshot_update = cursor.execute(f"SELECT max(last_snapshot) FROM {DEST_TABLE};").fetchone()[0] or 0
-                max_snapshot = cursor.execute(f"SELECT max(snapshot_id) FROM events.snapshots();").fetchone()[0]
+                last_snapshot_update = cursor.execute(f"SELECT max(last_snapshot) FROM {DEST_TABLE}").fetchone()[0] or 0
+                max_snapshot = cursor.execute(f"SELECT max(snapshot_id) FROM snapshots();").fetchone()[0]
 
                 # Aggregate only new raw data
                 aggregate_sql = f"""
@@ -110,27 +100,25 @@ def aggregate_loop(con: duckdb.DuckDBPyConnection, duration_seconds: int):
                         SELECT 
                             user_id,
                             user_name,
-                            COUNT(*) AS count,
+                            COUNT(*) AS count_of_clicks,
                             ? AS last_snapshot,
-                        FROM events.table_changes('{RAW_TABLE}', ?, ?)
+                        FROM table_changes('{RAW_TABLE}', ?, ?)
                         WHERE event_type = 'CLICK'
                         GROUP BY user_id, user_name
                     ) AS src
                     ON dest.user_id = src.user_id
                     WHEN MATCHED THEN 
                         UPDATE SET 
-                            count = dest.count + src.count,
+                            count_of_clicks = dest.count_of_clicks + src.count_of_clicks,
                             last_snapshot = src.last_snapshot
                     WHEN NOT MATCHED THEN
-                        INSERT (user_id, user_name, count, last_snapshot)
-                        VALUES (src.user_id, src.user_name, src.count, src.last_snapshot);
+                        INSERT (user_id, user_name, count_of_clicks, last_snapshot)
+                        VALUES (src.user_id, src.user_name, src.count_of_clicks, src.last_snapshot)
                 """
                 cursor.execute(aggregate_sql, [max_snapshot, last_snapshot_update, max_snapshot])
 
                 print(f"Aggregation executed at {datetime.now()} from {last_snapshot_update} to {max_snapshot}")
-                # time.sleep(2)
-                print(f"Current files for {DEST_TABLE}:")
-                print(cursor.execute(f"CALL ducklake_list_files('events', '{DEST_TABLE}');").fetchall())
+                time.sleep(5)
 
             except Exception as e:
                 print("Aggregation error:", e)
