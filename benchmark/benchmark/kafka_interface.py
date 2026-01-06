@@ -3,6 +3,7 @@ import json
 import pyarrow as pa
 import time
 
+from datetime import datetime
 from .arrow_interface import ArrowInterface
 from .dataset import Dataset
 from confluent_kafka import Consumer, Producer, KafkaError, KafkaException
@@ -41,7 +42,7 @@ class KafkaInterface:
             print(f"Error deleting Kafka topic: {e}")
 
 
-    def consume_and_write(self, topic: str, lakehouse: ArrowInterface, total_events: int, schema: pa.Schema):
+    def consume_and_write(self, topic: str, lakehouse: ArrowInterface, total_events: int, schema: pa.Schema, write_batch_size = 100):
         print(f"Schema {schema}")
         consumer = Consumer({"bootstrap.servers": self.bootstrap_servers, "group.id": lakehouse.__class__.__name__, "auto.offset.reset": "earliest"})
         consumer.subscribe([topic])
@@ -60,12 +61,20 @@ class KafkaInterface:
                     print("Reached end of offset, sutting down")
                     break
                 continue
+            print(type(msg.value()))
             event: dict = json.loads(msg.value().decode("utf-8"))
+            print(event)
             # event.pop("pickup_datetime")
             # event.pop("dropoff_datetime")
             table = pa.concat_tables([table, pa.Table.from_pylist([event], schema)])
             processed += 1
-            if table.num_rows >= 100:
+            if table.num_rows >= write_batch_size:
                 lakehouse.write_to_table(table)
                 table = schema.empty_table()
         print(f"Processed {processed} events in total. Slept {amimir} times in the process")
+
+
+# class CustomJSONDecoder(json.JSONDecoder):
+
+#     def decode(s: str) -> any:
+#         if datetime.

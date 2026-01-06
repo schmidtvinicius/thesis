@@ -3,7 +3,7 @@ import pyarrow as pa
 
 from .arrow_interface import ArrowInterface
 from pyiceberg.catalog import load_catalog
-from pyiceberg.catalog import _ENV_CONFIG
+
 
 class IcebergInterface(ArrowInterface):
     """A class for interacting with Iceberg tables through a catalog. Configuration 
