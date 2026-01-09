@@ -8,6 +8,7 @@ from .arrow_interface import ArrowInterface
 from .dataset import Dataset
 from confluent_kafka import Consumer, Producer, KafkaError, KafkaException
 from confluent_kafka.admin import AdminClient, NewTopic
+from io import BytesIO
 
 class KafkaInterface:
 
@@ -19,7 +20,6 @@ class KafkaInterface:
     def produce(self, topic: str, dataset: Dataset, total: int):
         
         producer = Producer({"bootstrap.servers": self.bootstrap_servers,})
-
         for _ in range(total):
             producer.produce(topic, json.dumps(dataset.get_next_event()))
             producer.flush(10000)
@@ -43,7 +43,6 @@ class KafkaInterface:
 
 
     def consume_and_write(self, topic: str, lakehouse: ArrowInterface, total_events: int, schema: pa.Schema, write_batch_size = 100):
-        print(f"Schema {schema}")
         consumer = Consumer({"bootstrap.servers": self.bootstrap_servers, "group.id": lakehouse.__class__.__name__, "auto.offset.reset": "earliest"})
         consumer.subscribe([topic])
         table = schema.empty_table()
@@ -61,20 +60,10 @@ class KafkaInterface:
                     print("Reached end of offset, sutting down")
                     break
                 continue
-            print(type(msg.value()))
-            event: dict = json.loads(msg.value().decode("utf-8"))
-            print(event)
-            # event.pop("pickup_datetime")
-            # event.pop("dropoff_datetime")
-            table = pa.concat_tables([table, pa.Table.from_pylist([event], schema)])
+            event = duckdb.read_json(BytesIO(msg.value())).to_arrow_table()
+            table = pa.concat_tables([table, event])
             processed += 1
             if table.num_rows >= write_batch_size:
                 lakehouse.write_to_table(table)
                 table = schema.empty_table()
         print(f"Processed {processed} events in total. Slept {amimir} times in the process")
-
-
-# class CustomJSONDecoder(json.JSONDecoder):
-
-#     def decode(s: str) -> any:
-#         if datetime.
