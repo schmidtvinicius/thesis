@@ -1,0 +1,70 @@
+\documentclass[11pt,a4paper]{report}
+
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{rutitlepage}
+\usepackage[
+backend=biber,
+style=ieee,
+sorting=nty,
+maxcitenames=1,
+mincitenames=1]{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage[hidelinks]{hyperref}
+\usepackage[inline]{enumitem}
+\usepackage{caption}
+\captionsetup[figure]{font=footnotesize,labelfont=footnotesize}
+\captionsetup[table]{font=footnotesize,labelfont=footnotesize}
+\captionsetup[lstlisting]{font=footnotesize,labelfont=footnotesize}
+\usepackage[T1]{fontenc}
+
+\makeatletter %otherwise geometry resets everything
+\Gm@restore@org%
+\makeatother
+
+\setlength{\itemsep}{0cm}
+\setlength{\voffset}{0cm}
+\setlength{\headheight}{0cm}
+\setlength{\topmargin}{0cm}
+\setlength{\extrarowheight}{3pt} %for superscripts in tabular
+\setlength{\arraycolsep}{4pt}
+\lstset{basicstyle = \footnotesize, breaklines = true}
+
+\graphicspath{{imgs/}}
+
+\begin{document}
+\maketitleru[
+    layout=traditional,
+	authors={Vinícius Ribeiro Machado Schmidt\\s1123702},
+	date={\today},
+	others={%
+        {University supervisor:}{prof.\ dr.\ ir.\ Djoerd Hiemstra \\ \nolinkurl{hiemstra@cs.ru.nl}},
+        {Company supervisor:}{Chrystel Philipsen\\ \nolinkurl{chrystel.philipsen@sogeti.com}\\ Marcel de Wit \\ \nolinkurl{marcel.de.wit@sogeti.com}},
+		{Second assessor:}{dr.\ Johannes Textor \\ \nolinkurl{johannes.textor@ru.nl}}
+    },
+	course={Master's Thesis Computing Science},
+	title={\LARGE Evaluating Data Stream Write Performance in Current Lakehouse Systems},
+    subtitle={}
+]
+
+\input{abstract}
+\tableofcontents
+
+\input{introduction}
+\input{background}
+\input{relatedwork}
+\input{methodology}
+\input{experimental-setup}
+\input{results}
+\input{discussion}
+\input{conclusion}
+
+\printbibliography
+
+\appendix
+\input{appendix}
+
+\end{document}

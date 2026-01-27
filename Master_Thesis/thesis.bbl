@@ -1,0 +1,1353 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{agnihotriPDSPbenchBenchmarkingSystem2024}{unpublished}{}{}
+      \name{author}{5}{}{%
+        {{hash=a2ecefb341b481e11fcfedf86da5c14d}{%
+           family={Agnihotri},
+           familyi={A\bibinitperiod},
+           given={Pratyush},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c9fcd625ae60d3b6ca3cb3d376ebbb02}{%
+           family={Koldehofe},
+           familyi={K\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod}}}%
+        {{hash=580cd9f35c9900ddc0c9f32b81c30345}{%
+           family={Heinrich},
+           familyi={H\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod}}}%
+        {{hash=49248cdf8355c6d096189e2667358696}{%
+           family={Binnig},
+           familyi={B\bibinitperiod},
+           given={Carsten},
+           giveni={C\bibinitperiod}}}%
+        {{hash=b726381489366ccd2782209a80489a70}{%
+           family={Luthra},
+           familyi={L\bibinitperiod},
+           given={Manisha},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{7e61e39b7d45307bf691cec8a40545db}
+      \strng{fullhash}{478cca980ea2ac5ea57a4c9a4c51eac7}
+      \strng{fullhashraw}{478cca980ea2ac5ea57a4c9a4c51eac7}
+      \strng{bibnamehash}{478cca980ea2ac5ea57a4c9a4c51eac7}
+      \strng{authorbibnamehash}{478cca980ea2ac5ea57a4c9a4c51eac7}
+      \strng{authornamehash}{7e61e39b7d45307bf691cec8a40545db}
+      \strng{authorfullhash}{478cca980ea2ac5ea57a4c9a4c51eac7}
+      \strng{authorfullhashraw}{478cca980ea2ac5ea57a4c9a4c51eac7}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accepted at TPCTC}
+      \field{title}{{PDSP}-bench: a benchmarking system for parallel and distributed stream processing}
+      \field{year}{2024}
+      \keyw{Read}
+    \endentry
+    \entry{apacheicebergReliability}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d95d2a8ab0e5a7fc4cb0e3e954bb31c9}{%
+           family={{Apache Iceberg}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{fullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{fullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{bibnamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorbibnamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authornamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorfullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorfullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Reliability}
+      \field{urlday}{22}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://iceberg.apache.org/docs/latest/reliability/
+      \endverb
+      \verb{url}
+      \verb https://iceberg.apache.org/docs/latest/reliability/
+      \endverb
+    \endentry
+    \entry{apacheicebergRESTCatalogSpec2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d95d2a8ab0e5a7fc4cb0e3e954bb31c9}{%
+           family={{Apache Iceberg}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{fullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{fullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{bibnamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorbibnamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authornamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorfullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorfullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{{REST} {Catalog} {Spec}}
+      \field{urlday}{15}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://iceberg.apache.org/rest-catalog-spec/
+      \endverb
+      \verb{url}
+      \verb https://iceberg.apache.org/rest-catalog-spec/
+      \endverb
+    \endentry
+    \entry{armbrust_delta_2020}{article}{}{}
+      \name{author}{21}{}{%
+        {{hash=8eafad8289b06f72c2e8b7caf80a413a}{%
+           family={Armbrust},
+           familyi={A\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f8b27ed8b503bc3e7b32fc53bace3697}{%
+           family={Das},
+           familyi={D\bibinitperiod},
+           given={Tathagata},
+           giveni={T\bibinitperiod}}}%
+        {{hash=dc9fd91a0310465321c96012342339f4}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Liwen},
+           giveni={L\bibinitperiod}}}%
+        {{hash=a3eacc6b98753794152fd446090f75e4}{%
+           family={Yavuz},
+           familyi={Y\bibinitperiod},
+           given={Burak},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5facba1e6f0a702439eb1d0538ec8486}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Shixiong},
+           giveni={S\bibinitperiod}}}%
+        {{hash=90a5cc961b86bfb20e97409cabff0d3e}{%
+           family={Murthy},
+           familyi={M\bibinitperiod},
+           given={Mukul},
+           giveni={M\bibinitperiod}}}%
+        {{hash=61e07ecaa02a7072790d9158e9c35be5}{%
+           family={Torres},
+           familyi={T\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a68f08e05b56c5f763f6e6a37ba2c71a}{%
+           family={Van\bibnamedelima Hovell},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Herman},
+           giveni={H\bibinitperiod}}}%
+        {{hash=e584549e61e6a361a2d1183a1e0723cf}{%
+           family={Ionescu},
+           familyi={I\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+        {{hash=eb2280a2f77d870c7ac0aebc499fe898}{%
+           family={Łuszczak},
+           familyi={Ł\bibinitperiod},
+           given={Alicja},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d093925022fe2c20868694532f8ce226}{%
+           family={Świtakowski},
+           familyi={Ś\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod}}}%
+        {{hash=705ea8a9d709444763b2f5e8aaff1b1a}{%
+           family={Szafrański},
+           familyi={S\bibinitperiod},
+           given={Michał},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9974d6382df9a9870c97dad6837bcf62}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod}}}%
+        {{hash=07a4b34fb3cfa0220a032db185bfc329}{%
+           family={Ueshin},
+           familyi={U\bibinitperiod},
+           given={Takuya},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c5ca28a81c904ddb06691f4273aa75e1}{%
+           family={Mokhtar},
+           familyi={M\bibinitperiod},
+           given={Mostafa},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9a9b1ccfbe3e81e38a1c1136ca101f64}{%
+           family={Boncz},
+           familyi={B\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=dfd14c69d2338ce9cf556c819a32d286}{%
+           family={Ghodsi},
+           familyi={G\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ad8274eecf295463d2f856252e6aeac2}{%
+           family={Paranjpye},
+           familyi={P\bibinitperiod},
+           given={Sameer},
+           giveni={S\bibinitperiod}}}%
+        {{hash=852d893a0809c291433a7d11b793b8e3}{%
+           family={Senster},
+           familyi={S\bibinitperiod},
+           given={Pieter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=125f074bf46e8a83339101fd94d088e2}{%
+           family={Xin},
+           familyi={X\bibinitperiod},
+           given={Reynold},
+           giveni={R\bibinitperiod}}}%
+        {{hash=00dc518b94dfa6349c86e70661a1a5ef}{%
+           family={Zaharia},
+           familyi={Z\bibinitperiod},
+           given={Matei},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{fullhash}{e01c8054e50bcb5257453dd03010d4ae}
+      \strng{fullhashraw}{e01c8054e50bcb5257453dd03010d4ae}
+      \strng{bibnamehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{authorbibnamehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{authornamehash}{1bae7c2a3fe6ea29ffc01edd0ac606b5}
+      \strng{authorfullhash}{e01c8054e50bcb5257453dd03010d4ae}
+      \strng{authorfullhashraw}{e01c8054e50bcb5257453dd03010d4ae}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{2150-8097}
+      \field{journaltitle}{Proceedings of the {VLDB} Endowment}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{number}{12}
+      \field{shortjournal}{Proc. {VLDB} Endow.}
+      \field{shorttitle}{Delta lake}
+      \field{title}{Delta lake: high-performance {ACID} table storage over cloud object stores}
+      \field{urlday}{27}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{volume}{13}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{3411\bibrangedash 3424}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.14778/3415478.3415560
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.14778/3415478.3415560
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.14778/3415478.3415560
+      \endverb
+    \endentry
+    \entry{avrilayshaDeltaLakeVs}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d73aa270a88b7db87c5482d324869e81}{%
+           family={{Avril Aysha}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{d73aa270a88b7db87c5482d324869e81}
+      \strng{fullhash}{d73aa270a88b7db87c5482d324869e81}
+      \strng{fullhashraw}{d73aa270a88b7db87c5482d324869e81}
+      \strng{bibnamehash}{d73aa270a88b7db87c5482d324869e81}
+      \strng{authorbibnamehash}{d73aa270a88b7db87c5482d324869e81}
+      \strng{authornamehash}{d73aa270a88b7db87c5482d324869e81}
+      \strng{authorfullhash}{d73aa270a88b7db87c5482d324869e81}
+      \strng{authorfullhashraw}{d73aa270a88b7db87c5482d324869e81}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Delta {Lake} vs {Data} {Lake} - {What}'s the {Difference}?}
+      \field{urlday}{22}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://delta.io/blog/delta-lake-vs-data-lake/
+      \endverb
+      \verb{url}
+      \verb https://delta.io/blog/delta-lake-vs-data-lake/
+      \endverb
+    \endentry
+    \entry{DucklakeDocumentationChoosing2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{Ducklake {Documentation} - {Choosing} a {Catalog} {Database}}
+      \field{urlday}{27}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/docs/stable/duckdb/usage/choosing_a_catalog_database
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/docs/stable/duckdb/usage/choosing_a_catalog_database
+      \endverb
+    \endentry
+    \entry{DuckLakeDocumentationConflict2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{{DuckLake} {Documentation} - {Conflict} {Resolution}}
+      \field{urlday}{27}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/docs/stable/duckdb/advanced_features/conflict_resolution
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/docs/stable/duckdb/advanced_features/conflict_resolution
+      \endverb
+    \endentry
+    \entry{DuckLakeDocumentationData2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{{DuckLake} {Documentation} - {Data} {Inlining}}
+      \field{urlday}{27}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/docs/stable/duckdb/advanced_features/data_inlining
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/docs/stable/duckdb/advanced_features/data_inlining
+      \endverb
+    \endentry
+    \entry{DucklakeDocumentationTables2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{Ducklake {Documentation} - {Tables}}
+      \field{urlday}{27}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/docs/stable/specification/tables/overview
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/docs/stable/specification/tables/overview
+      \endverb
+    \endentry
+    \entry{fragkoulisSurveyEvolutionStream2024}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=772ba7d79a8bfbec2cd70de88ec6fd98}{%
+           family={Fragkoulis},
+           familyi={F\bibinitperiod},
+           given={Marios},
+           giveni={M\bibinitperiod}}}%
+        {{hash=28a8a6d503e9d10ad67e2c76af9cf3e3}{%
+           family={Carbone},
+           familyi={C\bibinitperiod},
+           given={Paris},
+           giveni={P\bibinitperiod}}}%
+        {{hash=30c27001dd1b6fc0d82c589a5f6e5117}{%
+           family={Kalavri},
+           familyi={K\bibinitperiod},
+           given={Vasiliki},
+           giveni={V\bibinitperiod}}}%
+        {{hash=51ab9f7ff83aaea65e72449dcab8b87f}{%
+           family={Katsifodimos},
+           familyi={K\bibinitperiod},
+           given={Asterios},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{0873ddd46bfbdf08c1fcfb7cc1843c90}
+      \strng{fullhash}{03617c78096692db6e793b5afd6053ab}
+      \strng{fullhashraw}{03617c78096692db6e793b5afd6053ab}
+      \strng{bibnamehash}{03617c78096692db6e793b5afd6053ab}
+      \strng{authorbibnamehash}{03617c78096692db6e793b5afd6053ab}
+      \strng{authornamehash}{0873ddd46bfbdf08c1fcfb7cc1843c90}
+      \strng{authorfullhash}{03617c78096692db6e793b5afd6053ab}
+      \strng{authorfullhashraw}{03617c78096692db6e793b5afd6053ab}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1066-8888, 0949-877X}
+      \field{journaltitle}{The VLDB Journal}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{A survey on the evolution of stream processing systems}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{volume}{33}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{507\bibrangedash 541}
+      \range{pages}{35}
+      \verb{doi}
+      \verb 10.1007/s00778-023-00819-8
+      \endverb
+      \verb{urlraw}
+      \verb https://link.springer.com/10.1007/s00778-023-00819-8
+      \endverb
+      \verb{url}
+      \verb https://link.springer.com/10.1007/s00778-023-00819-8
+      \endverb
+    \endentry
+    \entry{guillermosanchezDuckLake03Iceberg2025}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=159c96b79b34b12ca22086b8982685e6}{%
+           family={{Guillermo Sanchez}},
+           familyi={G\bibinitperiod}}}%
+        {{hash=6fd5835092d7c192b1be3c8041101ce9}{%
+           family={{Gabor Szarnyas}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{dc26736bfd79e3a25b07bba9adb4f8bf}
+      \strng{fullhash}{f870184bb18a1287bb550c18fcfeb28e}
+      \strng{fullhashraw}{f870184bb18a1287bb550c18fcfeb28e}
+      \strng{bibnamehash}{f870184bb18a1287bb550c18fcfeb28e}
+      \strng{authorbibnamehash}{f870184bb18a1287bb550c18fcfeb28e}
+      \strng{authornamehash}{dc26736bfd79e3a25b07bba9adb4f8bf}
+      \strng{authorfullhash}{f870184bb18a1287bb550c18fcfeb28e}
+      \strng{authorfullhashraw}{f870184bb18a1287bb550c18fcfeb28e}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{title}{{DuckLake} 0.3 with {Iceberg} {Interoperability} and {Geometry} {Support}}
+      \field{urlday}{21}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/2025/09/17/ducklake-03/
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/2025/09/17/ducklake-03/
+      \endverb
+    \endentry
+    \entry{haerderPrinciplesTransactionorientedDatabase1983}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=7400c26a4fe837df7702d00bf58f6f2e}{%
+           family={Haerder},
+           familyi={H\bibinitperiod},
+           given={Theo},
+           giveni={T\bibinitperiod}}}%
+        {{hash=cf6b05e44c84af4e5b7ca1f6de0bb902}{%
+           family={Reuter},
+           familyi={R\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{741fff05d5f34e9f2fa7128b0ec673d5}
+      \strng{fullhash}{4ab31ae412d52c5ba76fc047055ddbf8}
+      \strng{fullhashraw}{4ab31ae412d52c5ba76fc047055ddbf8}
+      \strng{bibnamehash}{4ab31ae412d52c5ba76fc047055ddbf8}
+      \strng{authorbibnamehash}{4ab31ae412d52c5ba76fc047055ddbf8}
+      \strng{authornamehash}{741fff05d5f34e9f2fa7128b0ec673d5}
+      \strng{authorfullhash}{4ab31ae412d52c5ba76fc047055ddbf8}
+      \strng{authorfullhashraw}{4ab31ae412d52c5ba76fc047055ddbf8}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0360-0300, 1557-7341}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{Principles of transaction-oriented database recovery}
+      \field{urlday}{22}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{volume}{15}
+      \field{year}{1983}
+      \field{urldateera}{ce}
+      \field{pages}{287\bibrangedash 317}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1145/289.291
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/289.291
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/289.291
+      \endverb
+    \endentry
+    \entry{henningTheodoliteScalabilityBenchmarking2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=f0f7bfdb731789dc8450a9e1eedc2f01}{%
+           family={Henning},
+           familyi={H\bibinitperiod},
+           given={Sören},
+           giveni={S\bibinitperiod}}}%
+        {{hash=131b9781ee9671d87bd60771bd41a0bc}{%
+           family={Hasselbring},
+           familyi={H\bibinitperiod},
+           given={Wilhelm},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{2265954526ca12a821672d704bba2d6e}
+      \strng{fullhash}{01ec350386f70844b8488a0cf94ecda1}
+      \strng{fullhashraw}{01ec350386f70844b8488a0cf94ecda1}
+      \strng{bibnamehash}{01ec350386f70844b8488a0cf94ecda1}
+      \strng{authorbibnamehash}{01ec350386f70844b8488a0cf94ecda1}
+      \strng{authornamehash}{2265954526ca12a821672d704bba2d6e}
+      \strng{authorfullhash}{01ec350386f70844b8488a0cf94ecda1}
+      \strng{authorfullhashraw}{01ec350386f70844b8488a0cf94ecda1}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{22145796}
+      \field{journaltitle}{Big Data Research}
+      \field{month}{7}
+      \field{shorttitle}{Theodolite}
+      \field{title}{Theodolite: {Scalability} {Benchmarking} of {Distributed} {Stream} {Processing} {Engines} in {Microservice} {Architectures}}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{volume}{25}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{100209}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.bdr.2021.100209
+      \endverb
+      \verb{urlraw}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S2214579621000265
+      \endverb
+      \verb{url}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S2214579621000265
+      \endverb
+    \endentry
+    \entry{henningShuffleBenchBenchmarkLargeScale2024}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=f0f7bfdb731789dc8450a9e1eedc2f01}{%
+           family={Henning},
+           familyi={H\bibinitperiod},
+           given={Sören},
+           giveni={S\bibinitperiod}}}%
+        {{hash=91185d33b60015f08314c64ba3f13916}{%
+           family={Vogel},
+           familyi={V\bibinitperiod},
+           given={Adriano},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b132c5ddc8b27e8ecebd72539aa6fb69}{%
+           family={Leichtfried},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=549f7bcbdc7d9c35b957d044e8f4318d}{%
+           family={Ertl},
+           familyi={E\bibinitperiod},
+           given={Otmar},
+           giveni={O\bibinitperiod}}}%
+        {{hash=b64e29e3c533727e9024bf50f4ef2b1d}{%
+           family={Rabiser},
+           familyi={R\bibinitperiod},
+           given={Rick},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {London United Kingdom}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{2265954526ca12a821672d704bba2d6e}
+      \strng{fullhash}{374e45f847b7b168d31fce270b6e55c0}
+      \strng{fullhashraw}{374e45f847b7b168d31fce270b6e55c0}
+      \strng{bibnamehash}{374e45f847b7b168d31fce270b6e55c0}
+      \strng{authorbibnamehash}{374e45f847b7b168d31fce270b6e55c0}
+      \strng{authornamehash}{2265954526ca12a821672d704bba2d6e}
+      \strng{authorfullhash}{374e45f847b7b168d31fce270b6e55c0}
+      \strng{authorfullhashraw}{374e45f847b7b168d31fce270b6e55c0}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{Proceedings of the 15th {ACM}/{SPEC} {International} {Conference} on {Performance} {Engineering}}
+      \field{isbn}{979-8-4007-0444-4}
+      \field{month}{5}
+      \field{shorttitle}{{ShuffleBench}}
+      \field{title}{{ShuffleBench}: {A} {Benchmark} for {Large}-{Scale} {Data} {Shuffling} {Operations} with {Distributed} {Stream} {Processing} {Frameworks}}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{2\bibrangedash 13}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/3629526.3645036
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3629526.3645036
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3629526.3645036
+      \endverb
+      \keyw{Priority}
+    \endentry
+    \entry{hesseESPBenchEnterpriseStream2021}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=e653cd828245e0465bce11e95e3223bd}{%
+           family={Hesse},
+           familyi={H\bibinitperiod},
+           given={Guenter},
+           giveni={G\bibinitperiod}}}%
+        {{hash=94ae246e092d517ab8702774ffcf1899}{%
+           family={Matthies},
+           familyi={M\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c5b443d9951f44dc9d07482f09fa1013}{%
+           family={Perscheid},
+           familyi={P\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=78cb4607915516443a771715447a51c9}{%
+           family={Uflacker},
+           familyi={U\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+        {{hash=06532fdd8e4deefd635af65774c6cf2b}{%
+           family={Plattner},
+           familyi={P\bibinitperiod},
+           given={Hasso},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Virtual Event France}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{2445613af5288db7129df72ffa11cc8d}
+      \strng{fullhash}{58bde1cca09295e305bddda274dbbf14}
+      \strng{fullhashraw}{58bde1cca09295e305bddda274dbbf14}
+      \strng{bibnamehash}{58bde1cca09295e305bddda274dbbf14}
+      \strng{authorbibnamehash}{58bde1cca09295e305bddda274dbbf14}
+      \strng{authornamehash}{2445613af5288db7129df72ffa11cc8d}
+      \strng{authorfullhash}{58bde1cca09295e305bddda274dbbf14}
+      \strng{authorfullhashraw}{58bde1cca09295e305bddda274dbbf14}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{Proceedings of the {ACM}/{SPEC} {International} {Conference} on {Performance} {Engineering}}
+      \field{isbn}{978-1-4503-8194-9}
+      \field{month}{4}
+      \field{shorttitle}{{ESPBench}}
+      \field{title}{{ESPBench}: {The} {Enterprise} {Stream} {Processing} {Benchmark}}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{201\bibrangedash 212}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/3427921.3450242
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3427921.3450242
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3427921.3450242
+      \endverb
+      \keyw{Priority}
+    \endentry
+    \entry{HowPreventObject}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labeltitlesource}{title}
+      \field{title}{How to prevent object overwrites with conditional writes}
+      \field{urlday}{26}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html
+      \endverb
+      \verb{url}
+      \verb https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html
+      \endverb
+    \endentry
+    \entry{Iceberg2025}{misc}{}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{title}{Iceberg}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/apache/iceberg
+      \endverb
+      \verb{url}
+      \verb https://github.com/apache/iceberg
+      \endverb
+    \endentry
+    \entry{IcebergSpecOptimistic}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{Iceberg {Spec} - {Optimistic} {Concurrency}}
+      \field{urlday}{26}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://iceberg.apache.org/spec/?h=concurren#optimistic-concurrency
+      \endverb
+      \verb{url}
+      \verb https://iceberg.apache.org/spec/?h=concurren#optimistic-concurrency
+      \endverb
+    \endentry
+    \entry{jasonhughesApacheIcebergDefinitive2024}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=9b5f8a1f56b1bff064e86c24d8f6461b}{%
+           family={Jason\bibnamedelima Hughes},
+           familyi={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Alex\bibnamedelima Merced},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media, Inc}%
+      }
+      \strng{namehash}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{fullhash}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{fullhashraw}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{bibnamehash}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{authorbibnamehash}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{authornamehash}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{authorfullhash}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \strng{authorfullhashraw}{9b5f8a1f56b1bff064e86c24d8f6461b}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{isbn}{978-1-0981-4861-4}
+      \field{note}{OCLC: 1425185829}
+      \field{shorttitle}{Apache {Iceberg}}
+      \field{title}{Apache {Iceberg}: {The} {Definitive} {Guide}}
+      \field{year}{2024}
+      \verb{file}
+      \verb PDF:/home/vinicius/Zotero/storage/5LPWIY9H/Jason Hughes - 2024 - Apache Iceberg The Definitive Guide.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{karimovBenchmarkingDistributedStream2018}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=b7e50691daf0b87fa80826b921dc630f}{%
+           family={Karimov},
+           familyi={K\bibinitperiod},
+           given={Jeyhun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=681ed6e42b7764a3f61a49230afb9dce}{%
+           family={Rabl},
+           familyi={R\bibinitperiod},
+           given={Tilmann},
+           giveni={T\bibinitperiod}}}%
+        {{hash=51ab9f7ff83aaea65e72449dcab8b87f}{%
+           family={Katsifodimos},
+           familyi={K\bibinitperiod},
+           given={Asterios},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e936c49d0b0173733f51944a9c37ebe2}{%
+           family={Samarev},
+           familyi={S\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8e7e94c917728136940c22ee01059c22}{%
+           family={Heiskanen},
+           familyi={H\bibinitperiod},
+           given={Henri},
+           giveni={H\bibinitperiod}}}%
+        {{hash=21e42605859bb8c5a24c47387feadc9d}{%
+           family={Markl},
+           familyi={M\bibinitperiod},
+           given={Volker},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Paris}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c9a51e504b6735c305d264f200a4115c}
+      \strng{fullhash}{65cbbf54daeb44927dbd82cc3445fcd9}
+      \strng{fullhashraw}{65cbbf54daeb44927dbd82cc3445fcd9}
+      \strng{bibnamehash}{65cbbf54daeb44927dbd82cc3445fcd9}
+      \strng{authorbibnamehash}{65cbbf54daeb44927dbd82cc3445fcd9}
+      \strng{authornamehash}{c9a51e504b6735c305d264f200a4115c}
+      \strng{authorfullhash}{65cbbf54daeb44927dbd82cc3445fcd9}
+      \strng{authorfullhashraw}{65cbbf54daeb44927dbd82cc3445fcd9}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2018 {{IEEE}} 34th {{International Conference}} on {{Data Engineering}} ({{ICDE}})}
+      \field{isbn}{978-1-5386-5520-7}
+      \field{month}{4}
+      \field{title}{Benchmarking {{Distributed Stream Data Processing Systems}}}
+      \field{urlday}{15}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \field{pages}{1507\bibrangedash 1518}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1109/ICDE.2018.00169
+      \endverb
+      \verb{file}
+      \verb /home/vinicius/Zotero/storage/ERZ2477P/Karimov et al. - 2018 - Benchmarking Distributed Stream Data Processing Systems.pdf
+      \endverb
+      \keyw{Priority,Read}
+    \endentry
+    \entry{mark_raasveldt_ducklake_2025}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=0d7fc5000942608b48fac608a8e3b988}{%
+           family={{Mark Raasveldt}},
+           familyi={M\bibinitperiod}}}%
+        {{hash=08bd8f9547cfe1a653e5842287dffaf3}{%
+           family={{Hannes Mühleisen}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e2ba17caa75a8e71ac241c57467c086}
+      \strng{fullhash}{2a3e5551165c646933ec115d65d110a4}
+      \strng{fullhashraw}{2a3e5551165c646933ec115d65d110a4}
+      \strng{bibnamehash}{2a3e5551165c646933ec115d65d110a4}
+      \strng{authorbibnamehash}{2a3e5551165c646933ec115d65d110a4}
+      \strng{authornamehash}{3e2ba17caa75a8e71ac241c57467c086}
+      \strng{authorfullhash}{2a3e5551165c646933ec115d65d110a4}
+      \strng{authorfullhashraw}{2a3e5551165c646933ec115d65d110a4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{5}
+      \field{title}{The {DuckLake} Manifesto: {SQL} as a Lakehouse Format}
+      \field{titleaddon}{{DuckLake}}
+      \field{urlday}{27}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/manifesto/
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/manifesto/
+      \endverb
+    \endentry
+    \entry{michael_armbrust_lakehouse_2021}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=08f75e37fea2963389e6d680ccc68f20}{%
+           family={{Michael Armbrust}},
+           familyi={M\bibinitperiod}}}%
+        {{hash=6d358d9394ff215679d9ed1d794b22f8}{%
+           family={{Ali Ghodsi}},
+           familyi={A\bibinitperiod}}}%
+        {{hash=8bfc1664ce3abee8dc2c33d1dcb8cb88}{%
+           family={{Reynold Xin}},
+           familyi={R\bibinitperiod}}}%
+        {{hash=3d368279ea94c510f5a5ad4af34110c2}{%
+           family={{Matei Zaharia}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{66e76d7d1e365e7701a3956b5849a964}
+      \strng{fullhash}{efecb6c0d2654deb8f14d6f9f4fafce7}
+      \strng{fullhashraw}{efecb6c0d2654deb8f14d6f9f4fafce7}
+      \strng{bibnamehash}{efecb6c0d2654deb8f14d6f9f4fafce7}
+      \strng{authorbibnamehash}{efecb6c0d2654deb8f14d6f9f4fafce7}
+      \strng{authornamehash}{66e76d7d1e365e7701a3956b5849a964}
+      \strng{authorfullhash}{efecb6c0d2654deb8f14d6f9f4fafce7}
+      \strng{authorfullhashraw}{efecb6c0d2654deb8f14d6f9f4fafce7}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eventtitle}{{CIDR}}
+      \field{title}{Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics}
+      \field{urlday}{26}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://vldb.org/cidrdb/2021/lakehouse-a-new-generation-of-open-platforms-that-unify-data-warehousing-and-advanced-analytics.html
+      \endverb
+      \verb{url}
+      \verb https://vldb.org/cidrdb/2021/lakehouse-a-new-generation-of-open-platforms-that-unify-data-warehousing-and-advanced-analytics.html
+      \endverb
+    \endentry
+    \entry{paras_jain_analyzing_2023}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=1deab85192bb95f88e6cec0102d8ca14}{%
+           family={{Paras Jain}},
+           familyi={P\bibinitperiod}}}%
+        {{hash=4a0b1d80823c7f3b52848f9b2f907fc2}{%
+           family={{Peter Kraft}},
+           familyi={P\bibinitperiod}}}%
+        {{hash=60dbd30177a08a05cf0af49bee7f9f69}{%
+           family={{Conor Power}},
+           familyi={C\bibinitperiod}}}%
+        {{hash=6017e87bfc073bbf9563bf382dd6c813}{%
+           family={{Tathagata Das}},
+           familyi={T\bibinitperiod}}}%
+        {{hash=17cdfbc3444f5a9e309624a7a96aee6c}{%
+           family={{Ion Stoica}},
+           familyi={I\bibinitperiod}}}%
+        {{hash=3d368279ea94c510f5a5ad4af34110c2}{%
+           family={{Matei Zaharia}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Amsterdam, The Netherlands}%
+      }
+      \strng{namehash}{95525ff88250d8d5528bfe63b3b9c81c}
+      \strng{fullhash}{e82c86510b796cdb4e0bcab852fdac6e}
+      \strng{fullhashraw}{e82c86510b796cdb4e0bcab852fdac6e}
+      \strng{bibnamehash}{e82c86510b796cdb4e0bcab852fdac6e}
+      \strng{authorbibnamehash}{e82c86510b796cdb4e0bcab852fdac6e}
+      \strng{authornamehash}{95525ff88250d8d5528bfe63b3b9c81c}
+      \strng{authorfullhash}{e82c86510b796cdb4e0bcab852fdac6e}
+      \strng{authorfullhashraw}{e82c86510b796cdb4e0bcab852fdac6e}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eventtitle}{{CIDR}}
+      \field{title}{Analyzing and Comparing Lakehouse Storage Systems}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://vldb.org/cidrdb/2023/analyzing-and-comparing-lakehouse-storage-systems.html
+      \endverb
+      \verb{url}
+      \verb https://vldb.org/cidrdb/2023/analyzing-and-comparing-lakehouse-storage-systems.html
+      \endverb
+    \endentry
+    \entry{RequestPreconditions2026}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{Request preconditions}
+      \field{urlday}{26}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.cloud.google.com/storage/docs/request-preconditions
+      \endverb
+      \verb{url}
+      \verb https://docs.cloud.google.com/storage/docs/request-preconditions
+      \endverb
+    \endentry
+    \entry{schneider_lakehouse_2024}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=88e7b0e8557aa86f08d6c60444370faf}{%
+           family={Schneider},
+           familyi={S\bibinitperiod},
+           given={Jan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=42c49a9ad2f6679a202075e51ca9655d}{%
+           family={Gröger},
+           familyi={G\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6c0ea8b39f89132801fec4ff13008dda}{%
+           family={Lutsch},
+           familyi={L\bibinitperiod},
+           given={Arnold},
+           giveni={A\bibinitperiod}}}%
+        {{hash=924265e1b9d7012e050405f01a100c09}{%
+           family={Schwarz},
+           familyi={S\bibinitperiod},
+           given={Holger},
+           giveni={H\bibinitperiod}}}%
+        {{hash=0d10631afbd60e9c5e01446f59e3cd99}{%
+           family={Mitschang},
+           familyi={M\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{e1a6404538dd55e09532ce320447bfe1}
+      \strng{fullhash}{f9f8f48fa26d779c58ce35469171ef96}
+      \strng{fullhashraw}{f9f8f48fa26d779c58ce35469171ef96}
+      \strng{bibnamehash}{f9f8f48fa26d779c58ce35469171ef96}
+      \strng{authorbibnamehash}{f9f8f48fa26d779c58ce35469171ef96}
+      \strng{authornamehash}{e1a6404538dd55e09532ce320447bfe1}
+      \strng{authorfullhash}{f9f8f48fa26d779c58ce35469171ef96}
+      \strng{authorfullhashraw}{f9f8f48fa26d779c58ce35469171ef96}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{day}{18}
+      \field{issn}{2661-8907}
+      \field{journaltitle}{{SN} Computer Science}
+      \field{langid}{english}
+      \field{month}{4}
+      \field{number}{5}
+      \field{shortjournal}{{SN} {COMPUT}. {SCI}.}
+      \field{shorttitle}{The Lakehouse}
+      \field{title}{The Lakehouse: State of the Art on Concepts and Technologies}
+      \field{urlday}{23}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{volume}{5}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{449}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1007/s42979-024-02737-0
+      \endverb
+      \verb{urlraw}
+      \verb https://link.springer.com/10.1007/s42979-024-02737-0
+      \endverb
+      \verb{url}
+      \verb https://link.springer.com/10.1007/s42979-024-02737-0
+      \endverb
+    \endentry
+    \entry{SpecifyingConditionalHeaders2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{title}{Specifying conditional headers for {Blob} service operations}
+      \field{urlday}{26}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations
+      \endverb
+    \endentry
+    \entry{tahirHowReliableAre2024}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=94f3d314aeca36e4c48814344e6b318a}{%
+           family={Tahir},
+           familyi={T\bibinitperiod},
+           given={Jawad},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0cb9f8caf5a643b673ea14174302acf4}{%
+           family={Mayer},
+           familyi={M\bibinitperiod},
+           given={Ruben},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3bf5fec763b02adce9cce3184076f5f5}{%
+           family={Doblander},
+           familyi={D\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ea92f9ebc3ace54ebda154ff2ca3d7fc}{%
+           family={Jacobsen},
+           familyi={J\bibinitperiod},
+           given={Hans-Arno},
+           giveni={H\bibinithyphendelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{759320052c2f59a97b1d5079390577f9}
+      \strng{fullhash}{34dc9365eb303e38a53a1464604bec3b}
+      \strng{fullhashraw}{34dc9365eb303e38a53a1464604bec3b}
+      \strng{bibnamehash}{34dc9365eb303e38a53a1464604bec3b}
+      \strng{authorbibnamehash}{34dc9365eb303e38a53a1464604bec3b}
+      \strng{authornamehash}{759320052c2f59a97b1d5079390577f9}
+      \strng{authorfullhash}{34dc9365eb303e38a53a1464604bec3b}
+      \strng{authorfullhashraw}{34dc9365eb303e38a53a1464604bec3b}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{2150-8097}
+      \field{journaltitle}{Proceedings of the VLDB Endowment}
+      \field{langid}{english}
+      \field{month}{11}
+      \field{number}{3}
+      \field{shorttitle}{How {{Reliable}} Are {{Streams}}?}
+      \field{title}{How {{Reliable}} Are {{Streams}}? {{End-to-End Processing-Guarantee Validation}} and {{Performance Benchmarking}} of {{Stream Processing Systems}}}
+      \field{urlday}{18}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{volume}{18}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{585\bibrangedash 598}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.14778/3712221.3712227
+      \endverb
+      \verb{file}
+      \verb /home/vinicius/Zotero/storage/RU6GW3VX/Tahir et al. - 2024 - How Reliable are Streams End-to-End Processing-Guarantee Validation and Performance Benchmarking of.pdf
+      \endverb
+      \keyw{Priority}
+    \endentry
+    \entry{tathagatadasDelta20Foundation2022}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=6017e87bfc073bbf9563bf382dd6c813}{%
+           family={{Tathagata Das}},
+           familyi={T\bibinitperiod}}}%
+        {{hash=ede9190b3d9cf3645109b54c1cca75d1}{%
+           family={{Denny Lee}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{172c50a13a83a1961e93e3938bace576}
+      \strng{fullhash}{11c778531c09589e6654f0c1d3d86664}
+      \strng{fullhashraw}{11c778531c09589e6654f0c1d3d86664}
+      \strng{bibnamehash}{11c778531c09589e6654f0c1d3d86664}
+      \strng{authorbibnamehash}{11c778531c09589e6654f0c1d3d86664}
+      \strng{authornamehash}{172c50a13a83a1961e93e3938bace576}
+      \strng{authorfullhash}{11c778531c09589e6654f0c1d3d86664}
+      \strng{authorfullhashraw}{11c778531c09589e6654f0c1d3d86664}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{8}
+      \field{title}{Delta 2.0 - {The} {Foundation} of your {Data} {Lakehouse} is {Open}}
+      \field{urlday}{22}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://delta.io/blog/2022-08-02-delta-2-0-the-foundation-of-your-data-lake-is-open/
+      \endverb
+      \verb{url}
+      \verb https://delta.io/blog/2022-08-02-delta-2-0-the-foundation-of-your-data-lake-is-open/
+      \endverb
+    \endentry
+    \entry{thedeltalakeprojectauthorsDeltaLake2026}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=466df5bfde2c3ff5ec7d4a70924b4990}{%
+           family={{The Delta Lake Project Authors}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{fullhash}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{fullhashraw}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{bibnamehash}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{authorbibnamehash}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{authornamehash}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{authorfullhash}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \strng{authorfullhashraw}{466df5bfde2c3ff5ec7d4a70924b4990}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{Delta {Lake}}
+      \field{urlday}{23}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/delta-io/delta
+      \endverb
+      \verb{url}
+      \verb https://github.com/delta-io/delta
+      \endverb
+    \endentry
+    \entry{tylerakidauStreaming101World2015}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=adec8d2480d103f1c2ea7d8e38c296e1}{%
+           family={{Tyler Akidau}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{fullhash}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{fullhashraw}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{bibnamehash}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{authorbibnamehash}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{authornamehash}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{authorfullhash}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \strng{authorfullhashraw}{adec8d2480d103f1c2ea7d8e38c296e1}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{O'Reilly Radar}
+      \field{month}{8}
+      \field{title}{Streaming 101: {The} world beyond batch}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/
+      \endverb
+      \verb{url}
+      \verb https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/
+      \endverb
+    \endentry
+    \entry{UnityCatalogStructure2024}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{title}{Unity {Catalog} {Structure}}
+      \field{urlday}{26}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.unitycatalog.io/quickstart/
+      \endverb
+      \verb{url}
+      \verb https://docs.unitycatalog.io/quickstart/
+      \endverb
+    \endentry
+    \entry{WhatDataLake}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cloudflare Learning Center}
+      \field{title}{What is a data lake?}
+      \field{urlday}{22}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.cloudflare.com/learning/cloud/what-is-a-data-lake/
+      \endverb
+      \verb{url}
+      \verb https://www.cloudflare.com/learning/cloud/what-is-a-data-lake/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
