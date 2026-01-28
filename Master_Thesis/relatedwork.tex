@@ -1,5 +1,20 @@
 \chapter{Related Work}\label{ch:related-work}
 
+\section{Benchmarking lakehouses}
+Lakehouses are a novel technology when compared to the more established DBMSs like PostgreSQL or MySQL. Therefore, not many studies have been published evaluating the performance of open table formats. For that reason, we focus on two notable works in this section: LHBench \cite{paras_jain_analyzing_2023} and LST-Bench \cite{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024}. 
+
+\citeauthor{paras_jain_analyzing_2023} present a comparison between three prominent lakehouse technologies, namely Apache Iceberg, Delta Lake and Apache Hudi. Their benchmark, LHBench, consists of a combination of the TPC-DS benchmark \cite{TPCBENCHMARKDS2024} and a few other micro benchmarks. Although the authors focused on the performance of lakehouses when reading data,
+% TODO: explain only relevant results.
+ For each lakehouse system, the authors evaluated
+\begin{enumerate*}[label=(\roman*), ref=\roman*]
+	\item the performance of loading data in bulk and querying that data,
+	\item the performance difference between copy-on-write \cite[Section~2.3]{paras_jain_analyzing_2023} and merge-on-read \cite[Section~2.3]{paras_jain_analyzing_2023} update strategies, and
+	\item distributed metadata processing.
+\end{enumerate*}
+
+An interesting finding of this study is that Delta had faster write performance than 
+
+
 % In 2016 Han Veiga and Eickhoff collected a dataset of 850 authentic English-speaking users across Twitter, Instagram and Foursquare~\cite{OSN}. Blablabla.
 
 % Read related paper and write a 3-5 paragraph summary of each on. This will serve as a good basis for the related work section.

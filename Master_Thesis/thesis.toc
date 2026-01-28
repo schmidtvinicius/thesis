@@ -1,33 +1,35 @@
-\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Motivation and research questions}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Contributions}{3}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Thesis structure}{3}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Iceberg}{5}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Architectural design}{5}{subsection.2.1.1}%
-\contentsline {subsubsection}{Data layer}{5}{section*.3}%
-\contentsline {subsubsection}{Metadata layer}{5}{section*.4}%
-\contentsline {subsubsection}{Catalog}{6}{section*.5}%
-\contentsline {subsection}{\numberline {2.1.2}Writing to Iceberg tables}{7}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Delta Lake}{8}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Architectural design}{8}{subsection.2.2.1}%
-\contentsline {subsubsection}{Data files}{8}{section*.7}%
-\contentsline {subsubsection}{Delta log}{8}{section*.8}%
-\contentsline {subsubsection}{Catalog}{9}{section*.9}%
-\contentsline {subsection}{\numberline {2.2.2}Writing to Delta tables}{9}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}DuckLake}{10}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Architectural design}{10}{subsection.2.3.1}%
-\contentsline {subsubsection}{Data layer}{10}{section*.12}%
-\contentsline {subsubsection}{Catalog database}{10}{section*.13}%
-\contentsline {subsection}{\numberline {2.3.2}Writing to DuckLake}{13}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Data inlining}{13}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Data streams}{14}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Throughput}{14}{subsection.2.4.1}%
-\contentsline {section}{\numberline {2.5}Benchmarking}{14}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Related Work}{16}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Methodology}{17}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Experimental setup}{18}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Results}{19}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Discussion}{20}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{21}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Dataset details}{26}{appendix.A}%
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation and research questions}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Contributions}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Thesis structure}{4}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Background}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Iceberg}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Architectural design}{6}{subsection.2.1.1}%
+\contentsline {subsubsection}{Data layer}{6}{section*.3}%
+\contentsline {subsubsection}{Metadata layer}{6}{section*.4}%
+\contentsline {subsubsection}{Catalog}{7}{section*.5}%
+\contentsline {subsection}{\numberline {2.1.2}Writing to Iceberg tables}{8}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Delta Lake}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Architectural design}{9}{subsection.2.2.1}%
+\contentsline {subsubsection}{Data files}{9}{section*.7}%
+\contentsline {subsubsection}{Delta log}{9}{section*.8}%
+\contentsline {subsubsection}{Catalog}{10}{section*.9}%
+\contentsline {subsection}{\numberline {2.2.2}Writing to Delta tables}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}DuckLake}{11}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Architectural design}{11}{subsection.2.3.1}%
+\contentsline {subsubsection}{Data layer}{11}{section*.12}%
+\contentsline {subsubsection}{Catalog database}{11}{section*.13}%
+\contentsline {subsection}{\numberline {2.3.2}Writing to DuckLake}{14}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Data inlining}{14}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Data streams}{15}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Throughput}{15}{subsection.2.4.1}%
+\contentsline {section}{\numberline {2.5}Benchmarking}{15}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Related Work}{17}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Benchmarking lakehouses}{17}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Methodology}{18}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Experimental setup}{19}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Results}{20}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Discussion}{21}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Limitations}{21}{section.7.1}%
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{22}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Dataset details}{27}{appendix.A}%

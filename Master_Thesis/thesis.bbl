@@ -317,6 +317,94 @@
       \verb https://delta.io/blog/delta-lake-vs-data-lake/
       \endverb
     \endentry
+    \entry{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024}{article}{}{}
+      \name{author}{9}{}{%
+        {{hash=31c077e559a283ee87ef458bd339073f}{%
+           family={Camacho-Rodríguez},
+           familyi={C\bibinithyphendelim R\bibinitperiod},
+           given={Jesús},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ffbf05e0991f7f0aae5ca2f736b3d7f5}{%
+           family={Agrawal},
+           familyi={A\bibinitperiod},
+           given={Ashvin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=25848e5d16416db8bca0927e5f776fed}{%
+           family={Gruenheid},
+           familyi={G\bibinitperiod},
+           given={Anja},
+           giveni={A\bibinitperiod}}}%
+        {{hash=91036d8e3f950af8b1e71328dce92a26}{%
+           family={Gosalia},
+           familyi={G\bibinitperiod},
+           given={Ashit},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e9766edefbdd82afa11bf826284eb878}{%
+           family={Petculescu},
+           familyi={P\bibinitperiod},
+           given={Cristian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=0d8c05613eb9bd00d3461f695509cbc3}{%
+           family={Aguilar-Saborit},
+           familyi={A\bibinithyphendelim S\bibinitperiod},
+           given={Josep},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b7ac48542e9bad6b8b92f060362dac82}{%
+           family={Floratou},
+           familyi={F\bibinitperiod},
+           given={Avrilia},
+           giveni={A\bibinitperiod}}}%
+        {{hash=08efe335b13664148cd14a5ad2d64b52}{%
+           family={Curino},
+           familyi={C\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+        {{hash=5fd2a1e92f74585d94de45092d5794a5}{%
+           family={Ramakrishnan},
+           familyi={R\bibinitperiod},
+           given={Raghu},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{09fb78d3bc032d16e14fed67e74e40c5}
+      \strng{fullhash}{15214733bd29013f38a48639d1b39e08}
+      \strng{fullhashraw}{15214733bd29013f38a48639d1b39e08}
+      \strng{bibnamehash}{09fb78d3bc032d16e14fed67e74e40c5}
+      \strng{authorbibnamehash}{09fb78d3bc032d16e14fed67e74e40c5}
+      \strng{authornamehash}{09fb78d3bc032d16e14fed67e74e40c5}
+      \strng{authorfullhash}{15214733bd29013f38a48639d1b39e08}
+      \strng{authorfullhashraw}{15214733bd29013f38a48639d1b39e08}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{2836-6573}
+      \field{journaltitle}{Proceedings of the ACM on Management of Data}
+      \field{month}{3}
+      \field{number}{1}
+      \field{shorttitle}{{LST}-{Bench}}
+      \field{title}{{LST}-{Bench}: {Benchmarking} {Log}-{Structured} {Tables} in the {Cloud}}
+      \field{urlday}{8}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{volume}{2}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 26}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1145/3639314
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3639314
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3639314
+      \endverb
+      \keyw{Read}
+    \endentry
     \entry{DucklakeDocumentationChoosing2025}{misc}{}{}
       \list{language}{1}{%
         {English}%
@@ -1338,6 +1426,27 @@
       \endverb
       \verb{url}
       \verb https://github.com/delta-io/delta
+      \endverb
+    \endentry
+    \entry{TPCBENCHMARKDS2024}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{title}{{TPC} {BENCHMARK} {DS}}
+      \field{urlday}{11}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.tpc.org/TPC_Documents_Current_Versions/pdf/TPC-DS_v4.0.0.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.tpc.org/TPC_Documents_Current_Versions/pdf/TPC-DS_v4.0.0.pdf
       \endverb
     \endentry
     \entry{tylerakidauStreaming101World2015}{misc}{}{}

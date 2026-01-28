@@ -2450,10 +2450,16 @@
     <bcf:citekey order="64" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
     <bcf:citekey order="65" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
     <bcf:citekey order="66" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
-    <bcf:citekey order="67" intorder="1">henningShuffleBenchBenchmarkLargeScale2024</bcf:citekey>
-    <bcf:citekey order="68" intorder="1">henningTheodoliteScalabilityBenchmarking2021</bcf:citekey>
-    <bcf:citekey order="69" intorder="1">agnihotriPDSPbenchBenchmarkingSystem2024</bcf:citekey>
-    <bcf:citekey order="70" intorder="1">hesseESPBenchEnterpriseStream2021</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">paras_jain_analyzing_2023</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">camacho-rodriguezLSTBenchBenchmarkingLogStructured2024</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">paras_jain_analyzing_2023</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">TPCBENCHMARKDS2024</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">paras_jain_analyzing_2023</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">paras_jain_analyzing_2023</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">henningShuffleBenchBenchmarkLargeScale2024</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">henningTheodoliteScalabilityBenchmarking2021</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">agnihotriPDSPbenchBenchmarkingSystem2024</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">hesseESPBenchEnterpriseStream2021</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
