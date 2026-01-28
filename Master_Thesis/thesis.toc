@@ -24,10 +24,10 @@
 \contentsline {section}{\numberline {2.4}Data streams}{14}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Throughput}{14}{subsection.2.4.1}%
 \contentsline {section}{\numberline {2.5}Benchmarking}{14}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Related Work}{15}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Methodology}{16}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Experimental setup}{17}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Results}{18}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Discussion}{19}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{20}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Dataset details}{25}{appendix.A}%
+\contentsline {chapter}{\numberline {3}Related Work}{16}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Methodology}{17}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Experimental setup}{18}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Results}{19}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Discussion}{20}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{21}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Dataset details}{26}{appendix.A}%

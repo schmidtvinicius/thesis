@@ -1032,6 +1032,76 @@
       \verb https://vldb.org/cidrdb/2023/analyzing-and-comparing-lakehouse-storage-systems.html
       \endverb
     \endentry
+    \entry{raasveldtFairBenchmarkingConsidered2018}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=678996d3c7467ede23e481726a1b3724}{%
+           family={Raasveldt},
+           familyi={R\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=58cf720dc56a63276912477b92e02202}{%
+           family={Holanda},
+           familyi={H\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=23a30ab5303f5f54d006c9bf98086e7e}{%
+           family={Gubner},
+           familyi={G\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=9d73d3595df4987f4c7a499a2e054833}{%
+           family={Mühleisen},
+           familyi={M\bibinitperiod},
+           given={Hannes},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Houston TX USA}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{ab932610ada08fdb44972dc6198d4c64}
+      \strng{fullhash}{9823451380de2fbe4f9e907d968f17c4}
+      \strng{fullhashraw}{9823451380de2fbe4f9e907d968f17c4}
+      \strng{bibnamehash}{9823451380de2fbe4f9e907d968f17c4}
+      \strng{authorbibnamehash}{9823451380de2fbe4f9e907d968f17c4}
+      \strng{authornamehash}{ab932610ada08fdb44972dc6198d4c64}
+      \strng{authorfullhash}{9823451380de2fbe4f9e907d968f17c4}
+      \strng{authorfullhashraw}{9823451380de2fbe4f9e907d968f17c4}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{Proceedings of the {Workshop} on {Testing} {Database} {Systems}}
+      \field{isbn}{978-1-4503-5826-2}
+      \field{month}{6}
+      \field{shorttitle}{Fair {Benchmarking} {Considered} {Difficult}}
+      \field{title}{Fair {Benchmarking} {Considered} {Difficult}: {Common} {Pitfalls} {In} {Database} {Performance} {Testing}}
+      \field{urlday}{8}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/3209950.3209955
+      \endverb
+      \verb{file}
+      \verb Full Text:/home/vinicius/Zotero/storage/AT5RCFXK/Raasveldt et al. - 2018 - Fair Benchmarking Considered Difficult Common Pitfalls In Database Performance Testing.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3209950.3209955
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3209950.3209955
+      \endverb
+      \keyw{Read}
+    \endentry
     \entry{RequestPreconditions2026}{misc}{}{}
       \list{language}{1}{%
         {English}%
