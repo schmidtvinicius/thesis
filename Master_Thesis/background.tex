@@ -82,7 +82,7 @@ Writing data to an Iceberg table, e.g. via \verb|INSERT|, involves the following
 
 \section{Delta Lake}\label{sec:lakehouse-delta}
 
-Delta Lake was introduced in \citeyear{armbrust_delta_2020} by \citeauthor{armbrust_delta_2020}. It was originally developed at Databricks\footnote{\url{https://www.databricks.com/}} and it was open-sourced in 2022 \cite{tathagatadasDelta20Foundation2022}.
+Delta Lake was introduced in \citeyear{armbrust_delta_2020} by \citeauthor{armbrust_delta_2020} \cite{armbrust_delta_2020}. It was originally developed at Databricks\footnote{\url{https://www.databricks.com/}} and it was open-sourced in 2022 \cite{tathagatadasDelta20Foundation2022}.
 
 \subsection{Architectural design}
 
@@ -282,14 +282,14 @@ One feature that sets DuckLake apart from Delta and Iceberg is the so-called "da
 
 % \citeauthor{fragkoulisSurveyEvolutionStream2024} provide an extensive overview of the core characteristics of streaming systems in \cite{fragkoulisSurveyEvolutionStream2024}
 
-\section{Data streams}
+\section{Data streams}\label{sec:data-streams}
 A data stream can be defined as data that is produced by one or more sources continuously and thus, is considered unbounded \cite{tylerakidauStreaming101World2015, fragkoulisSurveyEvolutionStream2024}. Examples of data streams are measurements produced by IoT sensors, web server logs and network traffic data. Another key characteristic of stream data is the presence of at least one timestamp, which is assigned when the data point, i.e. event, is produced or processed by a system \cite{fragkoulisSurveyEvolutionStream2024}.
 
 \subsection{Throughput}
 When benchmarking streaming processing engines (SPEs), a common metric used is the system's throughput \cite{karimovBenchmarkingDistributedStream2018, tahirHowReliableAre2024, henningShuffleBenchBenchmarkLargeScale2024}. This metric can be defined as the amount of events that the system under test (SUT) can process in a given unit of time \cite{karimovBenchmarkingDistributedStream2018, tahirHowReliableAre2024}.
 
 \section{Benchmarking}\label{sec:benchmarking}
-When it comes to evaluating systems' performance, it is crucial that the comparison is done fairly to avoid misleading results. In that regard, \citeauthor{raasveldtFairBenchmarkingConsidered2018} highlight some of common pitfalls when benchmarking database systems. These pitfalls were obtained from a literature review on best practices and recommendations for both benchmarking in general and benchmarking of database management systems (DBMSs). The authors then identified seven\footnote{In the original paper, the authors report "cold" vs "hot" runs and "cold" vs "warm" runs separately \cite{raasveldtFairBenchmarkingConsidered2018} , so they reported eight pitfalls in total. We believe however that they pertain to the same aspect of benchmarking, so we include them all in the same pitfall.} different pitfalls that can occur during DBMS benchmarking, namely:
+When it comes to evaluating systems' performance, it is crucial that the comparison is done fairly to avoid misleading results. In that regard, \citeauthor{raasveldtFairBenchmarkingConsidered2018} \cite{raasveldtFairBenchmarkingConsidered2018} highlight some of common pitfalls when benchmarking database systems. These pitfalls were obtained from a literature review on best practices and recommendations for both benchmarking in general and benchmarking of database management systems (DBMSs). The authors then identified seven\footnote{In the original paper, the authors report "cold" vs "hot" runs and "cold" vs "warm" runs separately \cite{raasveldtFairBenchmarkingConsidered2018} , so they reported eight pitfalls in total. We believe however that they pertain to the same aspect of benchmarking, so we include them all in the same pitfall.} different pitfalls that can occur during DBMS benchmarking, namely:
 
 \begin{enumerate}
 	\item \textbf{Reporting non-reproducible results}: In scientific research in general, it is required that results are reproducible, so that they can be independently verified. Benchmarking is no exception to this rule.
@@ -301,11 +301,11 @@ When it comes to evaluating systems' performance, it is crucial that the compari
 	\item \textbf{Benchmarking code that contains bugs}: Sometimes, performance measurements can be influenced by bugs in the SUTs or in the code performing the benchmark. Bugs can lead to an unfair advantage by skipping a step of the benchmark workload or by only working with a specific dataset \cite{raasveldtFairBenchmarkingConsidered2018}.
 	
 	 
-	\item \textbf{Comparing systems that are fundamentally different}: Benchmark results can only be considered fair if they were obtained from systems that provide the same functionality. Otherwise, one of the systems might be given an unfair advantage by avoiding a set of constraints present in other systems. \citeauthor{raasveldtFairBenchmarkingConsidered2018} exemplify this by comparing a complete DBMS with an algorithm specialized in one task. The algorithm has an advantage because it takes fewer aspects into account than the DBMS \cite{raasveldtFairBenchmarkingConsidered2018}.
+	\item \textbf{Comparing systems that are fundamentally different}: Benchmark results can only be considered fair if they were obtained from systems that provide the same functionality. Otherwise, one of the systems might be given an unfair advantage by avoiding a set of constraints present in other systems. \citeauthor{raasveldtFairBenchmarkingConsidered2018} \cite{raasveldtFairBenchmarkingConsidered2018} exemplify this by comparing a complete DBMS with an algorithm specialized in one task. The algorithm has an advantage because it takes fewer aspects into account than the DBMS \cite{raasveldtFairBenchmarkingConsidered2018}.
 	
 	\item \textbf{Ignoring preprocessing time}: When running benchmarks, the SUTs often have to be initialized with the dataset used in benchmark's workload. This initialization can sometimes include preprocessing steps that a system executes to speed up performance of subsequent tasks. The example given in \cite{raasveldtFairBenchmarkingConsidered2018} mentions the creation of database indexes, which if ignored, might favor a system that has efficient, but slow-to-create, indexes.
 	
-	\item \textbf{Comparing "cold", "warm" and "hot" runs}: The concept of a "cold" run refers to executing a benchmark for the first time on a system for which no data has been cached on the host operating system yet. By contrast, subsequent runs of the benchmark are considered "hot", due to the creation of caches and other optimizations that the underlying operating systems might execute. \citeauthor{raasveldtFairBenchmarkingConsidered2018} also alert for "warm" runs, which can occur when the SUT is restarted to perform a "cold" run, but caches are still present in the OS memory \cite{raasveldtFairBenchmarkingConsidered2018}.
+	\item \textbf{Comparing "cold", "warm" and "hot" runs}: The concept of a "cold" run refers to executing a benchmark for the first time on a system for which no data has been cached on the host operating system yet. By contrast, subsequent runs of the benchmark are considered "hot", due to the creation of caches and other optimizations that the underlying operating systems might execute. \citeauthor{raasveldtFairBenchmarkingConsidered2018} \cite{raasveldtFairBenchmarkingConsidered2018} also alert for "warm" runs, which can occur when the SUT is restarted to perform a "cold" run, but caches are still present in the OS memory \cite{raasveldtFairBenchmarkingConsidered2018}.
 	
 \end{enumerate}
 

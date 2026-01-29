@@ -137,6 +137,76 @@
       \verb https://iceberg.apache.org/rest-catalog-spec/
       \endverb
     \endentry
+    \entry{arasuLinearRoadStream2004}{inproceedings}{}{}
+      \name{author}{8}{}{%
+        {{hash=9952b8e81a51db35f393b5fa1ee431c2}{%
+           family={Arasu},
+           familyi={A\bibinitperiod},
+           given={Arvind},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5af078892bdea1a4ee89aa291e8aa82c}{%
+           family={Cherniack},
+           familyi={C\bibinitperiod},
+           given={Mitch},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5851c1cba7eff0651957a1628fcfc89a}{%
+           family={Galvez},
+           familyi={G\bibinitperiod},
+           given={Eduardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=44d2e85095769540b86df536eb7fb7d4}{%
+           family={Maier},
+           familyi={M\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4aef57aaf4ac1a9728f0f10c19ad1376}{%
+           family={Maskey},
+           familyi={M\bibinitperiod},
+           given={Anurag\bibnamedelima S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=aac5db82bc3b72604728cac0c6b49284}{%
+           family={Ryvkina},
+           familyi={R\bibinitperiod},
+           given={Esther},
+           giveni={E\bibinitperiod}}}%
+        {{hash=9a603143e19a2dddd58e683838417ea3}{%
+           family={Stonebraker},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3c4340d70178922f3840b282e23fbfe1}{%
+           family={Tibbetts},
+           familyi={T\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Toronto, Canada}%
+      }
+      \list{publisher}{1}{%
+        {VLDB Endowment}%
+      }
+      \strng{namehash}{5e295c8e41f070048534a1c745e25eb5}
+      \strng{fullhash}{0e5b23b686afd61826d60c67ce4d57a3}
+      \strng{fullhashraw}{0e5b23b686afd61826d60c67ce4d57a3}
+      \strng{bibnamehash}{5e295c8e41f070048534a1c745e25eb5}
+      \strng{authorbibnamehash}{5e295c8e41f070048534a1c745e25eb5}
+      \strng{authornamehash}{5e295c8e41f070048534a1c745e25eb5}
+      \strng{authorfullhash}{0e5b23b686afd61826d60c67ce4d57a3}
+      \strng{authorfullhashraw}{0e5b23b686afd61826d60c67ce4d57a3}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the thirtieth international conference on very large data bases - volume 30}
+      \field{isbn}{0-12-088469-0}
+      \field{note}{Number of pages: 12}
+      \field{series}{Vldb '04}
+      \field{title}{Linear road: a stream data management benchmark}
+      \field{year}{2004}
+      \field{pages}{480\bibrangedash 491}
+      \range{pages}{12}
+    \endentry
     \entry{armbrust_delta_2020}{article}{}{}
       \name{author}{21}{}{%
         {{hash=8eafad8289b06f72c2e8b7caf80a413a}{%
@@ -1525,6 +1595,85 @@
       \verb{url}
       \verb https://www.cloudflare.com/learning/cloud/what-is-a-data-lake/
       \endverb
+    \endentry
+    \entry{yueSurveyStreamProcessing2025}{incollection}{}{}
+      \name{author}{3}{}{%
+        {{hash=e2f0827196a62417e633c39cb8c3fb59}{%
+           family={Yue},
+           familyi={Y\bibinitperiod},
+           given={Wang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e535c4d1c7a1761f39a4beb5fa062e58}{%
+           family={Boissier},
+           familyi={B\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=681ed6e42b7764a3f61a49230afb9dce}{%
+           family={Rabl},
+           familyi={R\bibinitperiod},
+           given={Tilmann},
+           giveni={T\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=eda0c65e61d71da3d72b5185cafc56ae}{%
+           family={Nambiar},
+           familyi={N\bibinitperiod},
+           given={Raghunath},
+           giveni={R\bibinitperiod}}}%
+        {{hash=82c65f7a34b4f4e1b6af3ed791ee2f11}{%
+           family={Poess},
+           familyi={P\bibinitperiod},
+           given={Meikel},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Cham}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature Switzerland}%
+      }
+      \strng{namehash}{1e76db055da1839e22f6a9eb7924fadf}
+      \strng{fullhash}{de67fd0ea5a03e34e87aedcf16ae2fc2}
+      \strng{fullhashraw}{de67fd0ea5a03e34e87aedcf16ae2fc2}
+      \strng{bibnamehash}{de67fd0ea5a03e34e87aedcf16ae2fc2}
+      \strng{authorbibnamehash}{de67fd0ea5a03e34e87aedcf16ae2fc2}
+      \strng{authornamehash}{1e76db055da1839e22f6a9eb7924fadf}
+      \strng{authorfullhash}{de67fd0ea5a03e34e87aedcf16ae2fc2}
+      \strng{authorfullhashraw}{de67fd0ea5a03e34e87aedcf16ae2fc2}
+      \strng{editorbibnamehash}{16aa0479093bf0f4b000a20136e6484d}
+      \strng{editornamehash}{f0bb3ae3333ea27d04b2cd4bebb18470}
+      \strng{editorfullhash}{16aa0479093bf0f4b000a20136e6484d}
+      \strng{editorfullhashraw}{16aa0479093bf0f4b000a20136e6484d}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Performance {Evaluation} and {Benchmarking}}
+      \field{isbn}{978-3-031-93857-3 978-3-031-93858-0}
+      \field{month}{7}
+      \field{note}{Series Title: Lecture Notes in Computer Science}
+      \field{title}{A {Survey} of {Stream} {Processing} {System} {Benchmarks}}
+      \field{urlday}{12}
+      \field{urlmonth}{9}
+      \field{urlyear}{2025}
+      \field{volume}{15337}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \field{pages}{24\bibrangedash 43}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1007/978-3-031-93858-0_2
+      \endverb
+      \verb{urlraw}
+      \verb https://link.springer.com/10.1007/978-3-031-93858-0_2
+      \endverb
+      \verb{url}
+      \verb https://link.springer.com/10.1007/978-3-031-93858-0_2
+      \endverb
+      \keyw{Read}
     \endentry
   \enddatalist
 \endrefsection

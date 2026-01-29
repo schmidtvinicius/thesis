@@ -1,15 +1,17 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'thesis.blg'
-[61] biber:342> INFO - === Wed Jan 28, 2026, 16:11:39
-[72] Biber.pm:421> INFO - Reading 'thesis.bcf'
-[131] Biber.pm:1002> INFO - Found 35 citekeys in bib section 0
-[141] Biber.pm:4487> INFO - Processing section 0
-[147] Biber.pm:4678> INFO - Looking for bibtex file 'bibliography.bib' for section 0
-[149] bibtex.pm:1713> INFO - LaTeX decoding ...
-[193] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
-[401] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[401] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[401] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[401] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[427] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[437] bbl.pm:779> INFO - Output to thesis.bbl
+[59] biber:342> INFO - === Thu Jan 29, 2026, 16:33:20
+[71] Biber.pm:421> INFO - Reading 'thesis.bcf'
+[133] Biber.pm:1002> INFO - Found 37 citekeys in bib section 0
+[143] Biber.pm:4487> INFO - Processing section 0
+[150] Biber.pm:4678> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[151] bibtex.pm:1713> INFO - LaTeX decoding ...
+[196] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
+[417] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[417] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[417] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[417] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[445] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[456] bbl.pm:779> INFO - Output to thesis.bbl
+[456] Biber.pm:132> WARN - ISBN '978-3-031-93857-3 978-3-031-93858-0' in entry 'yueSurveyStreamProcessing2025' is invalid - run biber with '--validate_datamodel' for details.
+[456] Biber.pm:134> INFO - WARNINGS: 1

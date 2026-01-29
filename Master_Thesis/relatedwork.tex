@@ -3,31 +3,31 @@
 \section{Benchmarking lakehouses}
 Lakehouses are a novel technology when compared to the more established DBMSs like PostgreSQL or MySQL. Therefore, not many studies have been published evaluating the performance of open table formats. For that reason, we focus on two notable works in this section: LHBench \cite{paras_jain_analyzing_2023} and LST-Bench \cite{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024}. 
 
-\citeauthor{paras_jain_analyzing_2023} present a comparison between three prominent lakehouse technologies, namely Apache Iceberg, Delta Lake and Apache Hudi. Their benchmark, LHBench, consists of a combination of the TPC-DS benchmark \cite{TPCBENCHMARKDS2024} and a few other micro benchmarks. Although the authors focused on the performance of lakehouses when reading data,
-% TODO: explain only relevant results.
- For each lakehouse system, the authors evaluated
-\begin{enumerate*}[label=(\roman*), ref=\roman*]
-	\item the performance of loading data in bulk and querying that data,
-	\item the performance difference between copy-on-write \cite[Section~2.3]{paras_jain_analyzing_2023} and merge-on-read \cite[Section~2.3]{paras_jain_analyzing_2023} update strategies, and
-	\item distributed metadata processing.
-\end{enumerate*}
+The authors in \cite{paras_jain_analyzing_2023} leverage the TPC-DS benchmark \cite{TPCBENCHMARKDS2024} to evaluate three lakehouse systems, namely Apache Iceberg, Delta Lake and Apache Hudi\footnote{Hudi is another open table format that we excluded from this thesis due to the lack of a dedicated catalog for it.}. Although the authors focused on query performance of lakehouses when reading data, they also presented some results for insert operations. They looked at the creation time of TPC-DS tables with 3 TB of bulk data. Their results show that Iceberg and Delta have similar loading times around 2,700 and 2,300 seconds respectively, whereas Hudi takes around 20,000 seconds to load all the data. They attribute this difference to Hudi performing more preprocessing at insertion than Delta and Iceberg. The authors performed a second experiment where they loaded 100 GB of TPC-DS data into each lakehouse and the results were proportional to the first experiment: Delta took around 420 seconds, Iceberg took around 320 seconds and Hudi took upwards of 2400 seconds to load all the data. It is important to stress that these experiments were run on Spark\footnote{\url{https://spark.apache.org/}} clusters of 16 workers, each with 8 virtual CPUs and 61 GB of memory \cite{paras_jain_analyzing_2023}.
 
-An interesting finding of this study is that Delta had faster write performance than 
+\citeauthor{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024} \cite{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024} presented LST-Bench, which also uses the TPC-DS benchmark, but extends it to include workloads that measure specific characteristics of lakehouses. For instance, the authors looked at the impact that merging many data files into fewer, larger files had on read performance. They also looked at how \textit{not} performing those merge operations can degrade metrics such as CPU usage, memory consumption and disk I/O. Their findings show that merging data files significantly helps maintain performance of Delta Lake and Iceberg, whereas Hudi, again, did not benefit so much from those merge operations. This result agrees with \cite{paras_jain_analyzing_2023}, as discussed previously. Furthermore, \citeauthor{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024} \cite{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024} showed that not merging data files can degrade the performance up to $6.8\times$ \cite{camacho-rodriguezLSTBenchBenchmarkingLogStructured2024}. Finally, they also utilized clusters of 17 nodes, where each node consisted of 8 virtual CPUs and 64 GB of memory.
 
+Both papers, though quite comprehensive in their analyses, do not investigate the performance of writing streams of data into lakehouses. To the best of our knowledge, no other work has been done on that regard either. Therefore, we will address that gap in this thesis.
+
+\section{Common streaming benchmark patterns}
+\citeauthor{yueSurveyStreamProcessing2025} \cite{yueSurveyStreamProcessing2025} performed an extensive survey of benchmarks of SPEs, focusing on four characteristics: \begin{enumerate*}[label*=(\roman*)]
+	\item Dataset type,
+	\item data ingestion method,
+	\item SUT,
+	\item metrics collected
+\end{enumerate*}. We focus here on dataset type, the data ingestion method and metrics collected. The SUTs mentioned in \cite{yueSurveyStreamProcessing2025} are not relevant, since our thesis does not look at the performance of SPEs.
+
+\subsection{Dataset type}
+As \citeauthor{yueSurveyStreamProcessing2025} \cite[Table~2]{yueSurveyStreamProcessing2025} show in their paper, datasets are classified into either synthetic or real-world data. Their results indicate that there is a relatively even usage of both types of datasets. In cases where a synthetic dataset is used, e.g. the Linear Road benchmark \cite{arasuLinearRoadStream2004}, it is due to the benchmark workload requiring a specific schema for the data. Another example, though not mentioned in \cite{yueSurveyStreamProcessing2025}, is the PGVal benchmark \cite{tahirHowReliableAre2024}, which required a deterministic dataset of web server logs, so the authors had to generate their own data.
+
+In terms of real-word data, \citeauthor{yueSurveyStreamProcessing2025} \cite{yueSurveyStreamProcessing2025} found a variety of datasets in the compiled benchmarks. These datasets include IoT sensor data, Twitter data, network traffic data, e-commerce data, online game data, etc.
+
+\subsection{Data ingestion}
+The vast majority of benchmarks gathered in \cite{yueSurveyStreamProcessing2025} make use of Apache Kafka\footnote{\url{https://kafka.apache.org/}} to ingest data. Kafka is 
+
+\subsection{Metrics}
 
 % In 2016 Han Veiga and Eickhoff collected a dataset of 850 authentic English-speaking users across Twitter, Instagram and Foursquare~\cite{OSN}. Blablabla.
-
-% Read related paper and write a 3-5 paragraph summary of each on. This will serve as a good basis for the related work section.
-
-% The authors of the paper highlight some of common pitfalls when benchmarking database systems. They did this by reviewing relevant literature about best practices and recommendations for both benchmarking in general and benchmarking of DBMSes. This review resulted in a list of eight different pitfalls that can occur during DBMS benchmarking. The pitfalls listed in the paper include: 
-% \begin{enumerate*}[label=(\roman*), ref=\roman*]
-%     \item reporting non-reproducible results; 
-%     \item sub-optimally configuring systems; 
-%     \item benchmarking code that contains bugs, 
-%     \item overly-optimizing a system solely for improving benchmark results, 
-%     \item comparing systems that are fundamentally different and 
-%     \item making the benchmark experiments non-reproducible.
-% \end{enumerate*}
 
 % \section{Metrics}
 
