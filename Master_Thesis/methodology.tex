@@ -1,3 +1,18 @@
 \chapter{Methodology}\label{ch:methodology}
+In this chapter we discuss the implementation of our benchmarking tool. We combine techniques used in previous works with characteristics that we believe to be well-suited for working with lakehouse formats. We also go over the experimental setup, making sure to include as many details to facilitate reproducibility of our results.
+
+\section{Metrics}
+% TODO: Mention that we also collect the amount of events produced, how many times the consumer waited for new messages, which client was used to write data, and how long it took to flush inlined data.
+
+\subsection{Throughput}
 
 In terms of running time, \cite{henningShuffleBenchBenchmarkLargeScale2024} has a pretty nice approach, where they run each experiment for 15 minutes and repeat it three times. I think I could adopt this approach as well. \cite{henningTheodoliteScalabilityBenchmarking2021} does 5 minutes per experiment where the first minute is considered "warm up". \cite{agnihotriPDSPbenchBenchmarkingSystem2024} does runs of three minutes three times. \cite{hesseESPBenchEnterpriseStream2021} uses runs of 5 minutes.
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/benchmark-architecture.png}
+	\caption{Overview of the components in our benchmarking tool.}
+	\label{fig:benchmark-architecture}
+\end{figure}

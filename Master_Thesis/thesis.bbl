@@ -137,6 +137,20 @@
       \verb https://iceberg.apache.org/rest-catalog-spec/
       \endverb
     \endentry
+    \entry{ApacheKafka2025}{misc}{}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{title}{Apache {Kafka}}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/apache/kafka
+      \endverb
+      \verb{url}
+      \verb https://github.com/apache/kafka
+      \endverb
+    \endentry
     \entry{arasuLinearRoadStream2004}{inproceedings}{}{}
       \name{author}{8}{}{%
         {{hash=9952b8e81a51db35f393b5fa1ee431c2}{%
@@ -1423,9 +1437,6 @@
       \verb{doi}
       \verb 10.14778/3712221.3712227
       \endverb
-      \verb{file}
-      \verb /home/vinicius/Zotero/storage/RU6GW3VX/Tahir et al. - 2024 - How Reliable are Streams End-to-End Processing-Guarantee Validation and Performance Benchmarking of.pdf
-      \endverb
       \keyw{Priority}
     \endentry
     \entry{tathagatadasDelta20Foundation2022}{misc}{}{}
@@ -1594,6 +1605,57 @@
       \endverb
       \verb{url}
       \verb https://www.cloudflare.com/learning/cloud/what-is-a-data-lake/
+      \endverb
+    \endentry
+    \entry{yangMicroscopicTrafficSimulator1996}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b6e35b8a05cb3f13b2e01015fac3aea0}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Qi},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=e789cc3882f98f5571f1de75bdd6a694}{%
+           family={Koutsopoulos},
+           familyi={K\bibinitperiod},
+           given={Haris\bibnamedelima N.},
+           giveni={H\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{63b69b0f7548a5e5970dd75dd0644ac7}
+      \strng{fullhash}{f20766acdc4af800c4c7c916e09e6c2d}
+      \strng{fullhashraw}{f20766acdc4af800c4c7c916e09e6c2d}
+      \strng{bibnamehash}{f20766acdc4af800c4c7c916e09e6c2d}
+      \strng{authorbibnamehash}{f20766acdc4af800c4c7c916e09e6c2d}
+      \strng{authornamehash}{63b69b0f7548a5e5970dd75dd0644ac7}
+      \strng{authorfullhash}{f20766acdc4af800c4c7c916e09e6c2d}
+      \strng{authorfullhashraw}{f20766acdc4af800c4c7c916e09e6c2d}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0968090X}
+      \field{journaltitle}{Transportation Research Part C: Emerging Technologies}
+      \field{month}{6}
+      \field{number}{3}
+      \field{title}{A {Microscopic} {Traffic} {Simulator} for evaluation of dynamic traffic management systems}
+      \field{urlday}{30}
+      \field{urlmonth}{1}
+      \field{urlyear}{2026}
+      \field{volume}{4}
+      \field{year}{1996}
+      \field{urldateera}{ce}
+      \field{pages}{113\bibrangedash 129}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1016/S0968-090X(96)00006-X
+      \endverb
+      \verb{urlraw}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S0968090X9600006X
+      \endverb
+      \verb{url}
+      \verb https://linkinghub.elsevier.com/retrieve/pii/S0968090X9600006X
       \endverb
     \endentry
     \entry{yueSurveyStreamProcessing2025}{incollection}{}{}

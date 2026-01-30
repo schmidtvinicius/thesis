@@ -2,6 +2,8 @@
 
 % TODO: Mention that lakehouses (or log structure table formats) are merely a specification and rely on specific implementations to be used, e.g. Spark's implementation of Delta and Iceberg, delta-rs and PyIceberg are all implementations of the spec. In this case, Spark is a query engine, while the other two are libraries that enable interaction with the tables through client APIs. This distinction is especially relevant when comparing the table formats, since it's not fair to compare the performance of a query engine with a client library. 
 
+% TODO: Maybe mention what Parquet is and what the different compression options are, since they are the only relevant config that we will tune in our experiments.
+
 Before we can develop our benchmark, we need to first understand how lakehouses work and which characteristics are relevant to the goal of this thesis. We will look at Iceberg and Delta Lake (Sections \ref{sec:lakehouse-iceberg} and \ref{sec:lakehouse-delta}), which are the two most popular and more mature lakehouse formats based on GitHub stars count and initial release date respectively \cite{thedeltalakeprojectauthorsDeltaLake2026, Iceberg2025}. Moreover, we will look at DuckLake, which brings innovative and relevant features for our research (discussed in Section \ref{sec:lakehouse-ducklake}), despite it still being in version 0.3.
 
 This chapter will also go over the definitions of data stream and throughput, as well as guidelines on performing fair benchmarking.
@@ -285,7 +287,7 @@ One feature that sets DuckLake apart from Delta and Iceberg is the so-called "da
 \section{Data streams}\label{sec:data-streams}
 A data stream can be defined as data that is produced by one or more sources continuously and thus, is considered unbounded \cite{tylerakidauStreaming101World2015, fragkoulisSurveyEvolutionStream2024}. Examples of data streams are measurements produced by IoT sensors, web server logs and network traffic data. Another key characteristic of stream data is the presence of at least one timestamp, which is assigned when the data point, i.e. event, is produced or processed by a system \cite{fragkoulisSurveyEvolutionStream2024}.
 
-\subsection{Throughput}
+\subsection{Throughput}\label{sec:throughput}
 When benchmarking streaming processing engines (SPEs), a common metric used is the system's throughput \cite{karimovBenchmarkingDistributedStream2018, tahirHowReliableAre2024, henningShuffleBenchBenchmarkLargeScale2024}. This metric can be defined as the amount of events that the system under test (SUT) can process in a given unit of time \cite{karimovBenchmarkingDistributedStream2018, tahirHowReliableAre2024}.
 
 \section{Benchmarking}\label{sec:benchmarking}
