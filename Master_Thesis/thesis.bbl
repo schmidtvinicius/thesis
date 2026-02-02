@@ -19,53 +19,24 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
-    \entry{agnihotriPDSPbenchBenchmarkingSystem2024}{unpublished}{}{}
-      \name{author}{5}{}{%
-        {{hash=a2ecefb341b481e11fcfedf86da5c14d}{%
-           family={Agnihotri},
-           familyi={A\bibinitperiod},
-           given={Pratyush},
-           giveni={P\bibinitperiod}}}%
-        {{hash=c9fcd625ae60d3b6ca3cb3d376ebbb02}{%
-           family={Koldehofe},
-           familyi={K\bibinitperiod},
-           given={Boris},
-           giveni={B\bibinitperiod}}}%
-        {{hash=580cd9f35c9900ddc0c9f32b81c30345}{%
-           family={Heinrich},
-           familyi={H\bibinitperiod},
-           given={Roman},
-           giveni={R\bibinitperiod}}}%
-        {{hash=49248cdf8355c6d096189e2667358696}{%
-           family={Binnig},
-           familyi={B\bibinitperiod},
-           given={Carsten},
-           giveni={C\bibinitperiod}}}%
-        {{hash=b726381489366ccd2782209a80489a70}{%
-           family={Luthra},
-           familyi={L\bibinitperiod},
-           given={Manisha},
-           giveni={M\bibinitperiod}}}%
-      }
+    \entry{ApacheArrowFrequently}{misc}{}{}
       \list{language}{1}{%
-        {en}%
+        {English}%
       }
-      \strng{namehash}{7e61e39b7d45307bf691cec8a40545db}
-      \strng{fullhash}{478cca980ea2ac5ea57a4c9a4c51eac7}
-      \strng{fullhashraw}{478cca980ea2ac5ea57a4c9a4c51eac7}
-      \strng{bibnamehash}{478cca980ea2ac5ea57a4c9a4c51eac7}
-      \strng{authorbibnamehash}{478cca980ea2ac5ea57a4c9a4c51eac7}
-      \strng{authornamehash}{7e61e39b7d45307bf691cec8a40545db}
-      \strng{authorfullhash}{478cca980ea2ac5ea57a4c9a4c51eac7}
-      \strng{authorfullhashraw}{478cca980ea2ac5ea57a4c9a4c51eac7}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accepted at TPCTC}
-      \field{title}{{PDSP}-bench: a benchmarking system for parallel and distributed stream processing}
-      \field{year}{2024}
-      \keyw{Read}
+      \field{title}{Apache {Arrow} - {Frequently} {Asked} {Questions}}
+      \field{urlday}{2}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://arrow.apache.org/faq/
+      \endverb
+      \verb{url}
+      \verb https://arrow.apache.org/faq/
+      \endverb
     \endentry
     \entry{apacheicebergReliability}{misc}{}{}
       \name{author}{1}{}{%
@@ -489,6 +460,27 @@
       \endverb
       \keyw{Read}
     \endentry
+    \entry{DuckDBDocumentationLakehouse2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{{DuckDB} {Documentation} - {Lakehouse} {Formats}}
+      \field{urlday}{2}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://blobs.duckdb.org/docs/duckdb-docs.pdf
+      \endverb
+      \verb{url}
+      \verb https://blobs.duckdb.org/docs/duckdb-docs.pdf
+      \endverb
+    \endentry
     \entry{DucklakeDocumentationChoosing2025}{misc}{}{}
       \list{language}{1}{%
         {English}%
@@ -845,78 +837,6 @@
       \endverb
       \verb{url}
       \verb https://dl.acm.org/doi/10.1145/3629526.3645036
-      \endverb
-      \keyw{Priority}
-    \endentry
-    \entry{hesseESPBenchEnterpriseStream2021}{inproceedings}{}{}
-      \name{author}{5}{}{%
-        {{hash=e653cd828245e0465bce11e95e3223bd}{%
-           family={Hesse},
-           familyi={H\bibinitperiod},
-           given={Guenter},
-           giveni={G\bibinitperiod}}}%
-        {{hash=94ae246e092d517ab8702774ffcf1899}{%
-           family={Matthies},
-           familyi={M\bibinitperiod},
-           given={Christoph},
-           giveni={C\bibinitperiod}}}%
-        {{hash=c5b443d9951f44dc9d07482f09fa1013}{%
-           family={Perscheid},
-           familyi={P\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-        {{hash=78cb4607915516443a771715447a51c9}{%
-           family={Uflacker},
-           familyi={U\bibinitperiod},
-           given={Matthias},
-           giveni={M\bibinitperiod}}}%
-        {{hash=06532fdd8e4deefd635af65774c6cf2b}{%
-           family={Plattner},
-           familyi={P\bibinitperiod},
-           given={Hasso},
-           giveni={H\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {en}%
-      }
-      \list{location}{1}{%
-        {Virtual Event France}%
-      }
-      \list{publisher}{1}{%
-        {ACM}%
-      }
-      \strng{namehash}{2445613af5288db7129df72ffa11cc8d}
-      \strng{fullhash}{58bde1cca09295e305bddda274dbbf14}
-      \strng{fullhashraw}{58bde1cca09295e305bddda274dbbf14}
-      \strng{bibnamehash}{58bde1cca09295e305bddda274dbbf14}
-      \strng{authorbibnamehash}{58bde1cca09295e305bddda274dbbf14}
-      \strng{authornamehash}{2445613af5288db7129df72ffa11cc8d}
-      \strng{authorfullhash}{58bde1cca09295e305bddda274dbbf14}
-      \strng{authorfullhashraw}{58bde1cca09295e305bddda274dbbf14}
-      \field{sortinit}{H}
-      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{booktitle}{Proceedings of the {ACM}/{SPEC} {International} {Conference} on {Performance} {Engineering}}
-      \field{isbn}{978-1-4503-8194-9}
-      \field{month}{4}
-      \field{shorttitle}{{ESPBench}}
-      \field{title}{{ESPBench}: {The} {Enterprise} {Stream} {Processing} {Benchmark}}
-      \field{urlday}{15}
-      \field{urlmonth}{9}
-      \field{urlyear}{2025}
-      \field{year}{2021}
-      \field{urldateera}{ce}
-      \field{pages}{201\bibrangedash 212}
-      \range{pages}{12}
-      \verb{doi}
-      \verb 10.1145/3427921.3450242
-      \endverb
-      \verb{urlraw}
-      \verb https://dl.acm.org/doi/10.1145/3427921.3450242
-      \endverb
-      \verb{url}
-      \verb https://dl.acm.org/doi/10.1145/3427921.3450242
       \endverb
       \keyw{Priority}
     \endentry
