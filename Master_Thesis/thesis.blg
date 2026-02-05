@@ -1,17 +1,17 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'thesis.blg'
-[57] biber:342> INFO - === Mon Feb  2, 2026, 16:32:24
-[69] Biber.pm:421> INFO - Reading 'thesis.bcf'
-[129] Biber.pm:1002> INFO - Found 39 citekeys in bib section 0
-[139] Biber.pm:4487> INFO - Processing section 0
-[145] Biber.pm:4678> INFO - Looking for bibtex file 'bibliography.bib' for section 0
-[147] bibtex.pm:1713> INFO - LaTeX decoding ...
-[193] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
-[407] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[407] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[407] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[408] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[436] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
-[447] bbl.pm:779> INFO - Output to thesis.bbl
-[447] Biber.pm:132> WARN - ISBN '978-3-031-93857-3 978-3-031-93858-0' in entry 'yueSurveyStreamProcessing2025' is invalid - run biber with '--validate_datamodel' for details.
-[447] Biber.pm:134> INFO - WARNINGS: 1
+[45] biber:342> INFO - === Tue Feb  3, 2026, 14:53:36
+[57] Biber.pm:421> INFO - Reading 'thesis.bcf'
+[120] Biber.pm:1002> INFO - Found 43 citekeys in bib section 0
+[130] Biber.pm:4487> INFO - Processing section 0
+[136] Biber.pm:4678> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[138] bibtex.pm:1713> INFO - LaTeX decoding ...
+[187] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
+[413] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[413] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[413] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[413] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[442] bbl.pm:676> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[454] bbl.pm:779> INFO - Output to thesis.bbl
+[454] Biber.pm:132> WARN - ISBN '978-3-031-93857-3 978-3-031-93858-0' in entry 'yueSurveyStreamProcessing2025' is invalid - run biber with '--validate_datamodel' for details.
+[454] Biber.pm:134> INFO - WARNINGS: 1

@@ -29,16 +29,19 @@
 \contentsline {subsection}{\numberline {3.2.1}Dataset type}{18}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Data ingestion}{19}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Metrics}{19}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Throughput}{19}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.4}Throughput}{20}{subsection.3.2.4}%
 \contentsline {chapter}{\numberline {4}Methodology}{21}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Benchmark design}{21}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Dataset}{22}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.1}Dataset}{21}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Data ingestion}{22}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Data format}{22}{subsection.4.1.3}%
 \contentsline {subsection}{\numberline {4.1.4}Lakehouses}{22}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Metrics}{23}{subsection.4.1.5}%
 \contentsline {section}{\numberline {4.2}Experimental setup}{23}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Results}{24}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Discussion}{25}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Limitations}{25}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{26}{chapter.7}%
-\contentsline {chapter}{\numberline {A}}{32}{appendix.A}%
+\contentsline {subsection}{\numberline {4.2.1}Configuration}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Hardware}{24}{subsection.4.2.2}%
+\contentsline {chapter}{\numberline {5}Results}{26}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Discussion}{27}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Limitations}{27}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{28}{chapter.7}%
+\contentsline {chapter}{\numberline {A}}{34}{appendix.A}%

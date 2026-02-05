@@ -35,7 +35,7 @@ Iceberg was developed in 2017 at Netflix and in 2018 it was released as an open-
 %     \item \textbf{Deletion vectors}: Introduced in Iceberg table spec V3, deletion vectors replace positional delete files by keeping track of deleted rows of a data file in a bitmap \cite{apacheicebergIcebergTableSpec}. Each vector is associated with one data file, where each bit of the bitmap has the same position as its corresponding row in the data file.
 % \end{itemize}
 
-\subsubsection{Metadata layer}
+\subsubsection{Metadata layer}\label{sec:iceberg-metadata}
 
 Besides the data layer, there is the metadata layer, which keeps track of the data files locations, the version history of the table, as well as its current schema. The files in the metadata layer are:
 

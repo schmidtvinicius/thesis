@@ -38,6 +38,25 @@
       \verb https://arrow.apache.org/faq/
       \endverb
     \endentry
+    \entry{ApacheArrowStreaming}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeltitlesource}{title}
+      \field{title}{Apache {Arrow} - {Streaming}, {Serialization}, and {IPC}}
+      \field{urlday}{3}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://arrow.apache.org/docs/python/ipc.html
+      \endverb
+      \verb{url}
+      \verb https://arrow.apache.org/docs/python/ipc.html
+      \endverb
+    \endentry
     \entry{apacheicebergReliability}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=d95d2a8ab0e5a7fc4cb0e3e954bb31c9}{%
@@ -626,6 +645,34 @@
       \verb https://link.springer.com/10.1007/s00778-023-00819-8
       \endverb
     \endentry
+    \entry{giampaolorodolaPsutil2026}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=06a2fb36031bd7ce1e5426337a0bd6cf}{%
+           family={{Giampaolo Rodola}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{fullhash}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{fullhashraw}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{bibnamehash}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{authorbibnamehash}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{authornamehash}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{authorfullhash}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \strng{authorfullhashraw}{06a2fb36031bd7ce1e5426337a0bd6cf}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{psutil}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://github.com/giampaolo/psutil
+      \endverb
+      \verb{url}
+      \verb https://github.com/giampaolo/psutil
+      \endverb
+    \endentry
     \entry{guillermosanchezDuckLake03Iceberg2025}{misc}{}{}
       \name{author}{2}{}{%
         {{hash=159c96b79b34b12ca22086b8982685e6}{%
@@ -1077,6 +1124,34 @@
       \verb https://vldb.org/cidrdb/2021/lakehouse-a-new-generation-of-open-platforms-that-unify-data-warehousing-and-advanced-analytics.html
       \endverb
     \endentry
+    \entry{opensource@google.comSnappy2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=c16cca8e8ff55fe38cef154fc71e6a9e}{%
+           family={{opensource@google.com}},
+           familyi={o\bibinitperiod}}}%
+      }
+      \strng{namehash}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{fullhash}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{fullhashraw}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{bibnamehash}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{authorbibnamehash}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{authornamehash}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{authorfullhash}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \strng{authorfullhashraw}{c16cca8e8ff55fe38cef154fc71e6a9e}
+      \field{sortinit}{o}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{snappy}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://github.com/google/snappy
+      \endverb
+      \verb{url}
+      \verb https://github.com/google/snappy
+      \endverb
+    \endentry
     \entry{paras_jain_analyzing_2023}{inproceedings}{}{}
       \name{author}{6}{}{%
         {{hash=1deab85192bb95f88e6cec0102d8ca14}{%
@@ -1395,6 +1470,39 @@
       \endverb
       \verb{url}
       \verb https://delta.io/blog/2022-08-02-delta-2-0-the-foundation-of-your-data-lake-is-open/
+      \endverb
+    \endentry
+    \entry{taxi&limousinecomissionTLCTripRecord}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=5a496b1af848a52a1925bf7445e34dc3}{%
+           family={{Taxi \& Limousine Comission}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{fullhash}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{fullhashraw}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{bibnamehash}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{authorbibnamehash}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{authornamehash}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{authorfullhash}{5a496b1af848a52a1925bf7445e34dc3}
+      \strng{authorfullhashraw}{5a496b1af848a52a1925bf7445e34dc3}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{TLC} {Trip} {Record} {Data}}
+      \field{urlday}{3}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+      \endverb
+      \verb{url}
+      \verb https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
       \endverb
     \endentry
     \entry{thedeltalakeprojectauthorsDeltaLake2026}{misc}{}{}

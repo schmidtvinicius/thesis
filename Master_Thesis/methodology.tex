@@ -11,15 +11,15 @@ In this chapter we discuss the implementation of our benchmarking tool. We go ov
 \end{figure}
 
 \subsection{Dataset}
-Our benchmark uses the NYC taxi dataset\footnote{\url{https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page}}, which is publicly available. We use specifically the trip data of yellow taxi cabs during 2025, totaling 1.2 GB split across 12 files (one for each month). This dataset provides a good representation of real-world stream data, since taxi trips are constantly occurring. Further, the dataset can be easily extended to include data from previous years, in case there is the need to scale up the benchmark.
+Our benchmark uses the TLC Trip Record Data \cite{taxi&limousinecomissionTLCTripRecord}, which is a publicly available dataset of taxi trips in New York City. We use specifically the trip data of yellow taxi cabs during November 2025, totaling 4,181,444 trip records. This dataset provides a good representation of real-world stream data, since taxi trips are constantly occurring. Further, the dataset can be easily extended to include data from previous years, in case there is the need to scale up the benchmark.
 
-As a preprocessing step, we added a single column to the dataset with an integer id for each trip. This helps us collect statistics for each trip processed by our system and it also increases reproducibility of our results.
+As a preprocessing step, we added a single column to the dataset with an integer id for each trip. This helps us track statistics for each trip processed by our system and it also increases reproducibility of our results.
 
 \subsection{Data ingestion}
-Following the approach of previous works, we ingest the dataset into a Kafka broker instance, using the Kafka Python client API\footnote{\url{https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html}}. Producing the data happens in a separate Python process, so that our benchmark can consume those events independently. For reproducibility purposes, the broker runs in a Docker container.
+Following the approach of previous works, we ingest the dataset into a Kafka broker instance, using the Kafka Python client API\footnote{\url{https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html}}. For reproducibility purposes, the broker runs in a Docker container. A single topic is created for the events being produced and we delete that topic after every experiment, to ensure we do not mix events from different runs. The Kafka producer runs in a separate Python process, so that our benchmark can consume the Kafka events independently.
 
 \subsection{Data format}
-We use the Arrow format for data representation in our benchmark. Apache Arrow\footnote{\url{https://arrow.apache.org/}} is a standardized, in-memory columnar format, which facilitates data exchange between systems that implement the format. The columnar layout of Arrow data also makes it very efficient for writing it in Parquet format \cite{ApacheArrowFrequently}. Furthermore, the Arrow specification includes an inter-process communication (IPC) mechanism, which can be used to stream arrow data while avoiding the use of serialization or extra copies to/from the in-memory Arrow layout. Therefore, we use the IPC mechanism for producing data to the Kafka broker, so that the consumer can read it as Arrow data directly.
+We use the Arrow format for data representation in our benchmark. Apache Arrow\footnote{\url{https://arrow.apache.org/}} is a standardized, in-memory columnar format, which facilitates data exchange between systems implementing it. The columnar layout of Arrow data also makes it very efficient for writing it in Parquet format \cite{ApacheArrowFrequently}. Furthermore, the Arrow specification includes an inter-process communication (IPC) mechanism \cite{ApacheArrowStreaming}, which can be used to stream arrow data while avoiding the use of serialization or extra copies to/from the in-memory Arrow layout. Therefore, we use the IPC mechanism for producing data to the Kafka broker, so that the consumer can read it as Arrow data directly.
 
 \subsection{Lakehouses}
 Our benchmark can interact with the different lakehouse systems in two ways. The default way uses a dedicated library\footnote{\href{https://py.iceberg.apache.org/}{PyIceberg}, \href{https://delta-io.github.io/delta-rs/}{delta-rs} and \href{https://duckdb.org/}{DuckDB}} for each system, which is optimized for that specific lakehouse format and is compatible with Arrow data. Alternatively, the benchmark can be run with DuckDB as the client for all three lakehouse formats, since it has first-class support for all three formats \cite{DuckDBDocumentationLakehouse2025}. In both cases, the client used to interact with the lakehouse is considered part of SUT and is reported explicitly for clarity of results.
@@ -27,6 +27,49 @@ Our benchmark can interact with the different lakehouse systems in two ways. The
 Additionally, all catalog servers are run on Docker containers, so that the benchmark can be run on any machine, thus contributing to reproducibility of experiments. The only exception is when using DuckDB as a catalog for DuckLake. In that case, the catalog is stored in a local file. This combination is only used when running experiments that involve the "data inlining" feature (Section \ref{sec:ducklake-inlining}).
 
 \subsection{Metrics}
-All metrics are stored in a local database for further analysis. Measuring the throughput of a system is as simple as calculating the ratio of events processed by each system in the given running time. In addition, we collect the time taken to write each event into the lakehouse, so we can see if writing times are consistent throughout the experiment. In terms of 
+All collected metrics are stored in a local database for further analysis. The throughput is calculated as the number of events written to the given lakehouse system, divided by the total number of seconds that the experiment was executed. In addition, the following metrics are collected:
+
+\begin{itemize}
+	\item Time taken to read each event from the Kafka broker: We expect read times to be low and consistent, since our benchmark reads events one at a time. Nonetheless, we collect this data to ensure that reading the data does not cause any bottlenecks in our experiments.
+	
+	\item Time taken to write each event to the lakehouse table: On top of looking at the throughput, we analyze the individual writing time of each event to see if systems can keep consistent writing times.
+	
+	\item CPU usage: We run a separate Python thread that collects the total CPU usage percentage every second. For that, we use the \verb*|psutil| \cite{giampaolorodolaPsutil2026} Python library.
+	
+	\item Disk I/O: Similar to CPU usage, we collect the amount of bytes written to the machine's main disk at a one-second interval. \verb*|psutil| returns the total amount of bytes written since system startup, which strictly increases over time. Instead, we focus on the difference in bytes written between every second, so we can relate the average number of bytes written per second with the throughput of each system. We also collect the time spent writing data to disk 
+\end{itemize}
+
 
 \section{Experimental setup}
+Combining the approaches in \cite{henningTheodoliteScalabilityBenchmarking2021, henningShuffleBenchBenchmarkLargeScale2024}, we perform three runs of five minutes for each lakehouse, where we consider the first run to be cold and the others to be hot. To ensure cold runs, we restart the machine running the experiments after the three runs for each lakehouse. 
+
+Regarding the lakehouse systems evaluated, we only evaluate Iceberg and DuckLake. During the setup of our experiments, we encountered a bug in the \verb*|delta-rs| library, which prevents access to tables through Unity Catalog. We opened a GitHub issue\footnote{\url{https://github.com/delta-io/delta-rs/issues/3966}} for this, but as of writing this thesis, the problem has not been solved yet. Although it is still possible to access and write to Delta tables without Unity Catalog, we believe this would give an unfair advantage to Delta, since the other two systems are connected to catalogs.
+
+\subsection{Configuration}
+For DuckLake and Iceberg we use the default configuration of each system, except for the Parquet compression codec and the number of threads used by each system. We set the former to use the snappy \cite{opensource@google.comSnappy2025} algorithm, which provides fast compression speeds. We explicitly set the number of threads to 1, since our benchmark inserts a single event in the SUT each time. Even in the case of Iceberg, where multiple metadata files are written at every insert, these files must be written sequentially, because each metadata file holds a reference to another data- or metadata file below it (Section \ref{sec:iceberg-metadata}). We confirmed this by running some initial tests, where we noticed no increase in the number of events inserted to the lakehouse table when going from 1 to 16 threads. In fact, in the case of DuckLake, there was a significant decrease in the number of events inserted, as shown in Figure \ref{label}.
+
+%TODO: Insert figure comparing DuckLake with 1 thread vs 16 threads.
+
+In addition, we perform runs using both the native client for each lakehouse and DuckDB. This will give us insight into how much impact each client implementation has on the performance of the different lakehouse formats.
+
+When running experiments with the inlining feature of DuckLake enabled, we set the write threshold to be 2 elements, since we are writing events one by one to the table.
+
+\subsection{Hardware}
+All experiments were executed on a local machine for which the hardware specification can be found in Table \ref{tab:hardware-specs}. We believe that running experiments locally significantly reduces complexity and noise that would otherwise be present in a cloud environment.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		OS & Linux Mint 22.3 - Cinnamon 64-bit \\
+		\hline
+		CPU & \makecell{AMD Ryzen 7 5700U 1.8 GHz base clock \\ 8 cores and 16 threads} \\
+		\hline
+		Memory & $2\times$ 8 GB DDR4 @ 1600 MHz \\
+		\hline
+		SSD & \makecell{Intel 660p 1 TB NVMe M.2 \\ Up to 1,800 MB/s for sequential writes \\ Up to 220,000 IOPS for random writes}\\
+		\hline
+	\end{tabular}
+	\caption{Overview of the hardware specs used for running our benchmark}
+	\label{tab:hardware-specs}
+\end{table}
