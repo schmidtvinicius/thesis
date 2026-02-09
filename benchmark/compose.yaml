@@ -1,5 +1,4 @@
 services:
-
   postgres:
     image: postgres:latest
     environment:
@@ -9,18 +8,18 @@ services:
       POSTGRES_INITDB_ARGS: "--encoding UTF8 --data-checksums"
     ports:
       - "5432:5432"
-    healthcheck:
-      test: "pg_isready -U postgres"
-      interval: 5s
-      timeout: 10s
-      retries: 5
-
+    # healthcheck:
+    #   test: "pg_isready -U postgres"
+    #   interval: 5s
+    #   timeout: 10s
+    #   retries: 5
+      
   kafka:
-    image: apache/kafka:4.1.0
+    image: apache/kafka:latest
     # environment:
       # TOPIC: ${KAFKA_TOPIC}
       # BOOTSTRAP_SERVER: ${KAFKA_BOOTSTRAP_SERVERS}
     ports:
       - 9092:9092
-    post_start:
-      - command: /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic ${KAFKA_TOPIC} --bootstrap-server ${KAFKA_BOOTSTRAP_SERVERS}
+    # post_start:
+    #   - command: /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic ${KAFKA_TOPIC} --bootstrap-server ${KAFKA_BOOTSTRAP_SERVERS}
