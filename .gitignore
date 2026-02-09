@@ -257,4 +257,4 @@ train.csv
 
 # Iceberg stuff
 polaris-main/
-iceberg/default/
+iceberg/default
