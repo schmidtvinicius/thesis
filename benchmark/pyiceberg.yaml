@@ -1,0 +1,12 @@
+# max-workers: 10
+
+# write.parquet.compression-codec: uncompressed
+
+# catalog:
+#   default:
+#     type: rest
+#     uri: http://localhost:8181/api/catalog
+#     credential: root:s3cr3t
+#     warehouse: iceberg_catalog
+#     scope: PRINCIPAL_ROLE:ALL
+#     py-io-impl: pyiceberg.io.pyarrow.PyArrowFileIO
