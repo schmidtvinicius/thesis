@@ -248,6 +248,7 @@ data_files/
 *.duckdb
 *.ducklake
 *.parquet
+ducklake/data
 
 # Delta stuff
 spark-warehouse/
@@ -256,3 +257,4 @@ train.csv
 
 # Iceberg stuff
 polaris-main/
+iceberg/default/
