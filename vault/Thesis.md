@@ -37,5 +37,4 @@
 ### Resources
 - [Radboud clusters](https://wiki.icis-intra.cs.ru.nl/Cluster#Access_to_Cluster_Resources)
 - [Spark on Docker](https://karlchris.github.io/data-engineering/projects/spark-docker/)
-- 
 
