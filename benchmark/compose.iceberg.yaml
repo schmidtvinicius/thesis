@@ -13,7 +13,7 @@ services:
       - "--credential=${POLARIS_REALM},${POLARIS_CLIENT_ID},${POLARIS_SECRET}"
     depends_on:
       postgres:
-        condition: service_healthy
+        condition: service_started
 
   polaris:
     image: apache/polaris:latest
@@ -30,33 +30,30 @@ services:
       QUARKUS_DATASOURCE_JDBC_URL: $QUARKUS_DATASOURCE_JDBC_URL
       QUARKUS_DATASOURCE_USERNAME: $QUARKUS_DATASOURCE_USERNAME
       QUARKUS_DATASOURCE_PASSWORD: $QUARKUS_DATASOURCE_PASSWORD
-      QUARKUS_LOG_LEVEL: $QUARKUS_LOG_LEVEL 
-      QUARKUS_LOG_CONSOLE_JSON_ENABLED: $QUARKUS_LOG_CONSOLE_JSON_ENABLED
-      QUARKUS_LOG_FILE_JSON_ENABLED: $QUARKUS_LOG_FILE_JSON_ENABLED 
       POLARIS_REALM_CONTEXT_REALMS: $POLARIS_REALM
       QUARKUS_OTEL_SDK_DISABLED: $QUARKUS_OTEL_SDK_DISABLED
       POLARIS_BOOTSTRAP_CREDENTIALS: POLARIS,$POLARIS_CLIENT_ID,$POLARIS_SECRET
       polaris.features."ALLOW_INSECURE_STORAGE_TYPES": $POLARIS_FEATURES_ALLOW_INSECURE_STORAGE_TYPES
       polaris.features."SUPPORTED_CATALOG_STORAGE_TYPES": $POLARIS_FEATURES_SUPPORTED_CATALOG_STORAGE_TYPES
       polaris.readiness.ignore-severe-issues: $POLARIS_READINESS_IGNORE_SEVERE_ISSUES
-    healthcheck:
-      test: ["CMD", "curl", "http://localhost:8182/q/health"]
-      interval: 2s
-      timeout: 10s
-      retries: 10
-      start_period: 10s
+    # healthcheck:
+    #   test: ["CMD", "curl", "http://localhost:8182/q/health"]
+    #   interval: 2s
+    #   timeout: 10s
+    #   retries: 10
+    #   start_period: 10s
+    volumes:
+      - ${ROOT_DIR}/iceberg:${ROOT_DIR}/iceberg
     depends_on:
       polaris-bootstrap:
         condition: service_completed_successfully
       postgres:
-        condition: service_healthy
+        condition: service_started
 
   polaris-setup:
     image: alpine/curl
     environment:
-      # STORAGE_LOCATION: $ICEBERG_STORAGE_LOCATION
-      # - AWS_ROLE_ARN=${AWS_ROLE_ARN}
-      # - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      ICEBERG_STORAGE_LOCATION: $ICEBERG_STORAGE_LOCATION
       REALM: $POLARIS_REALM
       CLIENT_ID: $POLARIS_CLIENT_ID
       CLIENT_SECRET: $POLARIS_SECRET
@@ -65,5 +62,5 @@ services:
       - ${ASSETS_PATH}/polaris/:/polaris
     entrypoint: '/bin/sh -c "chmod +x /polaris/create-catalog.sh && /polaris/create-catalog.sh"'
     depends_on:
-      polaris:
-        condition: service_healthy
+      - polaris
+        # condition: service_healthy
