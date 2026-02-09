@@ -29,24 +29,31 @@ TOKEN=${2:-""}
 
 BASEDIR=$(dirname $0)
 
-if [ -z "$TOKEN" ]; then
-  source $BASEDIR/obtain-token.sh
-fi
+# if [ -z "$TOKEN" ]; then
+#   source $BASEDIR/obtain-token.sh
+# fi
+
+while [ -z "$TOKEN" ]
+do
+    sleep 3
+    echo "Trying to get token..."
+    source $BASEDIR/obtain-token.sh
+done
 
 echo
 echo "Obtained access token: ${TOKEN}"
 
 STORAGE_TYPE="FILE"
-if [ -z "${STORAGE_LOCATION}" ]; then
+if [ -z "${ICEBERG_STORAGE_LOCATION}" ]; then
     echo "STORAGE_LOCATION is not set, using FILE storage type"
-    STORAGE_LOCATION="file:///var/tmp/$CATALOG_NAME/"
+    ICEBERG_STORAGE_LOCATION="file:///var/tmp/$CATALOG_NAME/"
 else
-    echo "STORAGE_LOCATION is set to '$STORAGE_LOCATION'"
-    if [[ "$STORAGE_LOCATION" == s3* ]]; then
+    echo "STORAGE_LOCATION is set to '$ICEBERG_STORAGE_LOCATION'"
+    if [[ "$ICEBERG_STORAGE_LOCATION" == s3* ]]; then
         STORAGE_TYPE="S3"
-    elif [[ "$STORAGE_LOCATION" == gs* ]]; then
+    elif [[ "$ICEBERG_STORAGE_LOCATION" == gs* ]]; then
         STORAGE_TYPE="GCS"
-    elif [[ "$STORAGE_LOCATION" == file* ]]; then
+    elif [[ "$ICEBERG_STORAGE_LOCATION" == file* ]]; then
         STORAGE_TYPE="FILE"
     else
         STORAGE_TYPE="AZURE"
@@ -55,7 +62,7 @@ else
 fi
 
 if [ -z "${STORAGE_CONFIG_INFO}" ]; then
-    STORAGE_CONFIG_INFO="{\"storageType\": \"$STORAGE_TYPE\", \"allowedLocations\": [\"$STORAGE_LOCATION\"]}"
+    STORAGE_CONFIG_INFO="{\"storageType\": \"$STORAGE_TYPE\", \"allowedLocations\": [\"$ICEBERG_STORAGE_LOCATION\"]}"
 
     if [[ "$STORAGE_TYPE" == "S3" ]]; then
         STORAGE_CONFIG_INFO=$(echo "$STORAGE_CONFIG_INFO" | jq --arg roleArn "$AWS_ROLE_ARN" '. + {roleArn: $roleArn}')
@@ -73,7 +80,7 @@ PAYLOAD='{
      "type": "INTERNAL",
      "readOnly": false,
      "properties": {
-       "default-base-location": "'$STORAGE_LOCATION'"
+       "default-base-location": "'$ICEBERG_STORAGE_LOCATION'"
      },
      "storageConfigInfo": '$STORAGE_CONFIG_INFO'
    }
