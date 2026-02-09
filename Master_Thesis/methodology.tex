@@ -46,13 +46,20 @@ Combining the approaches in \cite{henningTheodoliteScalabilityBenchmarking2021, 
 Regarding the lakehouse systems evaluated, we only evaluate Iceberg and DuckLake. During the setup of our experiments, we encountered a bug in the \verb*|delta-rs| library, which prevents access to tables through Unity Catalog. We opened a GitHub issue\footnote{\url{https://github.com/delta-io/delta-rs/issues/3966}} for this, but as of writing this thesis, the problem has not been solved yet. Although it is still possible to access and write to Delta tables without Unity Catalog, we believe this would give an unfair advantage to Delta, since the other two systems are connected to catalogs.
 
 \subsection{Configuration}
-For DuckLake and Iceberg we use the default configuration of each system, except for the Parquet compression codec and the number of threads used by each system. We set the former to use the snappy \cite{opensource@google.comSnappy2025} algorithm, which provides fast compression speeds. We explicitly set the number of threads to 1, since our benchmark inserts a single event in the SUT each time. Even in the case of Iceberg, where multiple metadata files are written at every insert, these files must be written sequentially, because each metadata file holds a reference to another data- or metadata file below it (Section \ref{sec:iceberg-metadata}). We confirmed this by running some initial tests, where we noticed no increase in the number of events inserted to the lakehouse table when going from 1 to 16 threads. In fact, in the case of DuckLake, there was a significant decrease in the number of events inserted, as shown in Figure \ref{label}.
+For DuckLake and Iceberg we use the default configuration of each system, except for the Parquet compression codec and the number of threads used by each system. We set the former to use the snappy \cite{opensource@google.comSnappy2025} algorithm, which provides fast compression speeds. We explicitly set the number of threads to 1, since our benchmark inserts a single event in the SUT each time. Even in the case of Iceberg, where multiple metadata files are written at every insert, these files must be written sequentially, because each metadata file holds a reference to another data- or metadata file below it (Figure \ref{fig:iceberg-architecture}). We confirmed there is no benefit to using multiple threads by running some initial tests, where we noticed no increase in the number of events inserted to the lakehouse table when going from 1 to 16 threads. In fact, in the case of DuckLake, there was a significant decrease in the number of events inserted, as shown in Figure \ref{fig:initial-thread-comparison}.
 
 %TODO: Insert figure comparing DuckLake with 1 thread vs 16 threads.
 
 In addition, we perform runs using both the native client for each lakehouse and DuckDB. This will give us insight into how much impact each client implementation has on the performance of the different lakehouse formats.
 
-When running experiments with the inlining feature of DuckLake enabled, we set the write threshold to be 2 elements, since we are writing events one by one to the table.
+Finally, when running experiments with the inlining feature of DuckLake enabled, we set the write threshold to be 2 elements, since we are writing events one by one to the table.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/initial-thread-comparison.eps}
+	\caption{Overview of the components in our benchmarking tool.}
+	\label{fig:initial-thread-comparison}
+\end{figure}
 
 \subsection{Hardware}
 All experiments were executed on a local machine for which the hardware specification can be found in Table \ref{tab:hardware-specs}. We believe that running experiments locally significantly reduces complexity and noise that would otherwise be present in a cloud environment.

@@ -39,7 +39,7 @@
 \contentsline {subsection}{\numberline {4.1.5}Metrics}{23}{subsection.4.1.5}%
 \contentsline {section}{\numberline {4.2}Experimental setup}{23}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Configuration}{24}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Hardware}{24}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.2}Hardware}{25}{subsection.4.2.2}%
 \contentsline {chapter}{\numberline {5}Results}{26}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Discussion}{27}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Limitations}{27}{section.6.1}%
