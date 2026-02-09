@@ -1,91 +1,96 @@
 import argparse
 import asyncio
+import multiprocessing
 import os
-from types import LambdaType
-import pyarrow as pa
 import threading
 import time
 
-from benchmark.dataset import Dataset
-from benchmark.kafka_interface import KafkaInterface
-from dotenv import load_dotenv
-from multiprocessing import Process
-
 # This needs to happens before we import pyiceberg, otherwise, it doesn't know about the variables in the .env file
+from dotenv import load_dotenv
 load_dotenv()
 
-from benchmark.arrow_interface.arrow_interface import ArrowInterface
-from benchmark.arrow_interface.ducklake_interface import DuckLakeInterface
-from benchmark.arrow_interface.iceberg_interface import IcebergInterface
-
-TABLE_SCHEMA = pa.schema([
-    pa.field("id", pa.string(), nullable=False),
-    pa.field("vendor_id", pa.int32(), nullable=False),
-    pa.field("passenger_count", pa.int32(), nullable=False),
-    pa.field("trip_duration", pa.int32(), nullable=False),
-    pa.field("pickup_datetime", pa.timestamp("s", tz="America/New_York"), nullable=False)
-])
+from benchmark.arrow_interface import ArrowInterface, DuckLakeInterface, IcebergInterface, IcebergDuckDBInterface
+from benchmark.dataset import Dataset
+from benchmark.kafka_interface import KafkaInterface
+from benchmark.metrics import collect_hardware_metrics
+from benchmark.results import setup_results_db, save_results
 
 
 def get_args():
     parser = argparse.ArgumentParser()
-    # parser.add_argument("--dataset", help="The path to a dataset")
-    # parser.add_argument("--format", choices=ALLOWED_FORMATS, required=False,)
-    parser.add_argument("--write-batch-size", type=int, default=1)
-    # parser.add_argument("--total-events", type=int, help="The number of events to generate")
-    parser.add_argument("--lakehouse", choices=["iceberg", "delta", "ducklake", "all"], default="ducklake")
+    parser.add_argument("--minutes", type=int, default=5, help="The time in minutes each experiment should run for")
+    parser.add_argument("--lakehouse", choices=["iceberg", "ducklake", "all"], default="ducklake")
     parser.add_argument("--client", choices=["native", "duckdb"], default="native", help="The Python client used to interact with each table format.")
     return parser.parse_args()
         
 
-async def run_experiment(
+async def run_experiments(
         lakehouses: list[ArrowInterface],
         kafka_interface: KafkaInterface,
-        topic: str,
         dataset: Dataset,
-        total_events: int, 
-        write_batch_size: int = 1):
+        topic: str,
+        total_minutes: int):
             
-    experiments = {"experiment": [], "dataset": []}
     total_start_time = time.perf_counter()
-    for i, lakehouse in enumerate(lakehouses):
-        experiments["experiment"].append(f"Experiment_{i}")
-        await kafka_interface.create_topic(topic)
-        stop_event = threading.Event()
-        p1 = Process(target=kafka_interface.produce, args=(topic, dataset, total_events))
-        p1.start()
-        kafka_interface.consume_and_write(topic, lakehouse, total_events, dataset.schema, write_batch_size)
-        p1.join()
-        await kafka_interface.delete_topic(topic)
-        # lakehouse.write_to_table(table)
+    for lakehouse in lakehouses:
+        for i in range(3):
+            lakehouse.create_table()
+            await kafka_interface.create_topic(topic)
+            stop_event_p = multiprocessing.Event()
+            stop_event_t = threading.Event()
+            events_produced = multiprocessing.Value("i", 0)
+            cpu_percentage = []
+            bytes_written = []
+            write_times = []
+            try:
+                p1 = multiprocessing.Process(target=kafka_interface.produce, args=(topic, dataset, events_produced, stop_event_p))
+                t1 = threading.Thread(target=collect_hardware_metrics, args=(cpu_percentage, bytes_written, write_times, stop_event_t))
+                p1.start()
+                t1.start()
+                exp_duration_ns, waiting, flush_inlined_duration, event_stats = kafka_interface.consume_and_write(topic, lakehouse, str(i), total_minutes)
+                stop_event_t.set()
+                stop_event_p.set()
+                # p1.join()
+            finally:
+                p1.join()
+                t1.join()
+            await kafka_interface.delete_topic(topic)
+            results_start = time.perf_counter()
+            save_results(
+                str(lakehouse)+f"-{i}",
+                lakehouse.client,
+                exp_duration_ns,
+                events_produced.value,
+                flush_inlined_duration,
+                waiting,
+                event_stats,
+                cpu_percentage,
+                bytes_written,
+                write_times
+            )
+            results_end = time.perf_counter()
+            print(f"took {results_end - results_start} to save results")
+            lakehouse.delete_table()
     total_end_time = time.perf_counter()
+    print(f"Finished all experiments! The total time was {total_end_time - total_start_time} seconds.")
 
 
 async def main():
-    from confluent_kafka import Producer
-    from datetime import datetime
-    import json
-    total_events = 100_000
     args = get_args()
-    dataset = Dataset()
     kafka_interface = KafkaInterface(os.getenv("KAFKA_BOOTSTRAP_SERVERS"))
+    dataset = Dataset(os.getenv("DATASET_PATH"))
+    setup_results_db(os.getenv("SQL_INIT_PATH"), os.getenv("RESULTS_PATH"))
 
-    # start_time = datetime.now()
-    # kafka_interface.produce(os.getenv("KAFKA_TOPIC"), dataset, total_events, threading.Event())
-    # end_time = datetime.now()
-    # print(f"Took {(end_time - start_time).total_seconds()} seconds to produce {total_events} events")
-    # return
-        
     if args.lakehouse == "all":
-        lakehouses = [IcebergInterface(table_schema=dataset.schema), DuckLakeInterface(dataset.schema)]
+        lakehouses = [IcebergInterface() if args.client == "native" else IcebergDuckDBInterface(), DuckLakeInterface()]
     elif args.lakehouse == "iceberg":
-        lakehouses = [IcebergInterface(table_schema=dataset.schema)]
+        lakehouses = [IcebergInterface() if args.client == "native" else IcebergDuckDBInterface()]
     elif args.lakehouse == "ducklake":
-        lakehouses = [DuckLakeInterface(table_schema=dataset.schema)]
+        lakehouses = [DuckLakeInterface()]
     else:
         raise NotImplementedError
-    experiment_stats = vars(args)
-    await run_experiment(lakehouses, kafka_interface, os.getenv("KAFKA_TOPIC"), dataset, total_events, args.write_batch_size)
+    
+    await run_experiments(lakehouses, kafka_interface, dataset, os.getenv("KAFKA_TOPIC"), total_minutes=args.minutes)
 
 
 if __name__ == "__main__":
