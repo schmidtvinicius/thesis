@@ -1,1 +1,91 @@
 \chapter{Results}\label{ch:results}
+\section{Total events written}
+Figure \ref{fig:total-individual-events-written} shows how many events were written to each lakehouse table. We can see that the first run of each SUT performed slightly better, before stabilizing at lower levels in the subsequent warm runs. Therefore, we focus on results from warm runs throughout the rest of this thesis. Other results can be found in Appendix \ref{ch:additional-results}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/total-individual-events-written.eps}
+	\caption{Number of events written to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm.}
+	\label{fig:total-individual-events-written}
+\end{figure}
+
+Looking at the amount of events written to the different SUTs in Figure \ref{fig:total-individual-events-written}, we can see that DuckLake had a much higher throughput than Iceberg. Using DuckDB did improve Iceberg's performance, but it was nonetheless much lower than DuckLake's.
+
+Focusing now on the first warm run of each SUT, we see from Figure \ref{fig:box-bytes-written-individual} that DuckLake was often able to write more bytes per second than Iceberg, which is in line with the total events written, shown in Figure \ref{fig:total-individual-events-written}. We can also see from Table \ref{tab:median-iqr-box-bytes-individual} that the median number of bytes written to DuckLake with DuckDB was about an order of magnitude larger than that of Iceberg with PyIceberg. In addition, Iceberg + PyIceberg seems to have a more unstable rate of bytes/second, which is reflected by the highest interquartile range, i.e. spread, presented in Table \ref{tab:median-iqr-box-bytes-individual}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/box-bytes-written-individual.eps}
+	\caption{Box plots of bytes written to disk, measured using psutil, during the first warm run of each SUT. The measurements were taken at intervals of 1 second.}
+	\label{fig:box-bytes-written-individual}
+\end{figure}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{SUT} & \textbf{Median (MB)} & \textbf{IQR (MB)} \\
+		\hline
+		\hline
+		DuckLake & 2.154 & 0.502 \\
+		\hline
+		Iceberg (PyIceberg) & 0.291 & 0.594 \\
+		\hline
+		DuckLake + Inlining & 1.204 & 0.193 \\
+		\hline
+		Iceberg (DuckDB) & 0.459 & 0.380 \\
+		\hline
+	\end{tabular}
+	\caption{Median and interquartile range of the box plots presented in Figure \ref{fig:box-bytes-written-individual}.}
+	\label{tab:median-iqr-box-bytes-individual}
+\end{table}
+
+\section{Write and read times}
+Looking at Figure \ref{fig:box-write-times-individual}, we can again see that DuckLake is more stable at writing individual events than Iceberg + PyIceberg, based on the difference in the spread between them. Using Iceberg with DuckDB produces a smaller spread, and thus more consistent write times, but it is still around an order of magnitude slower than both DuckLake runs. The median write times of each SUT are consistent with their respective amount of bytes and events written (Figures \ref{fig:box-bytes-written-individual} and \ref{fig:total-individual-events-written}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/box-write-times-individual.eps}
+	\caption{Time spent writing individual events to the lakehouse tables during the first warm run. The measurements were taken using time.perf\_counter\_ns.}
+	\label{fig:box-write-times-individual}
+\end{figure}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{SUT} & \textbf{Median (ms)} & \textbf{IQR (ms)} \\
+		\hline
+		\hline
+		DuckLake & 9.889 & 0.667 \\
+		\hline
+		Iceberg (PyIceberg) & 346.208 & 341.194 \\
+		\hline
+		DuckLake + Inlining & 9.169 & 0.711 \\
+		\hline
+		Iceberg (DuckDB) & 124.303 & 22.650 \\
+		\hline
+	\end{tabular}
+	\caption{Median and interquartile range of the box plots presented in Figure \ref{fig:box-write-times-individual}.}
+	\label{tab:median-iqr-box-write-times-individual}
+\end{table}
+
+Another effect that 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/scatter-write-times-ducklake-vs-iceberg.eps}
+	\caption{Time spent writing individual events to the lakehouse tables during the first warm run. The measurements were taken using time.perf\_counter\_ns.}
+	\label{fig:scatter-write-times-ducklake-vs-iceberg}
+\end{figure}
+
+
+The box plots in Figure \ref{fig:box-read-times-individual} go over the time spent reading each individual event from the Kafka broker. We can see that the median read times of DuckLake runs were slightly higher than Iceberg's, but read times were overall lower than 1 millisecond, where most times were between 0.1 and 0.2 ms. These measurements let us know that no system had an advantage over others due to inconsistent read times.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/box-read-times-individual.eps}
+	\caption{Time spent reading individual events from Kafka during the first warm run of each SUT. The measurements were taken using time.perf\_counter\_ns.}
+	\label{fig:box-read-times-individual}
+\end{figure}
+

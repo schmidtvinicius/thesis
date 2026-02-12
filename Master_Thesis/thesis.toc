@@ -41,7 +41,9 @@
 \contentsline {subsection}{\numberline {4.2.1}Configuration}{24}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Hardware}{25}{subsection.4.2.2}%
 \contentsline {chapter}{\numberline {5}Results}{26}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Discussion}{27}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Limitations}{27}{section.6.1}%
-\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{28}{chapter.7}%
-\contentsline {chapter}{\numberline {A}}{34}{appendix.A}%
+\contentsline {section}{\numberline {5.1}Total events written}{26}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Write and read times}{27}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Discussion}{30}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Limitations}{30}{section.6.1}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{31}{chapter.7}%
+\contentsline {chapter}{\numberline {A}Additional results}{37}{appendix.A}%
