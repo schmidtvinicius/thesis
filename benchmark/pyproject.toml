@@ -13,7 +13,7 @@ dependencies = [
     "pandas>=2.3.3",
     "psutil>=7.2.2",
     "pyarrow>=22.0.0",
-    "pyiceberg[pyarrow,sql-postgres,sql-sqlite]>=0.10.0",
+    "pyiceberg[pyarrow,sql-postgres,sql-sqlite,snappy]>=0.10.0",
     "pyspark>=4.0.1",
 ]
 

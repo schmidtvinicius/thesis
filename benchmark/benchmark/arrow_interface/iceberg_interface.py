@@ -38,7 +38,10 @@ class IcebergInterface(ArrowInterface):
     
 
     def create_table(self):
-        self.table = self.catalog.create_table_if_not_exists((self.catalog_namespace,os.getenv("TABLE_NAME")), schema=SCHEMA, properties={"write.parquet.compression-codec": os.getenv("PARQUET_COMPRESSION")})
+        self.table = self.catalog.create_table_if_not_exists(
+                                    (self.catalog_namespace,os.getenv("TABLE_NAME")), 
+                                    schema=SCHEMA, 
+                                    properties={"write.parquet.compression-codec": os.getenv("PARQUET_COMPRESSION")})
     
 
     def delete_table(self):

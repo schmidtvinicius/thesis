@@ -18,6 +18,7 @@ from benchmark.results import setup_results_db, save_results
 
 def get_args():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--batch-write-size", default=1, type=int, help="The number of events to accumulate before writing them to the table")
     parser.add_argument("--minutes", type=int, default=5, help="The time in minutes each experiment should run for")
     parser.add_argument("--lakehouse", choices=["iceberg", "ducklake", "all"], default="ducklake")
     parser.add_argument("--client", choices=["native", "duckdb"], default="native", help="The Python client used to interact with each table format.")
@@ -29,12 +30,17 @@ async def run_experiments(
         kafka_interface: KafkaInterface,
         dataset: Dataset,
         topic: str,
-        total_minutes: int):
+        total_minutes: int,
+        batch_write_size: int):
             
     total_start_time = time.perf_counter()
     for lakehouse in lakehouses:
         for i in range(3):
-            lakehouse.create_table()
+            if isinstance(lakehouse, DuckLakeInterface):
+                lakehouse.create_table(batch_write_size)
+            else:
+                lakehouse.create_table()
+                
             await kafka_interface.create_topic(topic)
             stop_event_p = multiprocessing.Event()
             stop_event_t = threading.Event()
@@ -47,7 +53,10 @@ async def run_experiments(
                 t1 = threading.Thread(target=collect_hardware_metrics, args=(cpu_percentage, bytes_written, write_times, stop_event_t))
                 p1.start()
                 t1.start()
-                exp_duration_ns, waiting, flush_inlined_duration, event_stats = kafka_interface.consume_and_write(topic, lakehouse, str(i), total_minutes)
+                if batch_write_size > 1:
+                    exp_duration_ns, waiting, flush_inlined_duration, event_stats = kafka_interface.consume_and_write_batches(topic, lakehouse, str(i), total_minutes, batch_write_size)
+                else:
+                    exp_duration_ns, waiting, flush_inlined_duration, event_stats = kafka_interface.consume_and_write(topic, lakehouse, str(i), total_minutes)
                 stop_event_t.set()
                 stop_event_p.set()
                 # p1.join()
@@ -66,7 +75,8 @@ async def run_experiments(
                 event_stats,
                 cpu_percentage,
                 bytes_written,
-                write_times
+                write_times,
+                batch_write_size
             )
             results_end = time.perf_counter()
             print(f"took {results_end - results_start} to save results")
@@ -76,10 +86,28 @@ async def run_experiments(
 
 
 async def main():
+    import pyarrow as pa
+    from benchmark.dataset import SCHEMA
+    dataset = Dataset(os.getenv("DATASET_PATH"))
+    iceberg = IcebergInterface()
+    iceberg.create_table()
+
+    sink = pa.BufferOutputStream()
+    with pa.ipc.new_stream(sink, SCHEMA) as writer:
+        writer.write_batch(dataset.data.read_next_batch())
+
+    with pa.ipc.open_stream(sink.getvalue()) as reader:
+        event = reader.read_all()
+    
+    iceberg.write_to_table(event)
+
+    return
+
     args = get_args()
     kafka_interface = KafkaInterface(os.getenv("KAFKA_BOOTSTRAP_SERVERS"))
     dataset = Dataset(os.getenv("DATASET_PATH"))
     setup_results_db(os.getenv("SQL_INIT_PATH"), os.getenv("RESULTS_PATH"))
+
 
     if args.lakehouse == "all":
         lakehouses = [IcebergInterface() if args.client == "native" else IcebergDuckDBInterface(), DuckLakeInterface()]
@@ -90,7 +118,7 @@ async def main():
     else:
         raise NotImplementedError
     
-    await run_experiments(lakehouses, kafka_interface, dataset, os.getenv("KAFKA_TOPIC"), total_minutes=args.minutes)
+    await run_experiments(lakehouses, kafka_interface, dataset, os.getenv("KAFKA_TOPIC"), args.minutes, args.batch_write_size)
 
 
 if __name__ == "__main__":

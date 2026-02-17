@@ -31,12 +31,12 @@ class DuckLakeInterface(ArrowInterface):
         self.connection.close()
 
 
-    def create_table(self):
+    def create_table(self, batch_write_size: int):
         arrow_table = SCHEMA.empty_table()
         self.connection.execute(f"CREATE TABLE IF NOT EXISTS {self.table_name} AS FROM arrow_table;")
         self.connection.execute(f"CALL {self.catalog_name}.set_option('parquet_compression', '{os.getenv("PARQUET_COMPRESSION")}');")
         if self.inlining:
-            self.connection.execute(f"CALL {self.catalog_name}.set_option('data_inlining_row_limit', 2);")
+            self.connection.execute(f"CALL {self.catalog_name}.set_option('data_inlining_row_limit', {2*batch_write_size});")
 
     
     def write_to_table(self, data: pa.Table) -> int:
