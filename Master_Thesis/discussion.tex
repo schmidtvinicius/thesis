@@ -1,3 +1,25 @@
 \chapter{Discussion}\label{ch:discussion}
 
+% TODO: Mention that parquet files produced by PyIceberg were significantly bigger than DuckDB (8.2 kB vs 2.9 kB), even though both use snappy compression.
+
+\section{DuckDB vs. PyIceberg}
+We would first like to discuss the differences observed between DuckDB and PyIceberg, when running experiments with Iceberg. The difference in throughput between the two clients was considerably large when writing both individual events and batches of events.
+
+\subsection{Faster write operations}
+If we look at the experiments where events were written one by one to the Iceberg table, we see that Parquet files written by DuckDB are 2.9 kB in size, while PyIceberg produced files of 8.2 kB. This difference of almost $3\times$ in size is surprising, given that both clients were configured to use snappy compression (Section \ref{sec:configuration}). We believe this difference might be caused by PyIceberg not applying compression to files that contain few rows. Our reason for this claim is that when writing batches of 1,000 events, both DuckDB and PyIceberg produced Parquet files of similar size, ranging between 37 and 40 kB.
+
+We expect similar internal differences to be present in the implementation of DuckDB's and PyIceberg's JSON and Avro writers as well. For instance, Iceberg's metadata JSON files will grow larger with time because they contain all the data from previous metadata files. As a consequence, write times will increase after each append, as we observed in Figure \ref{fig:scatter-write-times-over-time-individual}. However, the write times of DuckDB increased at a much slower rate than PyIceberg's did. We believe this difference is thus linked to a more efficient implementation of DuckDB's metadata writer. This would also explain why DuckDB was still faster than PyIceberg when writing batches of 1,000 events, given that the Parquet file sizes were similar between both clients in that case.
+
+\section{Single events vs. batches}
+
+\subsection{Throughput}
+
+A consequence of this is that metadata files account for ,  
+
+For instance, when a new metadata file is added in Iceberg, it will contain the information of all previous metadata files in addition to the new snapshot data. This means that regardless of which client writes the files to Iceberg, the metadata JSON files will be the same and they will increase by the same amount, if the same events are added in the same order to Iceberg
+
+\subsection{Total bytes written}
+
+\subsection{Data inlining}
+
 \section{Limitations}

@@ -309,6 +309,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Data ingestion}{22}{subsection.4.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Data format}{22}{subsection.4.1.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Lakehouses}{22}{subsection.4.1.4}\protected@file@percent }
+\abx@aux@cite{0}{TimeTimeAccess}
+\abx@aux@segm{0}{0}{TimeTimeAccess}
 \abx@aux@cite{0}{giampaolorodolaPsutil2026}
 \abx@aux@segm{0}{0}{giampaolorodolaPsutil2026}
 \abx@aux@cite{0}{henningTheodoliteScalabilityBenchmarking2021}
@@ -320,6 +322,7 @@
 \abx@aux@cite{0}{opensource@google.comSnappy2025}
 \abx@aux@segm{0}{0}{opensource@google.comSnappy2025}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Configuration}{24}{subsection.4.2.1}\protected@file@percent }
+\newlabel{sec:configuration}{{4.2.1}{24}{Configuration}{subsection.4.2.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Overview of the components in our benchmarking tool.}}{24}{figure.caption.15}\protected@file@percent }
 \newlabel{fig:initial-thread-comparison}{{4.2}{24}{Overview of the components in our benchmarking tool}{figure.caption.15}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Hardware}{25}{subsection.4.2.2}\protected@file@percent }
@@ -329,36 +332,72 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ch:results}{{5}{26}{Results}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Total events written}{26}{section.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Number of events written to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm.}}{26}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:total-individual-events-written}{{5.1}{26}{Number of events written to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm}{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Box plots of bytes written to disk, measured using psutil, during the first warm run of each SUT. The measurements were taken at intervals of 1 second.}}{27}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:box-bytes-written-individual}{{5.2}{27}{Box plots of bytes written to disk, measured using psutil, during the first warm run of each SUT. The measurements were taken at intervals of 1 second}{figure.caption.18}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Median and interquartile range of the box plots presented in Figure \ref {fig:box-bytes-written-individual}.}}{27}{table.caption.19}\protected@file@percent }
-\newlabel{tab:median-iqr-box-bytes-individual}{{5.1}{27}{Median and interquartile range of the box plots presented in Figure \ref {fig:box-bytes-written-individual}}{table.caption.19}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Write and read times}{27}{section.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Time spent writing individual events to the lakehouse tables during the first warm run. The measurements were taken using time.perf\_counter\_ns.}}{28}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:box-write-times-individual}{{5.3}{28}{Time spent writing individual events to the lakehouse tables during the first warm run. The measurements were taken using time.perf\_counter\_ns}{figure.caption.20}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Median and interquartile range of the box plots presented in Figure \ref {fig:box-write-times-individual}.}}{28}{table.caption.21}\protected@file@percent }
-\newlabel{tab:median-iqr-box-write-times-individual}{{5.2}{28}{Median and interquartile range of the box plots presented in Figure \ref {fig:box-write-times-individual}}{table.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Time spent writing individual events to the lakehouse tables during the first warm run. The measurements were taken using time.perf\_counter\_ns.}}{29}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:scatter-write-times-ducklake-vs-iceberg}{{5.4}{29}{Time spent writing individual events to the lakehouse tables during the first warm run. The measurements were taken using time.perf\_counter\_ns}{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Time spent reading individual events from Kafka during the first warm run of each SUT. The measurements were taken using time.perf\_counter\_ns.}}{29}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:box-read-times-individual}{{5.5}{29}{Time spent reading individual events from Kafka during the first warm run of each SUT. The measurements were taken using time.perf\_counter\_ns}{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion}{30}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Writing events one by one}{26}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Total events written}{26}{subsection.5.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Number of events written one by one to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm.}}{26}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:total-individual-events-written}{{5.1}{26}{Number of events written one by one to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Boxplot of bytes written to disk at every second when inserting individual events to each SUT (warm run). The measurements were taken at intervals of 1 second.}}{27}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:box-bytes-written-individual}{{5.2}{27}{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (warm run). The measurements were taken at intervals of 1 second}{figure.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Median and interquartile range, in megabytes, of the box plots presented in Figure \ref {fig:box-bytes-written-individual}.}}{27}{table.caption.19}\protected@file@percent }
+\newlabel{tab:median-iqr-box-bytes-individual}{{5.1}{27}{Median and interquartile range, in megabytes, of the box plots presented in Figure \ref {fig:box-bytes-written-individual}}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Write times}{27}{subsection.5.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Box plots of the time spent writing each individual event to the lakehouse tables during the first warm run, in seconds.}}{28}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:box-write-times-individual}{{5.3}{28}{Box plots of the time spent writing each individual event to the lakehouse tables during the first warm run, in seconds}{figure.caption.20}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Median and interquartile range, in milliseconds, of the box plots presented in Figure \ref {fig:box-write-times-individual}.}}{28}{table.caption.21}\protected@file@percent }
+\newlabel{tab:median-iqr-box-write-times-individual}{{5.2}{28}{Median and interquartile range, in milliseconds, of the box plots presented in Figure \ref {fig:box-write-times-individual}}{table.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Scatter plot of time spent writing individual event to the lakehouse tables during the first warm run, in seconds.}}{29}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:scatter-write-times-over-time-individual}{{5.4}{29}{Scatter plot of time spent writing individual event to the lakehouse tables during the first warm run, in seconds}{figure.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces Time taken by each DuckLake + Inlining run to flush inlined data to a single Parquet file, in milliseconds.}}{29}{table.caption.23}\protected@file@percent }
+\newlabel{tab:times-flush-inlined-individual}{{5.3}{29}{Time taken by each DuckLake + Inlining run to flush inlined data to a single Parquet file, in milliseconds}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Read times}{29}{subsection.5.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}CPU usage}{29}{subsection.5.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Box plots of the time spent reading individual events from Kafka during the first warm run of each SUT, in seconds.}}{30}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:box-read-times-individual}{{5.5}{30}{Box plots of the time spent reading individual events from Kafka during the first warm run of each SUT, in seconds}{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces CPU usage percentage measured at every second throughout each run of writing individual events to SUTs.}}{30}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:cpu-usage-individual-events}{{5.6}{30}{CPU usage percentage measured at every second throughout each run of writing individual events to SUTs}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Writing events in batches of 1,000}{31}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Total events written}{31}{subsection.5.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Number of events written in batches of 1,000 to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm.}}{31}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:total-batched-events-written}{{5.7}{31}{Number of events written in batches of 1,000 to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm}{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Boxplot of bytes written to disk at every second when inserting individual events to each SUT (warm run). The measurements were taken at intervals of 1 second.}}{32}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:box-bytes-written-batched}{{5.8}{32}{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (warm run). The measurements were taken at intervals of 1 second}{figure.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces Median and interquartile range, in megabytes, of the box plots presented in Figure \ref {fig:box-bytes-written-batched}.}}{32}{table.caption.28}\protected@file@percent }
+\newlabel{tab:median-iqr-box-bytes-batched}{{5.4}{32}{Median and interquartile range, in megabytes, of the box plots presented in Figure \ref {fig:box-bytes-written-batched}}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Write times}{32}{subsection.5.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Box plots of the time spent writing each batch of 1,000 events to the lakehouse tables during the first warm run, in seconds.}}{33}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:box-write-times-batched}{{5.9}{33}{Box plots of the time spent writing each batch of 1,000 events to the lakehouse tables during the first warm run, in seconds}{figure.caption.29}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces Median and interquartile range, in milliseconds, of the box plots presented in Figure \ref {fig:box-write-times-batched}.}}{33}{table.caption.30}\protected@file@percent }
+\newlabel{tab:median-iqr-box-write-times-batched}{{5.5}{33}{Median and interquartile range, in milliseconds, of the box plots presented in Figure \ref {fig:box-write-times-batched}}{table.caption.30}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces Time taken by each DuckLake + inlining run to flush the inlined batches of data to a single Parquet file, in seconds.}}{33}{table.caption.31}\protected@file@percent }
+\newlabel{tab:times-flush-inlined-batched}{{5.6}{33}{Time taken by each DuckLake + inlining run to flush the inlined batches of data to a single Parquet file, in seconds}{table.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Scatter plot of time spent writing batches of 1,000 events to the lakehouse tables during the first warm run, in seconds.}}{34}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:scatter-write-times-over-time-batched}{{5.10}{34}{Scatter plot of time spent writing batches of 1,000 events to the lakehouse tables during the first warm run, in seconds}{figure.caption.32}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Read times}{34}{subsection.5.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.4}CPU usage}{34}{subsection.5.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Box plots of the time spent reading individual events from Kafka during the first warm run of each SUT, in seconds.}}{35}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:box-read-times-batched}{{5.11}{35}{Box plots of the time spent reading individual events from Kafka during the first warm run of each SUT, in seconds}{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Time spent reading individual events from Kafka during the first warm run of each SUT. The measurements were taken using time.perf\_counter\_ns.}}{35}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:cpu-usage-batched-events}{{5.12}{35}{Time spent reading individual events from Kafka during the first warm run of each SUT. The measurements were taken using time.perf\_counter\_ns}{figure.caption.34}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion}{36}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:discussion}{{6}{30}{Discussion}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Limitations}{30}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{31}{chapter.7}\protected@file@percent }
+\newlabel{ch:discussion}{{6}{36}{Discussion}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}DuckDB vs. PyIceberg}{36}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Faster write operations}{36}{subsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Single events vs. batches}{37}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Throughput}{37}{subsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Total bytes written}{37}{subsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Data inlining}{37}{subsection.6.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Limitations}{37}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{38}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:conclusion}{{7}{31}{Conclusion and Future Work}{chapter.7}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Additional results}{37}{appendix.A}\protected@file@percent }
+\newlabel{ch:conclusion}{{7}{38}{Conclusion and Future Work}{chapter.7}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Additional results}{44}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:additional-results}{{A}{37}{Additional results}{appendix.A}{}}
-\abx@aux@read@bbl@mdfivesum{BFD29B524C5BAC8E4B355A470820942F}
+\newlabel{ch:additional-results}{{A}{44}{Additional results}{appendix.A}{}}
+\abx@aux@read@bbl@mdfivesum{57D96C46F9B83045DD11AF0DEC47AD1A}
 \abx@aux@defaultrefcontext{0}{ApacheArrowFrequently}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{ApacheArrowStreaming}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{apacheicebergReliability}{nty/global//global/global/global}
@@ -396,10 +435,11 @@
 \abx@aux@defaultrefcontext{0}{tathagatadasDelta20Foundation2022}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{taxi&limousinecomissionTLCTripRecord}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{thedeltalakeprojectauthorsDeltaLake2026}{nty/global//global/global/global}
+\abx@aux@defaultrefcontext{0}{TimeTimeAccess}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{TPCBENCHMARKDS2024}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{tylerakidauStreaming101World2015}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{UnityCatalogStructure2024}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{WhatDataLake}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{yangMicroscopicTrafficSimulator1996}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{yueSurveyStreamProcessing2025}{nty/global//global/global/global}
-\gdef \@abspage@last{39}
+\gdef \@abspage@last{46}

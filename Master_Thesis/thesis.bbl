@@ -1537,6 +1537,22 @@
       \verb https://github.com/delta-io/delta
       \endverb
     \endentry
+    \entry{TimeTimeAccess}{misc}{}{}
+      \field{sortinit}{t}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{time — {Time} access and conversions}
+      \field{urlday}{13}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.python.org/3/library/time.html#time.perf_counter
+      \endverb
+      \verb{url}
+      \verb https://docs.python.org/3/library/time.html#time.perf_counter
+      \endverb
+    \endentry
     \entry{TPCBENCHMARKDS2024}{misc}{}{}
       \list{language}{1}{%
         {English}%

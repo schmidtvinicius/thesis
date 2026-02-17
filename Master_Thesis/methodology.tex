@@ -30,13 +30,13 @@ Additionally, all catalog servers are run on Docker containers, so that the benc
 All collected metrics are stored in a local database for further analysis. The throughput is calculated as the number of events written to the given lakehouse system, divided by the total number of seconds that the experiment was executed. In addition, the following metrics are collected:
 
 \begin{itemize}
-	\item Time taken to read each event from the Kafka broker: We expect read times to be low and consistent, since our benchmark reads events one at a time. Nonetheless, we collect this data to ensure that reading the data does not cause any bottlenecks in our experiments.
+	\item \textbf{Time taken to read each event from the Kafka broker:} We expect read times to be low and consistent, since our benchmark reads events one at a time. Nonetheless, we collect this data to ensure that reading the data does not cause any bottlenecks in our experiments. This time is measured using the \verb*|perf_counter_ns| function from the \verb*|time| module, which provides the "highest resolution for measuring short durations" \cite{TimeTimeAccess}.
 	
-	\item Time taken to write each event to the lakehouse table: On top of looking at the throughput, we analyze the individual writing time of each event to see if systems can keep consistent writing times.
+	\item \textbf{Time taken to write each event to the lakehouse table:} On top of looking at the throughput, we analyze the individual writing time of each event to see if systems can keep consistent writing times. Again, we use \verb*|perf_counter_ns| to measure write times.
 	
-	\item CPU usage: We run a separate Python thread that collects the total CPU usage percentage every second. For that, we use the \verb*|psutil| \cite{giampaolorodolaPsutil2026} Python library.
+	\item \textbf{CPU usage:} We run a separate Python thread that collects the total CPU usage percentage every second. For that, we use the \verb*|psutil| \cite{giampaolorodolaPsutil2026} Python library.
 	
-	\item Disk I/O: Similar to CPU usage, we collect the amount of bytes written to the machine's main disk at a one-second interval. \verb*|psutil| returns the total amount of bytes written since system startup, which strictly increases over time. Instead, we focus on the difference in bytes written between every second, so we can relate the average number of bytes written per second with the throughput of each system.
+	\item\textbf{ Disk I/O:} Similar to CPU usage, we collect the amount of bytes written to the machine's main disk at a one-second interval. \verb*|psutil| returns the total amount of bytes written since system startup, which strictly increases over time. Instead, we focus on the difference in bytes written between every second, so we can relate the average number of bytes written per second with the throughput of each system.
 \end{itemize}
 
 
@@ -45,7 +45,7 @@ Combining the approaches in \cite{henningTheodoliteScalabilityBenchmarking2021, 
 
 Regarding the lakehouse systems evaluated, we only evaluate Iceberg and DuckLake. During the setup of our experiments, we encountered a bug in the \verb*|delta-rs| library, which prevents access to tables through Unity Catalog. We opened a GitHub issue\footnote{\url{https://github.com/delta-io/delta-rs/issues/3966}} for this, but as of writing this thesis, the problem has not been solved yet. Although it is still possible to access and write to Delta tables without Unity Catalog, we believe this would give an unfair advantage to Delta, since the other two systems are connected to catalogs.
 
-\subsection{Configuration}
+\subsection{Configuration}\label{sec:configuration}
 For DuckLake and Iceberg we use the default configuration of each system, except for the Parquet compression codec and the number of threads used by each system. We set the former to use the snappy \cite{opensource@google.comSnappy2025} algorithm, which provides fast compression speeds. We explicitly set the number of threads to 1, since our benchmark inserts a single event in the SUT each time. Even in the case of Iceberg, where multiple metadata files are written at every insert, these files must be written sequentially, because each metadata file holds a reference to another data- or metadata file below it (Figure \ref{fig:iceberg-architecture}). We confirmed there is no benefit to using multiple threads by running some initial tests, where we noticed no increase in the number of events inserted to the lakehouse table when going from 1 to 16 threads. In fact, in the case of DuckLake, there was a significant decrease in the number of events inserted, as shown in Figure \ref{fig:initial-thread-comparison}.
 
 \begin{figure}[h!]
