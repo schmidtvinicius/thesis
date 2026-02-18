@@ -6,20 +6,39 @@
 We would first like to discuss the differences observed between DuckDB and PyIceberg, when running experiments with Iceberg. The difference in throughput between the two clients was considerably large when writing both individual events and batches of events.
 
 \subsection{Faster write operations}
-If we look at the experiments where events were written one by one to the Iceberg table, we see that Parquet files written by DuckDB are 2.9 kB in size, while PyIceberg produced files of 8.2 kB. This difference of almost $3\times$ in size is surprising, given that both clients were configured to use snappy compression (Section \ref{sec:configuration}). We believe this difference might be caused by PyIceberg not applying compression to files that contain few rows. Our reason for this claim is that when writing batches of 1,000 events, both DuckDB and PyIceberg produced Parquet files of similar size, ranging between 37 and 40 kB.
+If we look at the experiments where events were written one by one to the Iceberg table, we see that Parquet files written by DuckDB are 2.9 kB in size, while PyIceberg produced files of 8.2 kB. This difference of almost $3\times$ in size is surprising, given that both clients were configured to use snappy compression (Section \ref{sec:configuration}). We believe this difference might be caused by PyIceberg not applying compression to files that contain few rows. Our reason for this claim is that when writing batches of 1,000 events, both DuckDB and PyIceberg produced Parquet files of similar size, ranging between 37 kB and 40 kB.
 
 We expect similar internal differences to be present in the implementation of DuckDB's and PyIceberg's JSON and Avro writers as well. For instance, Iceberg's metadata JSON files will grow larger with time because they contain all the data from previous metadata files. As a consequence, write times will increase after each append, as we observed in Figure \ref{fig:scatter-write-times-over-time-individual}. However, the write times of DuckDB increased at a much slower rate than PyIceberg's did. We believe this difference is thus linked to a more efficient implementation of DuckDB's metadata writer. This would also explain why DuckDB was still faster than PyIceberg when writing batches of 1,000 events, given that the Parquet file sizes were similar between both clients in that case.
+
+Considering these differences between DuckDB and PyIceberg, we focus our discussion on the results on PyIceberg + DuckDB, unless explicitly said otherwise.
 
 \section{Single events vs. batches}
 
 \subsection{Throughput}
+Writing events in batches significantly improved the throughput of all systems. This is also reflected by the increase in the median write time relative to the increase in events written per file. While we increased the latter by a factor of 1,000$\times$, the former increased by $20\times$ at most (DuckLake + Inlining). This performance increase is directly tied to how Parquet files work: The file format is meant for efficiently storing compressed columnar data in row groups, so that it can be used for analytics tasks \cite{ParquetMotivation2022}. It also stores metadata to further improve read efficiency. Consequently, the overhead associated with writing a Parquet file makes it more well suited for multiple rows (events) per file, rather than a single row. In fact, the recommended row group size is between 512 MB and 1 GB \cite{ParquetConfigurations2024}.
 
-A consequence of this is that metadata files account for ,  
-
-For instance, when a new metadata file is added in Iceberg, it will contain the information of all previous metadata files in addition to the new snapshot data. This means that regardless of which client writes the files to Iceberg, the metadata JSON files will be the same and they will increase by the same amount, if the same events are added in the same order to Iceberg
+Despite the performance gains brought by writing data in batches, we would like to stress the significant differences between Iceberg and DuckLake when writing individual events. The results presented in Figure \ref{fig:total-individual-events-written} highlight the impact of each system's design on their throughput: Every insert operation in Iceberg will create four files (one data file, one manifest file, one manifest list and one metadata file), and a catalog transaction, that all need to be written sequentially. In addition, the metadata file will become larger each time, thus causing longer write times after each insert (Figure \ref{fig:scatter-write-times-over-time-individual}). By contrast, writing in DuckLake involves writing a Parquet file and performing a transaction to the catalog server. This difference in the design of each system leads to a throughput that is about $12\times$ higher (Figure \ref{fig:total-individual-events-written}).
 
 \subsection{Total bytes written}
+When comparing Tables \ref{tab:median-iqr-box-bytes-individual} and \ref{tab:median-iqr-box-bytes-batched}, we noticed the median for all SUTs was lower when writing batched events than when individual events were written, even though the total number of events was higher in the former setting. This difference can be explained by batched events producing less files overall than individual events. To illustrate this, we looked at the total size of data and metadata files (Avro + JSON) in Iceberg for both settings. When writing individual events to Iceberg, data files accounted for 21.4 MB and metadata files accounted for 5.4 GB. By contrast, when writing batched events, the data files corresponded to 46.4 MB, while metadata files totaled 183.5 MB.
 
 \subsection{Data inlining}
+Interestingly, enabling data inlining for DuckLake worsened its performance when writing batched data. In fact, Iceberg was also able to consistently write more events than DuckLake + inlining. This is a surprising result, because inlining does not write any Parquet files, but rather just stores them in the catalog database as part of the transaction. The database still writes that data to disk, which could be slower than writing a Parquet file, thus explaining why inlining becomes slower for a larger amount of data. 
 
-\section{Limitations}
+In addition, we saw in Table \ref{tab:median-iqr-box-bytes-batched} that DuckLake with inlining had the highest median number of bytes written to disk. This difference could be explained by the catalog database (PostgreSQL in this case) not compressing the data or compressing it less than the Parquet data. As a consequence, inlining would take more bytes, and thus more time, than directly writing Parquet files for larger batches of data.
+
+It is also worth mentioning that the inlining feature of DuckLake is recommended for small appends/changes by its developers \cite{DuckLakeDocumentationData2025}. So although this feature can be configured for any threshold, it is likely to yield better performance gains for lower amounts of inlined data.
+
+\section{Data inlining trade-off}
+
+
+\section{Research questions}
+
+\section{Limitations and future work}
+Although we did our best to make sure experiments were fair, it is important to acknowledge their limitations. 
+
+Firstly, the experiments were carried out on a single machine, where all services were running in parallel. This means that processes could interfere with each other when trying to acquire system resources, resulting in noise in the data. We believe this is why we observed outliers in our data, especially when looking at CPU usage (Figures \ref{fig:cpu-usage-individual-events} and \ref{fig:cpu-usage-batched-events}) and bytes written per second (Figures \ref{fig:box-bytes-written-individual} and \ref{fig:box-bytes-written-individual}).
+
+Additionally, we believe that running experiments at a larger scale could add more value to our results. Lakehouses usually run in distributed cloud environments, where they are connected to a separate catalog server and storage system. However, running experiments in such an environment brings its own challenges, such as orchestrating multiple cloud services, scaling up services accordingly and accounting for network latency. This would be an interesting challenge to tackle by future work.
+
+Furthermore, our research focused on a scenario where only one client inserts data into the lakehouse tables. However, in many real-life scenarios, data streams are produced by multiple clients, resulting in concurrent insert operations. Evaluating lakehouse systems under those conditions would give more insight into how each of them performs when there are frequent conflicting inserts.

@@ -1199,6 +1199,48 @@
       \verb https://vldb.org/cidrdb/2023/analyzing-and-comparing-lakehouse-storage-systems.html
       \endverb
     \endentry
+    \entry{ParquetConfigurations2024}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{Parquet - {Configurations}}
+      \field{urlday}{18}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://parquet.apache.org/docs/file-format/configurations/
+      \endverb
+      \verb{url}
+      \verb https://parquet.apache.org/docs/file-format/configurations/
+      \endverb
+    \endentry
+    \entry{ParquetMotivation2022}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{month}{3}
+      \field{title}{Parquet - {Motivation}}
+      \field{urlday}{18}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://parquet.apache.org/docs/overview/motivation/
+      \endverb
+      \verb{url}
+      \verb https://parquet.apache.org/docs/overview/motivation/
+      \endverb
+    \endentry
     \entry{raasveldtFairBenchmarkingConsidered2018}{inproceedings}{}{}
       \name{author}{4}{}{%
         {{hash=678996d3c7467ede23e481726a1b3724}{%

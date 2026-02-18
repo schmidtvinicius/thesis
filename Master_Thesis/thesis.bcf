@@ -2497,6 +2497,9 @@
     <bcf:citekey order="114" intorder="1">henningTheodoliteScalabilityBenchmarking2021</bcf:citekey>
     <bcf:citekey order="114" intorder="2">henningShuffleBenchBenchmarkLargeScale2024</bcf:citekey>
     <bcf:citekey order="115" intorder="1">opensource@google.comSnappy2025</bcf:citekey>
+    <bcf:citekey order="116" intorder="1">ParquetMotivation2022</bcf:citekey>
+    <bcf:citekey order="117" intorder="1">ParquetConfigurations2024</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">DuckLakeDocumentationData2025</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
