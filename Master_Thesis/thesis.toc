@@ -57,9 +57,9 @@
 \contentsline {section}{\numberline {6.2}Single events vs. batches}{37}{section.6.2}%
 \contentsline {subsection}{\numberline {6.2.1}Throughput}{37}{subsection.6.2.1}%
 \contentsline {subsection}{\numberline {6.2.2}Total bytes written}{37}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Data inlining}{37}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.3}Data inlining}{38}{subsection.6.2.3}%
 \contentsline {section}{\numberline {6.3}Data inlining trade-off}{38}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Research questions}{38}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Limitations and future work}{38}{section.6.5}%
-\contentsline {chapter}{\numberline {7}Conclusion and future work}{39}{chapter.7}%
-\contentsline {chapter}{\numberline {A}Additional results}{45}{appendix.A}%
+\contentsline {section}{\numberline {6.4}Research questions}{39}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Limitations and future work}{40}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Conclusion and future work}{41}{chapter.7}%
+\contentsline {chapter}{\numberline {A}Additional results}{47}{appendix.A}%

@@ -3,12 +3,12 @@
 \section{Writing events one by one}
 
 \subsection{Total events written}
-Figure \ref{fig:total-individual-events-written} shows how many events were written to each lakehouse table. We can see that the first run of each SUT performed slightly better, before stabilizing at lower levels in the subsequent warm runs. Therefore, we focus on results from warm runs throughout the rest of this thesis. Other results can be found in Appendix \ref{ch:additional-results}.
+Figure \ref{fig:total-individual-events-written} shows how many events were written to each lakehouse table. We can see that the first run of each SUT performed slightly better, before stabilizing at lower levels in the subsequent hot runs. Therefore, we focus on results from hot runs throughout the rest of this thesis. Other results can be found in Appendix \ref{ch:additional-results}.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/total-individual-events-written.eps}
-	\caption{Number of events written one by one to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm.}
+	\caption{Throughput of each SUT in a time span of 5 minutes when writing events one by one. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered hot.}
 	\label{fig:total-individual-events-written}
 \end{figure}
 
@@ -17,7 +17,7 @@ Looking at the amount of events written to the different SUTs in Figure \ref{fig
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/box-bytes-written-individual.eps}
-	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (warm run). The measurements were taken at intervals of 1 second.}
+	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (hot run). The measurements were taken at intervals of 1 second.}
 	\label{fig:box-bytes-written-individual}
 \end{figure}
 
@@ -40,7 +40,7 @@ Looking at the amount of events written to the different SUTs in Figure \ref{fig
 	\label{tab:median-iqr-box-bytes-individual}
 \end{table}
 
-Focusing now on the first warm run of each SUT, we see from Figure \ref{fig:box-bytes-written-individual} that DuckLake was often able to write more bytes per second than Iceberg, which is in line with the total events written, shown in Figure \ref{fig:total-individual-events-written}. We can also see from Table \ref{tab:median-iqr-box-bytes-individual} that the median number of bytes written to DuckLake was about an order of magnitude larger than that of Iceberg with PyIceberg. In addition, Iceberg + PyIceberg seems to have a more unstable rate of bytes/second, which is reflected by the highest interquartile range, i.e. spread, presented in Table \ref{tab:median-iqr-box-bytes-individual}.
+Focusing now on the first hot run of each SUT, we see from Figure \ref{fig:box-bytes-written-individual} that DuckLake was often able to write more bytes per second than Iceberg, which is in line with the total events written, shown in Figure \ref{fig:total-individual-events-written}. We can also see from Table \ref{tab:median-iqr-box-bytes-individual} that the median number of bytes written to DuckLake was about an order of magnitude larger than that of Iceberg with PyIceberg. In addition, Iceberg + PyIceberg seems to have a more unstable rate of bytes/second, which is reflected by the highest interquartile range, i.e. spread, presented in Table \ref{tab:median-iqr-box-bytes-individual}.
 
 \subsection{Write times}
 Looking at Figure \ref{fig:box-write-times-individual}, we can see that DuckLake has more consistent write times than Iceberg + PyIceberg, based on the difference in the spread between them. Using Iceberg with DuckDB produces a smaller spread, and thus more consistent write times, but its median is still around an order of magnitude slower than both DuckLake runs. The median write times of each SUT are consistent with their respective amount of bytes/second and events written (Figures \ref{fig:box-bytes-written-individual} and \ref{fig:total-individual-events-written}).
@@ -48,7 +48,7 @@ Looking at Figure \ref{fig:box-write-times-individual}, we can see that DuckLake
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/box-write-times-individual.eps}
-	\caption{Box plots of the time spent writing each individual event to the lakehouse tables during the first warm run, in seconds.}
+	\caption{Box plots of the time spent writing each individual event to the lakehouse tables during the first hot run, in seconds.}
 	\label{fig:box-write-times-individual}
 \end{figure}
 
@@ -76,7 +76,7 @@ We observed that the write times for Iceberg increase over time, as shown in Fig
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/scatter-write-times-over-time-individual.eps}
-	\caption{Scatter plot of time spent writing individual event to the lakehouse tables during the first warm run, in seconds.}
+	\caption{Scatter plots of time spent writing individual event to each SUT during the first hot run, in seconds.}
 	\label{fig:scatter-write-times-over-time-individual}
 \end{figure}
 
@@ -105,7 +105,7 @@ Regarding the DuckLake instance with inlining enabled, we find that the time tak
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/box-read-times-individual.eps}
-	\caption{Box plots of the time spent reading individual events from Kafka during the first warm run of each SUT, in seconds.}
+	\caption{Box plots of the time spent reading individual events from Kafka during the first hot run of each SUT, in seconds.}
 	\label{fig:box-read-times-individual}
 \end{figure}
 
@@ -117,21 +117,21 @@ We observed that Iceberg with DuckDB consistently utilized a higher percentage o
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/cpu-usage-individual-events.eps}
-	\caption{CPU usage percentage measured at every second throughout each run of writing individual events to SUTs.}
+	\caption{CPU usage percentage measured at every second throughout the first hot run of writing individual events to each SUT.}
 	\label{fig:cpu-usage-individual-events}
 \end{figure}
 
 \section{Writing events in batches of 1,000}
 
 \subsection{Total events written}
-Figure \ref{fig:total-batched-events-written} shows the total number of events written to each SUT when writing data in batches of 1,000 events. As observed in the previous experiments, the cold run was slightly better than the warm runs, so we focus on the latter instead.
+Figure \ref{fig:total-batched-events-written} shows the total number of events written to each SUT when writing data in batches of 1,000 events. As observed in the previous experiments, the cold run was slightly better than the hot runs, so we focus on the latter instead.
 
 We can see that all systems performed significantly better than when events were written one by one to the lakehouse tables. The biggest improvement can be noticed when using Iceberg with DuckDB, which managed to surpass DuckLake with inlining enabled. We also observed that inlining led to a decrease of  in the amount of events written to DuckLake. That is in contrast to the previous experiments, where inlining had in fact improved the throughput of DuckLake.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/total-batched-events-written.eps}
-	\caption{Number of events written in batches of 1,000 to each SUT in a time span of 5 minutes. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered warm.}
+	\caption{Throughput of each SUT in a time span of 5 minutes when writing events in batches of 1,000. The run numbers correspond to the repetitions of each experiment, where run 0 is considered cold and runs 1 and 2 are considered hot.}
 	\label{fig:total-batched-events-written}
 \end{figure}
 
@@ -142,7 +142,7 @@ In terms of the spread of the data, both DuckLake instances wrote bytes at a mor
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/box-bytes-written-batched.eps}
-	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (warm run). The measurements were taken at intervals of 1 second.}
+	\caption{Box plots of bytes written to disk at every second when inserting batches of 1,000 events to each SUT (hot run). The measurements were taken at intervals of 1 second.}
 	\label{fig:box-bytes-written-batched}
 \end{figure}
 
@@ -176,7 +176,7 @@ With respect to the flush times of DuckLake + inlining, we see in Table \ref{tab
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/box-write-times-batched.eps}
-	\caption{Box plots of the time spent writing each batch of 1,000 events to the lakehouse tables during the first warm run, in seconds.}
+	\caption{Box plots of the time spent writing each batch of 1,000 events to the lakehouse tables during the first hot run, in seconds.}
 	\label{fig:box-write-times-batched}
 \end{figure}
 
@@ -221,7 +221,7 @@ Looking now at Figure \ref{fig:scatter-write-times-over-time-batched}, we can se
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/scatter-write-times-over-time-batched.eps}
-	\caption{Scatter plot of time spent writing batches of 1,000 events to the lakehouse tables during the first warm run, in seconds.}
+	\caption{Scatter plots of the time spent writing each batch of 1,000 events to each SUT during the first hot run, in seconds.}
 	\label{fig:scatter-write-times-over-time-batched}
 \end{figure}
 
@@ -231,7 +231,7 @@ The read times of all runs (Figure \ref{fig:box-read-times-batched}) were very s
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/box-read-times-batched.eps}
-	\caption{Box plots of the time spent reading individual events from Kafka during the first warm run of each SUT, in seconds.}
+	\caption{Box plots of the time spent reading individual events from Kafka during the first hot run of each SUT, in seconds.}
 	\label{fig:box-read-times-batched}
 \end{figure}
 
@@ -241,7 +241,7 @@ In terms of CPU usage, all systems presented very similar percentages throughout
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\linewidth]{imgs/cpu-usage-batched-events.eps}
-	\caption{Time spent reading individual events from Kafka during the first warm run of each SUT. The measurements were taken using time.perf\_counter\_ns.}
+	\caption{CPU usage percentage measured at every second throughout the first hot run of writing batched events to each SUT.}
 	\label{fig:cpu-usage-batched-events}
 \end{figure}
 

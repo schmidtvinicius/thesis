@@ -57,7 +57,7 @@
       \verb https://arrow.apache.org/docs/python/ipc.html
       \endverb
     \endentry
-    \entry{apacheicebergReliability}{misc}{}{}
+    \entry{apacheicebergMaintenance}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=d95d2a8ab0e5a7fc4cb0e3e954bb31c9}{%
            family={{Apache Iceberg}},
@@ -75,6 +75,40 @@
       \strng{authorfullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
       \strng{authorfullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
       \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Maintenance}
+      \field{urlday}{11}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://iceberg.apache.org/docs/latest/maintenance/
+      \endverb
+      \verb{url}
+      \verb https://iceberg.apache.org/docs/latest/maintenance/
+      \endverb
+    \endentry
+    \entry{apacheicebergReliability}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d95d2a8ab0e5a7fc4cb0e3e954bb31c9}{%
+           family={{Apache Iceberg}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{fullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{fullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{bibnamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorbibnamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authornamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorfullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \strng{authorfullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
+      \field{extraname}{2}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
@@ -108,7 +142,7 @@
       \strng{authornamehash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
       \strng{authorfullhash}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
       \strng{authorfullhashraw}{d95d2a8ab0e5a7fc4cb0e3e954bb31c9}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
@@ -561,6 +595,27 @@
       \endverb
       \verb{url}
       \verb https://ducklake.select/docs/stable/duckdb/advanced_features/data_inlining
+      \endverb
+    \endentry
+    \entry{DucklakeDocumentationMerge2025}{misc}{}{}
+      \list{language}{1}{%
+        {English}%
+      }
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{month}{10}
+      \field{title}{Ducklake {Documentation} - {Merge} {Adjacent} {Files}}
+      \field{urlday}{19}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://ducklake.select/docs/stable/duckdb/maintenance/merge_adjacent_files
+      \endverb
+      \verb{url}
+      \verb https://ducklake.select/docs/stable/duckdb/maintenance/merge_adjacent_files
       \endverb
     \endentry
     \entry{DucklakeDocumentationTables2025}{misc}{}{}
@@ -1080,6 +1135,41 @@
       \endverb
       \verb{url}
       \verb https://ducklake.select/manifesto/
+      \endverb
+    \endentry
+    \entry{matthewpowersDeltaLakeSmall2023}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=4253d64eb7169a7b87766ec5fd421928}{%
+           family={{Matthew Powers}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{fullhash}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{fullhashraw}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{bibnamehash}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{authorbibnamehash}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{authornamehash}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{authorfullhash}{4253d64eb7169a7b87766ec5fd421928}
+      \strng{authorfullhashraw}{4253d64eb7169a7b87766ec5fd421928}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{Delta {Lake} {Small} {File} {Compaction} with {OPTIMIZE}}
+      \field{urlday}{19}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://delta.io/blog/2023-01-25-delta-lake-small-file-compaction-optimize/
+      \endverb
+      \verb{url}
+      \verb https://delta.io/blog/2023-01-25-delta-lake-small-file-compaction-optimize/
       \endverb
     \endentry
     \entry{michael_armbrust_lakehouse_2021}{inproceedings}{}{}

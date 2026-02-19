@@ -10,7 +10,7 @@ If we look at the experiments where events were written one by one to the Iceber
 
 We expect similar internal differences to be present in the implementation of DuckDB's and PyIceberg's JSON and Avro writers as well. For instance, Iceberg's metadata JSON files will grow larger with time because they contain all the data from previous metadata files. As a consequence, write times will increase after each append, as we observed in Figure \ref{fig:scatter-write-times-over-time-individual}. However, the write times of DuckDB increased at a much slower rate than PyIceberg's did. We believe this difference is thus linked to a more efficient implementation of DuckDB's metadata writer. This would also explain why DuckDB was still faster than PyIceberg when writing batches of 1,000 events, given that the Parquet file sizes were similar between both clients in that case.
 
-Considering these differences between DuckDB and PyIceberg, we focus our discussion on the results on PyIceberg + DuckDB, unless explicitly said otherwise.
+Based on the performance difference between DuckDB and PyIceberg, we focus the rest of our discussion on Iceberg + DuckDB, following the guidelines of fair comparison presented in \cite{raasveldtFairBenchmarkingConsidered2018}.
 
 \section{Single events vs. batches}
 
@@ -19,20 +19,52 @@ Writing events in batches significantly improved the throughput of all systems. 
 
 Despite the performance gains brought by writing data in batches, we would like to stress the significant differences between Iceberg and DuckLake when writing individual events. The results presented in Figure \ref{fig:total-individual-events-written} highlight the impact of each system's design on their throughput: Every insert operation in Iceberg will create four files (one data file, one manifest file, one manifest list and one metadata file), and a catalog transaction, that all need to be written sequentially. In addition, the metadata file will become larger each time, thus causing longer write times after each insert (Figure \ref{fig:scatter-write-times-over-time-individual}). By contrast, writing in DuckLake involves writing a Parquet file and performing a transaction to the catalog server. This difference in the design of each system leads to a throughput that is about $12\times$ higher (Figure \ref{fig:total-individual-events-written}).
 
-\subsection{Total bytes written}
-When comparing Tables \ref{tab:median-iqr-box-bytes-individual} and \ref{tab:median-iqr-box-bytes-batched}, we noticed the median for all SUTs was lower when writing batched events than when individual events were written, even though the total number of events was higher in the former setting. This difference can be explained by batched events producing less files overall than individual events. To illustrate this, we looked at the total size of data and metadata files (Avro + JSON) in Iceberg for both settings. When writing individual events to Iceberg, data files accounted for 21.4 MB and metadata files accounted for 5.4 GB. By contrast, when writing batched events, the data files corresponded to 46.4 MB, while metadata files totaled 183.5 MB.
+\subsection{Total bytes written}\label{sec:total-bytes-written}
+When comparing Tables \ref{tab:median-iqr-box-bytes-individual} and \ref{tab:median-iqr-box-bytes-batched}, we noticed the median for all SUTs was lower when writing batched events than when writing individual events, even though the total number of events was higher in the former setting. This difference can be explained by batched events producing fewer files overall than individual events, as well as Parquet files being compressed. To illustrate this, we looked at the amount of files, and their total size, produced across the three runs of Iceberg + DuckDB and compiled the results in Table \ref{tab:total-files-and-sizes-iceberg}. 
+
+%For individual events, data files accounted for 21.4 MB and metadata files accounted for 5.4 GB. C By contrast, when writing batched events, the data files corresponded to 46.4 MB, while metadata files totaled 183.5 MB.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c|c||c|c|}
+		\cline{2-5}
+		\multirow{2}{*}{} &\multicolumn{2}{c||}{\textbf{Data files}} & \multicolumn{2}{c|}{\textbf{Metadata files}} \\
+		\cline{2-5}
+		&\textbf{Amount} & \textbf{Size} & \textbf{Amount} & \textbf{Size} \\
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Individual}} & 7,249 & 21.4 MB & 21,785 & 5.4 GB \\
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Batched}}& 1,242 & 46.4 MB & 3,732 & 183.5 MB \\
+		\hline
+	\end{tabular}
+	\caption{Comparison between the amount and total size of data and metadata files produced by DuckDB in Iceberg when writing events one by one (\textbf{Individual}) and in batches of 1,000 (\textbf{Batched}).}
+	\label{tab:total-files-and-sizes-iceberg}
+\end{table}
+
+Writing events in batches produced almost $6\times$ fewer files, while data files only took roughly twice as much space on disk. These improvements highlight the advantage of Parquet's compression, considering that writing events in batches was able to process about $\frac{413,000}{2,400}\approx172$\footnote{These values were obtained by approximating the total events consumed by Iceberg + DuckDB in Figures \ref{fig:total-individual-events-written} and \ref{fig:total-batched-events-written}} times more events than writing events one by one.
+
+Furthermore, the gains on metadata files were also substantial, where the disk space used dropped from 5.4 GB to 183.5 MB, representing a decrease of about $29\times$ in size.
 
 \subsection{Data inlining}
-Interestingly, enabling data inlining for DuckLake worsened its performance when writing batched data. In fact, Iceberg was also able to consistently write more events than DuckLake + inlining. This is a surprising result, because inlining does not write any Parquet files, but rather just stores them in the catalog database as part of the transaction. The database still writes that data to disk, which could be slower than writing a Parquet file, thus explaining why inlining becomes slower for a larger amount of data. 
+Interestingly, enabling data inlining for DuckLake worsened its performance when writing batched data. In fact, Iceberg + DuckDB was also able to consistently write more events than DuckLake + inlining. This is a surprising result, because inlining does not write any Parquet files, but rather just stores them in the catalog database as part of the transaction. The database still writes that data to disk, which could be slower than writing a Parquet file, thus explaining why inlining becomes slower for a larger amount of data. 
 
 In addition, we saw in Table \ref{tab:median-iqr-box-bytes-batched} that DuckLake with inlining had the highest median number of bytes written to disk. This difference could be explained by the catalog database (PostgreSQL in this case) not compressing the data or compressing it less than the Parquet data. As a consequence, inlining would take more bytes, and thus more time, than directly writing Parquet files for larger batches of data.
 
 It is also worth mentioning that the inlining feature of DuckLake is recommended for small appends/changes by its developers \cite{DuckLakeDocumentationData2025}. So although this feature can be configured for any threshold, it is likely to yield better performance gains for lower amounts of inlined data.
 
 \section{Data inlining trade-off}
-
+Although inlining data in DuckLake did not yield better results for batched data, it did improve the throughput of DuckLake by about 7.5\% when writing individual results. There is still the cost of eventually flushing the inlined data to disk, but that took only around 200 milliseconds for roughly 30,000 events (Table \ref{tab:times-flush-inlined-individual}). By contrast, if we individually insert 30,000 events to a DuckLake table and then merge the resulting 30,000 files using DuckLake's \verb*|ducklake_merge_adjacent_files| function \cite{DucklakeDocumentationMerge2025}, it takes about 13 seconds. It is important to realize that merging small files together is a recommended maintenance step in lakehouse tables, so that read performance is not hindered \cite{DucklakeDocumentationMerge2025, apacheicebergMaintenance, matthewpowersDeltaLakeSmall2023}. Therefore, the inlining feature of DuckLake offers a big advantage when small, frequent events are inserted into a DuckLake table, by minimizing the need of merging data files.
 
 \section{Research questions}
+Looking back at our research questions, sub-question 1 was answered by our literature review in Chapter \ref{ch:related-work}. Our findings show that the current state-of-the-art benchmarks for lakehouse systems focus on read performance, as well as insertion performance of bulk data. In addition, we could not find any previous works that evaluated the throughput performance of lakehouse systems when inserting streams of data into them.
+
+Sub-question 2 was also answered in Chapter \ref{ch:related-work}, where we found that most benchmarks for evaluating streaming systems use a Kafka broker for ingesting a variety of datasets, and measure the usage of system resources, such as CPU, main memory, network and disk. In addition, many benchmarks measure system throughput and processing latency. 
+
+When translating those findings to our research (Chapter \ref{ch:methodology}), we concluded that throughput was the main metric to focus on, but we also collected usage metrics for CPU and disk I/O for a more in depth analysis of the results. We used Kafka to ingest the TLC Trip Record Data dataset into our benchmark, although we believe any dataset with enough records would have sufficed for the purposes of our research. Chapter \ref{ch:methodology} is where answer our main research question.
+
+Sub-question 3 was answered in Chapter \ref{ch:related-work}, where we summarized the work of \citeauthor{raasveldtFairBenchmarkingConsidered2018} \cite{raasveldtFairBenchmarkingConsidered2018}. We found that there are many aspects to ensure a fair benchmark, such as separating cold and hot runs, reporting hardware and software details for reproducibility and making sure the SUTs provide equivalent functionality.
+
+Sub-questions 4 and 4.1 were both answered in Chapters \ref{ch:results} and \ref{ch:discussion}. The performance of DuckLake was much higher than Iceberg's and enabling inlining only increased that difference. When inserting events in batches, Iceberg was able to close in the gap with DuckLake, but the latter still delivered a higher throughput. Inlining also turned out to not be advantageous when writing batches of data, as it performed worse than DuckLake without inlining. Finally, we learned that the client used to interact with lakehouses, specifically Iceberg, can have a huge impact in performance due to internal implementation differences.
 
 \section{Limitations and future work}
 Although we did our best to make sure experiments were fair, it is important to acknowledge their limitations. 
