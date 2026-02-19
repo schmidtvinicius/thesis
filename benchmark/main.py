@@ -86,23 +86,6 @@ async def run_experiments(
 
 
 async def main():
-    import pyarrow as pa
-    from benchmark.dataset import SCHEMA
-    dataset = Dataset(os.getenv("DATASET_PATH"))
-    iceberg = IcebergInterface()
-    iceberg.create_table()
-
-    sink = pa.BufferOutputStream()
-    with pa.ipc.new_stream(sink, SCHEMA) as writer:
-        writer.write_batch(dataset.data.read_next_batch())
-
-    with pa.ipc.open_stream(sink.getvalue()) as reader:
-        event = reader.read_all()
-    
-    iceberg.write_to_table(event)
-
-    return
-
     args = get_args()
     kafka_interface = KafkaInterface(os.getenv("KAFKA_BOOTSTRAP_SERVERS"))
     dataset = Dataset(os.getenv("DATASET_PATH"))
