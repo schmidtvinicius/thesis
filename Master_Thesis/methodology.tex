@@ -45,6 +45,11 @@ Combining the approaches in \cite{henningTheodoliteScalabilityBenchmarking2021, 
 
 Regarding the lakehouse systems evaluated, we only evaluate Iceberg and DuckLake. During the setup of our experiments, we encountered a bug in the \verb*|delta-rs| library, which prevents access to tables through Unity Catalog. We opened a GitHub issue\footnote{\url{https://github.com/delta-io/delta-rs/issues/3966}} for this, but as of writing this thesis, the problem has not been solved yet. Although it is still possible to access and write to Delta tables without Unity Catalog, we believe this would give an unfair advantage to Delta, since the other two systems are connected to catalogs.
 
+\subsection{Insertion modes}
+We insert data in two different ways, namely individually and batched. In the first mode, as soon as an event is read by the Kafka consumer, it is inserted into the SUT and the insertion time is measured. This mode of insertion will give us insight in the raw throughput of each system, in a scenario where events cannot wait for window/batch operations. 
+
+When inserting batches, we accumulate 1,000 events in an Arrow table before inserting them at once into the given lakehouse table. Here, we evaluate a scenario where a streaming engine would use a window function for grouping incoming data and processing them in some way before writing them to the lakehouse.
+
 \subsection{Configuration}\label{sec:configuration}
 For DuckLake and Iceberg we use the default configuration of each system, except for the Parquet compression codec and the number of threads used by each system. We set the former to use the snappy \cite{opensource@google.comSnappy2025} algorithm, which provides fast compression speeds. We explicitly set the number of threads to 1, since our benchmark inserts a single event in the SUT each time. Even in the case of Iceberg, where multiple metadata files are written at every insert, these files must be written sequentially, because each metadata file holds a reference to another data- or metadata file below it (Figure \ref{fig:iceberg-architecture}). We confirmed there is no benefit to using multiple threads by running some initial tests, where we noticed no increase in the number of events inserted to the lakehouse table when going from 1 to 16 threads. In fact, in the case of DuckLake, there was a significant decrease in the number of events inserted, as shown in Figure \ref{fig:initial-thread-comparison}.
 
@@ -57,9 +62,9 @@ For DuckLake and Iceberg we use the default configuration of each system, except
 
 In addition, we perform runs using the "native" client for each lakehouse, DuckDB for DuckLake and PyIceberg for Iceberg, as well as using DuckDB for both. This will give us insight into how much of the performance is impacted by the client used for interacting with the lakehouse tables. PyIceberg does not have the option of interacting with other open table formats, so we cannot use it to write to DuckLake.
 
-Finally, when running experiments with the inlining feature of DuckLake enabled, we set the write threshold to be 2 elements, since we are writing events one by one to the table.
+Finally, when running experiments with the inlining feature of DuckLake enabled, we set the write threshold to be one more than the number of elements being inserted, i.e. 2 for writing individual events and 1001 for writing batches. The values do not matter, as long as they are bigger than the amount we are inserting into DuckLake. 
 
-\subsection{Hardware}
+\subsection{Hardware and software specs}
 All experiments were executed on a local machine for which the hardware specification can be found in Table \ref{tab:hardware-specs}. We believe that running experiments locally significantly reduces complexity and noise that would otherwise be present in a cloud environment.
 
 \begin{table}[h!]
@@ -77,4 +82,33 @@ All experiments were executed on a local machine for which the hardware specific
 	\end{tabular}
 	\caption{Overview of the hardware specs used for running our benchmark}
 	\label{tab:hardware-specs}
+\end{table}
+
+All software, as well as their version can be found in Table \ref{tab:software-specs}. We hope to make our experiments as reproducible as possible, following the guidelines presented in \cite{raasveldtFairBenchmarkingConsidered2018}. We also made our source code available on GitHub\footnote{\url{https://github.com/schmidtvinicius/thesis/tree/main/benchmark}}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Software} & \textbf{Version} \\
+		\hline
+		Python & 3.12 \\
+		\hline
+		Kafka (Docker) & 4.1.0 \\
+		\hline
+		PostgreSQL (Docker) & 18.0 \\
+		\hline
+		Polaris (Docker) & 1.3.0-incubating \\
+		\hline
+		DuckDB (Python) & 1.4.4 \\
+		\hline
+		PyIceberg (Python) & 0.10.0 \\
+		\hline
+		PyArrow (Python) & 22.0.0 \\
+		\hline
+		confluent-kafka (Python) & 2.12.2 \\
+		\hline
+	\end{tabular}
+	\caption{Overview of the hardware specs used for running our benchmark}
+	\label{tab:software-specs}
 \end{table}

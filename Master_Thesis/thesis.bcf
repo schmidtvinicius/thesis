@@ -2498,15 +2498,17 @@
     <bcf:citekey order="114" intorder="2">henningShuffleBenchBenchmarkLargeScale2024</bcf:citekey>
     <bcf:citekey order="115" intorder="1">opensource@google.comSnappy2025</bcf:citekey>
     <bcf:citekey order="116" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
-    <bcf:citekey order="117" intorder="1">ParquetMotivation2022</bcf:citekey>
-    <bcf:citekey order="118" intorder="1">ParquetConfigurations2024</bcf:citekey>
-    <bcf:citekey order="119" intorder="1">DuckLakeDocumentationData2025</bcf:citekey>
-    <bcf:citekey order="120" intorder="1">DucklakeDocumentationMerge2025</bcf:citekey>
-    <bcf:citekey order="121" intorder="1">DucklakeDocumentationMerge2025</bcf:citekey>
-    <bcf:citekey order="121" intorder="2">apacheicebergMaintenance</bcf:citekey>
-    <bcf:citekey order="121" intorder="3">matthewpowersDeltaLakeSmall2023</bcf:citekey>
-    <bcf:citekey order="122" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
-    <bcf:citekey order="123" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
+    <bcf:citekey order="117" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">ParquetMotivation2022</bcf:citekey>
+    <bcf:citekey order="119" intorder="1">ParquetConfigurations2024</bcf:citekey>
+    <bcf:citekey order="120" intorder="1">user:simonPostgreSQLWikiColumnOrientedSTorage2014</bcf:citekey>
+    <bcf:citekey order="121" intorder="1">DuckLakeDocumentationData2025</bcf:citekey>
+    <bcf:citekey order="122" intorder="1">DucklakeDocumentationMerge2025</bcf:citekey>
+    <bcf:citekey order="123" intorder="1">DucklakeDocumentationMerge2025</bcf:citekey>
+    <bcf:citekey order="123" intorder="2">apacheicebergMaintenance</bcf:citekey>
+    <bcf:citekey order="123" intorder="3">matthewpowersDeltaLakeSmall2023</bcf:citekey>
+    <bcf:citekey order="124" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
+    <bcf:citekey order="125" intorder="1">raasveldtFairBenchmarkingConsidered2018</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

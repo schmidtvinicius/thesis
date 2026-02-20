@@ -1,1 +1,11 @@
-\chapter{Conclusion and future work}\label{ch:conclusion}
+\chapter{Conclusion}\label{ch:conclusion}
+
+In this work we set out to evaluate the throughput of streaming data in modern lakehouse systems. The results showed that DuckLake has a clear advantage over Iceberg when constantly inserting individual streaming events. The biggest gain in performance comes from DuckLake's architectural design, which avoids writing metadata to separate files, by using a catalog database for tracking metadata and handling transactions. In addition, Iceberg's throughput decreases over time, due to a constant increase in size of the metadata files, which store all previous snapshots of the Iceberg table. 
+
+When writing data in batches, Iceberg's throughput improved significantly, especially when paired with DuckDB, instead of PyIceberg. This last point also highlights the importance of fair benchmarking, since using different clients dramatically changed the results obtained with Iceberg.
+
+When experimenting with the data inlining feature of DuckLake, we observed moderate improvements in its throughput. However, the biggest advantage of inlining is that the data can be flushed faster to a single Parquet file, than having to merge all individual Parquet files after they have been inserted. This reduces the need of running compaction of data files and benefits read performance. 
+
+When it comes to inserting batched data however, inlining decreased DuckLake's performance, which is likely related to the catalog database converting data from a columnar representation to a row-based one.
+
+Finally, we would like to point out that lakehouses are relatively new and evolving. Consequently, there are still few works that evaluate them, and the existing ones focus on their read performance and bulk data loading tasks. Our work is a first attempt at gauging the ability of lakehouse systems at consuming continuous streams of data. We expect to provide a baseline for similar benchmarks in the future.

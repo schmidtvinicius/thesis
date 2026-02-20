@@ -1,7 +1,6 @@
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation and research questions}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Contributions}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Thesis structure}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.2}Thesis structure}{4}{section.1.2}%
 \contentsline {chapter}{\numberline {2}Background}{6}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Iceberg}{6}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Architectural design}{6}{subsection.2.1.1}%
@@ -38,28 +37,31 @@
 \contentsline {subsection}{\numberline {4.1.4}Lakehouses}{22}{subsection.4.1.4}%
 \contentsline {subsection}{\numberline {4.1.5}Metrics}{23}{subsection.4.1.5}%
 \contentsline {section}{\numberline {4.2}Experimental setup}{23}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Configuration}{24}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Hardware}{25}{subsection.4.2.2}%
-\contentsline {chapter}{\numberline {5}Results}{26}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Writing events one by one}{26}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Total events written}{26}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Write times}{27}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Read times}{29}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}CPU usage}{29}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}Writing events in batches of 1,000}{31}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Total events written}{31}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Write times}{32}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Read times}{34}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}CPU usage}{34}{subsection.5.2.4}%
-\contentsline {chapter}{\numberline {6}Discussion}{36}{chapter.6}%
-\contentsline {section}{\numberline {6.1}DuckDB vs. PyIceberg}{36}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Faster write operations}{36}{subsection.6.1.1}%
-\contentsline {section}{\numberline {6.2}Single events vs. batches}{37}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Throughput}{37}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Total bytes written}{37}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Data inlining}{38}{subsection.6.2.3}%
-\contentsline {section}{\numberline {6.3}Data inlining trade-off}{38}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Research questions}{39}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Limitations and future work}{40}{section.6.5}%
-\contentsline {chapter}{\numberline {7}Conclusion and future work}{41}{chapter.7}%
-\contentsline {chapter}{\numberline {A}Additional results}{47}{appendix.A}%
+\contentsline {subsection}{\numberline {4.2.1}Insertion modes}{24}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Configuration}{24}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Hardware and software specs}{25}{subsection.4.2.3}%
+\contentsline {chapter}{\numberline {5}Results}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Writing events one by one}{27}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Total events written}{27}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Write times}{28}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Read times}{30}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}CPU usage}{30}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}Writing events in batches of 1,000}{32}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Total events written}{32}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Write times}{33}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Read times}{35}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}CPU usage}{35}{subsection.5.2.4}%
+\contentsline {chapter}{\numberline {6}Discussion}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}DuckDB vs. PyIceberg}{37}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Faster write operations}{37}{subsection.6.1.1}%
+\contentsline {section}{\numberline {6.2}Single events vs. batches}{38}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Throughput}{38}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Total bytes written}{38}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Data inlining}{39}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}Data inlining trade-off}{39}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Research questions}{40}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Limitations and future work}{41}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Conclusion}{42}{chapter.7}%
+\contentsline {chapter}{\numberline {A}Additional results}{48}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Writing events one by one}{48}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Writing events in batches of 1,000}{53}{section.A.2}%

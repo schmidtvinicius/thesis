@@ -1,1 +1,162 @@
 \chapter{Additional results}\label{ch:additional-results}
+
+\section{Writing events one by one}
+
+% CPU usage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/cpu-usage-individual-events-run0.eps}
+	\caption{CPU usage percentage measured at every second throughout the cold run of writing individual events to each SUT.}
+	\label{fig:cpu-usage-individual-events-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/cpu-usage-individual-events-run2.eps}
+	\caption{CPU usage percentage measured at every second throughout the second hot run of writing individual events to each SUT.}
+	\label{fig:cpu-usage-individual-events-run2}
+\end{figure}
+
+% Bytes written
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-bytes-written-individual-run0.eps}
+	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (cold run). The measurements were taken at intervals of 1 second.}
+	\label{fig:box-bytes-written-individual-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-bytes-written-individual-run2.eps}
+	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (second hot run). The measurements were taken at intervals of 1 second.}
+	\label{fig:box-bytes-written-individual-run2}
+\end{figure}
+
+% Write times
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-write-times-individual-run0.eps}
+	\caption{Box plots of the time spent writing each individual event to the lakehouse tables during the cold run, in seconds.}
+	\label{fig:box-write-times-individual-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-write-times-individual-run2.eps}
+	\caption{Box plots of the time spent writing each individual event to the lakehouse tables during the second hot run, in seconds.}
+	\label{fig:box-write-times-individual-run2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/scatter-write-times-over-time-individual-run0.eps}
+	\caption{Scatter plots of time spent writing individual event to each SUT during the cold run, in seconds.}
+	\label{fig:scatter-write-times-over-time-individual-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/scatter-write-times-over-time-individual-run2.eps}
+	\caption{Scatter plots of time spent writing individual event to each SUT during the second hot run, in seconds.}
+	\label{fig:scatter-write-times-over-time-individual-run2}
+\end{figure}
+
+
+% Read times
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-read-times-individual-run0.eps}
+	\caption{Box plots of the time spent reading individual events from Kafka during the cold run of each SUT, in seconds.}
+	\label{fig:box-read-times-individual-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-read-times-individual-run2.eps}
+	\caption{Box plots of the time spent reading individual events from Kafka during the second hot run of each SUT, in seconds.}
+	\label{fig:box-read-times-individual-run2}
+\end{figure}
+
+\section{Writing events in batches of 1,000}
+
+% CPU usage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/cpu-usage-batched-events-run0.eps}
+	\caption{CPU usage percentage measured at every second throughout the cold run of writing individual events to each SUT.}
+	\label{fig:cpu-usage-batched-events-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/cpu-usage-batched-events-run2.eps}
+	\caption{CPU usage percentage measured at every second throughout the second hot run of writing individual events to each SUT.}
+	\label{fig:cpu-usage-batched-events-run2}
+\end{figure}
+
+% Bytes written
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-bytes-written-batched-run0.eps}
+	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (cold run). The measurements were taken at intervals of 1 second.}
+	\label{fig:box-bytes-written-batched-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-bytes-written-batched-run2.eps}
+	\caption{Boxplot of bytes written to disk at every second when inserting individual events to each SUT (second hot run). The measurements were taken at intervals of 1 second.}
+	\label{fig:box-bytes-written-batched-run2}
+\end{figure}
+
+% Write times
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-write-times-batched-run0.eps}
+	\caption{Box plots of the time spent writing each individual event to the lakehouse tables during the cold run, in seconds.}
+	\label{fig:box-write-times-batched-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-write-times-batched-run2.eps}
+	\caption{Box plots of the time spent writing each individual event to the lakehouse tables during the second hot run, in seconds.}
+	\label{fig:box-write-times-batched-run2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/scatter-write-times-over-time-batched-run0.eps}
+	\caption{Scatter plots of time spent writing individual event to each SUT during the cold run, in seconds.}
+	\label{fig:scatter-write-times-over-time-batched-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/scatter-write-times-over-time-batched-run2.eps}
+	\caption{Scatter plots of time spent writing individual event to each SUT during the second hot run, in seconds.}
+	\label{fig:scatter-write-times-over-time-batched-run2}
+\end{figure}
+
+% Read times
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-read-times-batched-run0.eps}
+	\caption{Box plots of the time spent reading individual events from Kafka during the cold run of each SUT, in seconds.}
+	\label{fig:box-read-times-batched-run0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imgs/appendix/box-read-times-batched-run2.eps}
+	\caption{Box plots of the time spent reading individual events from Kafka during the second hot run of each SUT, in seconds.}
+	\label{fig:box-read-times-batched-run2}
+\end{figure}

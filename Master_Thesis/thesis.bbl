@@ -1763,6 +1763,41 @@
       \verb https://docs.unitycatalog.io/quickstart/
       \endverb
     \endentry
+    \entry{user:simonPostgreSQLWikiColumnOrientedSTorage2014}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=6a0c9e9f1d5e927c7f8aaccaadcb4086}{%
+           family={{User:Simon}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{fullhash}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{fullhashraw}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{bibnamehash}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{authorbibnamehash}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{authornamehash}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{authorfullhash}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \strng{authorfullhashraw}{6a0c9e9f1d5e927c7f8aaccaadcb4086}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{4}
+      \field{title}{{PostgreSQL} {Wiki} - {ColumnOrientedSTorage}}
+      \field{urlday}{20}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2014}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://wiki.postgresql.org/wiki/ColumnOrientedSTorage
+      \endverb
+      \verb{url}
+      \verb https://wiki.postgresql.org/wiki/ColumnOrientedSTorage
+      \endverb
+    \endentry
     \entry{WhatDataLake}{misc}{}{}
       \list{language}{1}{%
         {English}%

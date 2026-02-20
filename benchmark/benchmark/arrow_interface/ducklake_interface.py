@@ -36,7 +36,7 @@ class DuckLakeInterface(ArrowInterface):
         self.connection.execute(f"CREATE TABLE IF NOT EXISTS {self.table_name} AS FROM arrow_table;")
         self.connection.execute(f"CALL {self.catalog_name}.set_option('parquet_compression', '{os.getenv("PARQUET_COMPRESSION")}');")
         if self.inlining:
-            self.connection.execute(f"CALL {self.catalog_name}.set_option('data_inlining_row_limit', {2*batch_write_size});")
+            self.connection.execute(f"CALL {self.catalog_name}.set_option('data_inlining_row_limit', {1+batch_write_size});")
 
     
     def write_to_table(self, data: pa.Table) -> int:
